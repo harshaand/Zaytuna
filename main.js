@@ -3,20 +3,13 @@ window.addEventListener("load", function () {
     // Fetch menu items on page load
     fetchMenuItems();
 
-    const food_slider = document.querySelector("#slider-food");
-    const food_left_btn = document.querySelector("#food-left-btn");
-    const food_right_btn = document.querySelector("#food-right-btn");
-    updateSliderBtnVisibility(food_slider, food_left_btn, food_right_btn);
+    const container_menu_cards = document.querySelector(".container-menu-cards");
+
 
     const reviews_slider = document.querySelector("#slider-reviews");
     const reviews_left_btn = document.querySelector("#reviews-left-btn");
     const reviews_right_btn = document.querySelector("#reviews-right-btn");
     updateSliderBtnVisibility(reviews_slider, reviews_left_btn, reviews_right_btn);
-
-    const categories_slider = document.querySelector("#slider-categories");
-    const categories_left_btn = document.querySelector("#categories-left-btn");
-    const categories_right_btn = document.querySelector("#categories-right-btn");
-    updateSliderBtnVisibility(categories_slider, categories_left_btn, categories_right_btn);
 
 
 
@@ -87,41 +80,115 @@ window.addEventListener("load", function () {
 
     // Function to display menu items
     function displayMenuItems(items) {
-        food_slider.innerHTML = ''; // Clear the container
-        let htmlinjection = '<div id="cards-spacer-food"></div>';
+        container_menu_cards.innerHTML = ''; // Clear the container
+        let htmlinjection = '';
+        const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
+        const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
 
-        const filteredRecords = items.filter(item => item.fields.Display && item.fields.FeatureRank != null);
-        const sortedRecords = filteredRecords.sort((a, b) => a.fields.FeatureRank - b.fields.FeatureRank);
 
-        sortedRecords.forEach(item => {
-            const { Name, Description, Image, OutOfStock } = item.fields;
 
+        menu_time.forEach(time => {
+            htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
+            const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
+            const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
+
+            sortedRecords.forEach(item => {
+                const { Name, Description, Image, OutOfStock } = item.fields;
+
+                htmlinjection += `
+                    <div class="card-food">
+                        <img class="image-food" src="${Image[0].url}" alt="">
+                        <div class="text-food">
+                            <h5>${Name}</h4>
+                            <p>${Description}</p>
+                        
+                `;
+                container_menu_cards.innerHTML = htmlinjection;
+
+                if (OutOfStock === true) {
+                    htmlinjection += `
+                        <h3 class="card-food-out-of-stock">Fresh out, sorry!<h3>
+                        </div>
+                    </div>
+                    `}
+                else {
+                    htmlinjection += `
+                        </div>
+                    </div>
+                `;
+                }
+
+
+            });
             htmlinjection += `
-                <div class="card-food">
-                    <img class="image-food" src="${Image[0].url}" alt="">
-                    <div class="text-food">
-                        <h4>${Name}</h4>
-                        <p>${Description}</p>
-                    
-            `;
-            food_slider.innerHTML = htmlinjection;
-
-            if (OutOfStock === true) {
-                htmlinjection += `
-                    <h3 class="card-food-out-of-stock">Fresh out,<br>sorry!<h3>
-                    </div>
-                </div>
-                `}
-            else {
-                htmlinjection += `
-                    </div>
-                </div>
-            `;
-            }
-
-
-        });
+            </div> `;
+        })
+        document.getElementById('container-Breakfast-cards').classList.remove('hidden');
     }
 
+    // Get the button and menu elements
+    const buttons = document.querySelectorAll('.menu-btn');
+    /*
+    const breakfast_container = document.getElementById('container-Breakfast-cards');
+    const lunch_container = document.getElementById('container-Lunch-cards');
+    const dinner_container = document.getElementById('container-Dinner-cards');
+    
+    // Add click event listeners to each button
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove the 'active' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add 'active' class to the clicked button
+            this.classList.add('active');
 
+            // Hide all menu cards
+            breakfast_container.classList.add('hidden');
+            breakfast_container.classList.remove('visible');
+            lunch_container.classList.add('hidden');
+            lunch_container.classList.remove('visible');
+            dinner_container.classList.add('hidden');
+            dinner_container.classList.remove('visible');
+
+            // Show the corresponding menu cards based on the button clicked
+            if (this.id === 'breakfast-btn') {
+                breakfast_container.classList.remove('hidden');
+                breakfast_container.classList.add('visible');
+            } else if (this.id === 'lunch-btn') {
+                lunch_container.classList.remove('hidden');
+                lunch_container.classList.add('visible');
+            } else if (this.id === 'dinner-btn') {
+                dinner_container.classList.remove('hidden');
+                dinner_container.classList.add('visible');
+            }
+        });
+    });*/
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove the 'active' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Hide all menu cards
+            document.getElementById('container-Breakfast-cards').classList.add('hidden');
+            document.getElementById('container-Lunch-cards').classList.add('hidden');
+            document.getElementById('container-Dinner-cards').classList.add('hidden');
+            document.getElementById('container-Breakfast-cards').classList.remove('visible');
+            document.getElementById('container-Lunch-cards').classList.remove('visible');
+            document.getElementById('container-Dinner-cards').classList.remove('visible');
+
+            // Add 'active' class to the clicked button
+            this.classList.add('active');
+
+            // Show the corresponding menu cards based on the button clicked
+            if (this.id === 'breakfast-btn') {
+                document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+                document.getElementById('container-Breakfast-cards').classList.add('visible');
+            } else if (this.id === 'lunch-btn') {
+                document.getElementById('container-Lunch-cards').classList.remove('hidden');
+                document.getElementById('container-Lunch-cards').classList.add('visible');
+            } else if (this.id === 'dinner-btn') {
+                document.getElementById('container-Dinner-cards').classList.remove('hidden');
+                document.getElementById('container-Dinner-cards').classList.add('visible');
+            }
+        });
+    });
 });
