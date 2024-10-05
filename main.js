@@ -101,10 +101,6 @@ window.addEventListener("load", function () {
         let htmlinjection = '';
         const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
         const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
-
-        console.log(displayFilteredRecords);
-
-
         menu_time.forEach(time => {
             htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
             const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
@@ -114,7 +110,7 @@ window.addEventListener("load", function () {
                 const Description = item.fields.Description != null ? item.fields.Description : ""
                 if (item.fields.Image != null) {
                     htmlinjection += `
-                    <div class="card-food">
+                    <div class="card-food" id="card-feature-food">
                         <img class="image-food" src="${Image[0].url}" alt="">
                         <div class="text-food">
                         <div class="food-name-description">
@@ -191,6 +187,7 @@ window.addEventListener("load", function () {
         button.addEventListener('click', function () {
             // Remove the 'active' class from all buttons
             buttons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
 
             // Hide all menu cards
             document.getElementById('container-Breakfast-cards').classList.add('hidden');
@@ -200,8 +197,6 @@ window.addEventListener("load", function () {
             document.getElementById('container-Dinner-cards').classList.add('hidden');
             document.getElementById('container-Dinner-cards').classList.remove('visible');
 
-            // Add 'active' class to the clicked button
-            this.classList.add('active');
 
             // Show the corresponding menu cards based on the button clicked
             if (this.id === 'breakfast-btn') {

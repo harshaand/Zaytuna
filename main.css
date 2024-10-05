@@ -73,6 +73,9 @@
     --card-food-gap: calc((var(--container-width-2)*0.1)/4);
     --card-reviews-width: calc((var(--container-width)*0.95)/4);
     --card-reviews-gap: calc((var(--container-width)*0.05)/3);
+
+    --card-menu-page-width: calc((var(--container-width)*0.9)/6);
+    --card-menu-page-gap: calc((var(--container-width)*0.1)/5);
     /*TEMPORARY!!!!!!! */
     --card-categories-width: calc((var(--container-width)*0.9)/6);
     --card-categories-gap: calc((var(--container-width)*0.1)/5);
@@ -573,17 +576,7 @@ p {
 
 
 /*----------------------------------------------------------------------------------------------------*/
-.section-menu {
-    margin: var(--container-spacing-horizontal) var(--container-spacing-vertical);
-    background-color: #ff4d4d;
-}
 
-#food-category {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: aqua;
-}
 
 .container-menu-cards {
     display: flex;
@@ -601,9 +594,10 @@ p {
     gap: var(--card-food-gap);
 }
 
-.card-food:nth-child(n+11) {
+#card-feature-food:nth-child(n+11) {
     display: none;
 }
+
 
 .container-menu-time-cards.hidden {
     display: none;
@@ -772,4 +766,70 @@ p {
 .map {
     width: var(--container-width-2);
     height: 300px;
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+
+.section-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    background-color: var(--primary-colour);
+    padding: var(--container-spacing-vertical) var(--container-spacing-horizontal);
+    align-items: center;
+    width: var(--container-width);
+
+
+}
+
+
+
+#cards-menu-page {
+    width: var(--card-menu-page-width);
+}
+
+.header-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+
+}
+
+.container-menu {}
+
+.heading-menu-category {
+    font-family: 'EBGaramond';
+    color: var(--font-black);
+}
+
+
+
+.container-menu-page-time-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.container-menu-page-time-cards.hidden {
+    display: none;
+}
+
+.container-menu-page-time-cards.visible {
+    display: flex;
+}
+
+.container-category {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+.container-category-cards {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--card-menu-page-gap);
 }
