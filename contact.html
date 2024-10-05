@@ -1,7 +1,5 @@
 <html>
 
-
-
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,33 +7,42 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <script src="menu.js"></script>
+    <script src="contact.js"></script>
 </head>
 
 
 <body>
-    <div class="section-menu">
+    <div class="section-contact">
+        <div class="container-contact-form">
+            <h2>Contact Us</h2>
+            <div class="columns-contact">
+                <div class="column-contact-left">
+                    <p>
+                        Please feel free to contact us using the form below. We are happy to help with reservations,
+                        group bookings and with any dietary questions.
+                    </p>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="form-contact">
+                        <input type="hidden" name="access_key" value="6b1ff670-1fdb-4615-9bba-56b90786a117">
+                        <label for="name">Your Name *</label>
+                        <input type="text" name="name" placeholder="John Doe" class="contact-input" required>
+                        <label for="name">Your E-mail *</label>
+                        <input type="text" name="email" placeholder="johndoe@gmail.com" class="contact-input" required>
+                        <label for="name">Message *</label>
+                        <textarea type="text" name="message" class="contact-input" required></textarea>
+                        <button type="submit" class="button-CTA">Submit</button>
+                    </form>
+                </div>
+                <div class="column-contact-right">
+                    <img class="hero-image" src="images/website images/heroimage.jpg" alt="">
 
+                </div>
 
-        <div class="headings-cards-section">
-            <h1>Menu</h1>
+            </div>
         </div>
-        <div class="menu-btns">
-            <button id="breakfast-btn" class="menu-btn">
-                <h4>Breakfast</h4>
-            </button>
-            <button id="lunch-btn" class="menu-btn">
-                <h4>Lunch</h4>
-            </button>
-            <button id="dinner-btn" class="menu-btn">
-                <h4>Dinner</h4>
-            </button>
-        </div>
 
-
-        <div class="container-menu"></div>
 
     </div>
+
 
     <div class="section-footer">
         <div class="container-footer">
@@ -134,6 +141,8 @@
 
 
     </div>
+
+
     <!-- SVG's below -->
     <div>
         <svg class="hidden" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
