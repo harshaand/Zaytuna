@@ -57,15 +57,26 @@
     --container-width-2: 80vw;
     --container-spacing-horizontal-2: 10vw;
 
+    --container-max-width: 1280px;
 
+    --cards-border-radius: 16px;
+
+    --card-food-width: calc((var(--container-max-width)*0.9)/5);
+    --card-food-gap: calc((var(--container-max-width)*0.1)/4);
+    --card-reviews-width: calc((var(--container-max-width)*0.95)/4);
+    --card-reviews-gap: calc((var(--container-max-width)*0.05)/3);
+
+    --card-menu-page-width: calc((var(--container-max-width)*0.9)/6);
+    --card-menu-page-gap: calc((var(--container-max-width)*0.1)/5);
+
+
+    --font-1: 'Helvetica';
+    --font-2: 'EBGaramond';
+    --font-3: 'Qwigley';
 
     --nav-bar-colour: #3C818D;
     --nav-bar-btn-colour: rgba(0, 0, 0, 0.2);
     --nav-bar-type-colour: white;
-    /*
-    E4DFC9
-    F0ECE1
-    */
     --primary-colour: #F0ECE1;
     --secondary-colour: #C68B05;
     --secondary-colour-hover: #E3A70A;
@@ -75,23 +86,6 @@
     --font-white: #ffffff;
     --font-black: #000000;
     --translucent: rgba(0, 0, 0, 0.25);
-
-
-    --cards-border-radius: 16px;
-    --card-food-width: calc((var(--container-width-2)*0.9)/5);
-    --card-food-gap: calc((var(--container-width-2)*0.1)/4);
-    --card-reviews-width: calc((var(--container-width)*0.95)/4);
-    --card-reviews-gap: calc((var(--container-width)*0.05)/3);
-
-    --card-menu-page-width: calc((var(--container-width)*0.9)/6);
-    --card-menu-page-gap: calc((var(--container-width)*0.1)/5);
-    /*TEMPORARY!!!!!!! */
-    --card-categories-width: calc((var(--container-width)*0.9)/6);
-    --card-categories-gap: calc((var(--container-width)*0.1)/5);
-
-    --font-1: 'Helvetica';
-    --font-2: 'EBGaramond';
-    --font-3: 'Qwigley';
 
 }
 
@@ -202,6 +196,7 @@ p {
     flex-direction: column;
     align-items: center;
     width: var(--container-width);
+    max-width: var(--container-max-width);
     height: 100%;
     margin: 48px var(--container-spacing-horizontal);
     gap: 56px;
@@ -215,8 +210,9 @@ p {
     grid-template-rows: 340px auto;
     align-items: center;
     width: var(--container-width-2);
+    max-width: var(--container-max-width);
     height: 100%;
-    padding: 0 var(--container-spacing-horizontal);
+    padding: 0 auto;
 }
 
 .column-hero-left {
@@ -244,7 +240,7 @@ p {
     justify-content: flex-start;
     height: 100%;
     gap: 20px;
-    margin-left: 5vw;
+    margin-left: 10%;
 }
 
 .column-hero-right-text {
@@ -1003,4 +999,49 @@ p {
 #nav-CTA-btn:hover {
     background-color: var(--secondary-colour-hover);
     color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1600px) {
+    :root {
+        --card-food-width: calc((var(--container-width-2)*0.9)/5);
+        --card-food-gap: calc((var(--container-width-2)*0.1)/4);
+        --card-reviews-width: calc((var(--container-width)*0.95)/4);
+        --card-reviews-gap: calc((var(--container-width)*0.05)/3);
+
+        --card-menu-page-width: calc((var(--container-width)*0.9)/6);
+        --card-menu-page-gap: calc((var(--container-width)*0.1)/5);
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    :root {}
+
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    :root {}
+
+
+}
+
+@media only screen and (max-width: 480px) {
+    :root {}
 }
