@@ -52,22 +52,22 @@
     --p2: 16px;
 
     --container-spacing-vertical: 64px;
-    --container-width: 90vw;
-    --container-spacing-horizontal: 5vw;
-    --container-width-2: 80vw;
-    --container-spacing-horizontal-2: 10vw;
+    --container-width: 80vw;
+    --container-spacing-horizontal: 10vw;
+    --container-width-2: 90vw;
+    --container-spacing-horizontal-2: 5vw;
 
     --container-max-width: 1280px;
 
     --cards-border-radius: 16px;
 
-    --card-food-width: calc((var(--container-max-width)*0.9)/5);
-    --card-food-gap: calc((var(--container-max-width)*0.1)/4);
-    --card-reviews-width: calc((var(--container-max-width)*0.95)/4);
-    --card-reviews-gap: calc((var(--container-max-width)*0.05)/3);
+    --card-food-width: calc((var(--container-width)*0.9)/6);
+    --card-food-gap: calc((var(--container-width)*0.1)/5);
+    --card-reviews-width: calc((var(--container-width)*0.95)/4);
+    --card-reviews-gap: calc((var(--container-width)*0.05)/3);
 
-    --card-menu-page-width: calc((var(--container-max-width)*0.9)/6);
-    --card-menu-page-gap: calc((var(--container-max-width)*0.1)/5);
+    --card-menu-page-width: calc((var(--container-width-2)*0.9)/6);
+    --card-menu-page-gap: calc((var(--container-width-2)*0.1)/5);
 
 
     --font-1: 'Helvetica';
@@ -195,10 +195,10 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: var(--container-width);
+    width: var(--container-width-2);
     max-width: var(--container-max-width);
     height: 100%;
-    margin: 48px var(--container-spacing-horizontal);
+    margin: 48px var(--container-spacing-horizontal-2);
     gap: 56px;
 
 
@@ -209,7 +209,7 @@ p {
     grid-template-columns: 50% 50%;
     grid-template-rows: 340px auto;
     align-items: center;
-    width: var(--container-width-2);
+    width: var(--container-width);
     max-width: var(--container-max-width);
     height: 100%;
     padding: 0 auto;
@@ -289,9 +289,9 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: var(--container-width-2);
+    width: var(--container-width);
     height: 100%;
-    padding: calc(var(--container-spacing-vertical) - 28px) var(--container-spacing-horizontal) var(--container-spacing-vertical) var(--container-spacing-horizontal);
+    padding: calc(var(--container-spacing-vertical) - 28px) var(--container-spacing-horizontal-2) var(--container-spacing-vertical) var(--container-spacing-horizontal-2);
     gap: 28px;
 }
 
@@ -426,13 +426,6 @@ p {
 }
 
 
-#cards-spacer-food {
-    width: calc(((100% - var(--container-width))/2) - var(--card-food-gap));
-    height: 50px;
-    flex-grow: 0;
-    flex-shrink: 0;
-}
-
 .card-food {
     position: relative;
 
@@ -444,8 +437,6 @@ p {
     border-radius: var(--cards-border-radius);
     background-color: var(--white);
     box-sizing: border-box;
-    scroll-snap-align: start;
-    scroll-margin-left: var(--container-spacing-horizontal);
     transition: transform 0.2s ease;
 
 }
@@ -517,6 +508,7 @@ p {
     height: 50px;
     flex-grow: 0;
     flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .card-review {
@@ -599,7 +591,8 @@ p {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    width: var(--container-width-2);
+    width: var(--container-width);
+    max-width: var(--container-max-width);
     gap: var(--card-food-gap);
 }
 
@@ -640,6 +633,9 @@ p {
 /*----------------------------------------------------------------------------------------------------*/
 
 .section-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--white);
     color: var(--font-black);
     width: 100%;
@@ -647,6 +643,7 @@ p {
 
 .container-footer {
     display: flex;
+    max-width: var(--container-max-width);
     padding: var(--container-spacing-vertical) 0;
     flex-direction: column;
     justify-content: center;
@@ -656,7 +653,7 @@ p {
 }
 
 .columns-footer-top-row {
-    width: var(--container-width);
+    width: var(--container-width-2);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
@@ -711,7 +708,7 @@ p {
 }
 
 .columns-footer-bottom-row {
-    width: var(--container-width);
+    width: var(--container-width-2);
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
@@ -774,7 +771,8 @@ p {
 }
 
 .map {
-    width: var(--container-width-2);
+    width: var(--container-width);
+    max-width: var(--container-max-width);
     height: 300px;
 }
 
@@ -791,7 +789,7 @@ p {
 }
 
 .container-menu {
-    width: var(--container-width-2);
+    width: var(--container-width);
     margin-top: -20px;
 }
 
@@ -861,7 +859,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: var(--container-width-2);
+    width: var(--container-width);
     height: 100%;
     margin: var(--container-spacing-vertical) 0;
     gap: 8px;
@@ -873,7 +871,7 @@ p {
     grid-template-columns: 50% 50%;
     grid-template-rows: 440px auto;
     align-items: center;
-    width: var(--container-width-2);
+    width: var(--container-width);
     height: 100%;
 }
 
@@ -1012,20 +1010,36 @@ p {
 
 
 
+@media only screen and (min-width: 1600px) {
+    :root {
+        --card-food-width: calc((var(--container-max-width)*0.9)/6);
+        --card-food-gap: calc((var(--container-max-width)*0.1)/5);
+        --card-reviews-width: calc((var(--container-max-width)*0.95)/4);
+        --card-reviews-gap: calc((var(--container-max-width)*0.05)/3);
 
+        --card-menu-page-width: calc((var(--container-max-width)*0.9)/6);
+        --card-menu-page-gap: calc((var(--container-max-width)*0.1)/5);
+    }
+
+    .cards-nav {
+        margin: 0 calc(50vw - var(--container-max-width)/2);
+    }
+
+    #cards-spacer-reviews {
+        width: calc(50vw - var(--container-max-width)/2 - var(--card-reviews-gap));
+    }
+
+    .card-review {
+        scroll-margin-left: calc(50vw - var(--container-max-width)/2);
+    }
+
+
+}
 
 
 
 @media only screen and (max-width: 1600px) {
-    :root {
-        --card-food-width: calc((var(--container-width-2)*0.9)/5);
-        --card-food-gap: calc((var(--container-width-2)*0.1)/4);
-        --card-reviews-width: calc((var(--container-width)*0.95)/4);
-        --card-reviews-gap: calc((var(--container-width)*0.05)/3);
-
-        --card-menu-page-width: calc((var(--container-width)*0.9)/6);
-        --card-menu-page-gap: calc((var(--container-width)*0.1)/5);
-    }
+    :root {}
 }
 
 
