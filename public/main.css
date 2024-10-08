@@ -1194,10 +1194,6 @@ p {
     }
 
 
-    .text-review {
-        font-size: var(--p1);
-    }
-
     .text-review-source {
         font-size: var(--p2);
     }
