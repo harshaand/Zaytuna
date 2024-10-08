@@ -487,7 +487,7 @@ p {
     flex-grow: 0;
     flex-shrink: 0;
     overflow-wrap: break-word;
-    font-size: var(--p1);
+    font-size: var(--p2);
     text-align: left;
 
 }
