@@ -1136,13 +1136,13 @@ p {
         --h2: 39px;
         --h3: 31px;
         --h4: 20px;
-        --h5: 16px;
+        --h5: 20px;
         --h6: 16px;
         --p1: 16px;
         --p2: 13px;
         --p3: 10px;
 
-        --container-spacing-vertical: 36px;
+        --container-spacing-vertical: 44px;
 
         --card-food-width: calc((var(--container-width)*0.95)/2);
         --card-food-gap: calc((var(--container-width)*0.05)/1);
@@ -1191,6 +1191,15 @@ p {
 
     .slider-btns {
         display: none;
+    }
+
+
+    .text-review {
+        font-size: var(--p1);
+    }
+
+    .text-review-source {
+        font-size: var(--p2);
     }
 
     .navbar {
