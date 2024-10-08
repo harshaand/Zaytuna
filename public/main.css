@@ -372,11 +372,9 @@ p {
     display: flex;
     flex-direction: row;
     gap: 78px;
-}
-
-.menu-btns a {
     color: #000000;
 }
+
 
 
 .cards-nav {
