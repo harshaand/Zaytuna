@@ -1297,6 +1297,7 @@ header {
 
     .mobile-menu {
         width: 100vw;
+        right: -100vw;
     }
 
     .container-hero {
