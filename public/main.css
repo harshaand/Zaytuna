@@ -75,7 +75,7 @@
     --font-2: 'EBGaramond';
     --font-3: 'Qwigley';
 
-    --nav-bar-colour: #3C818D;
+    --nav-bar-colour: 60, 129, 141;
     --nav-bar-btn-colour: rgba(0, 0, 0, 0.2);
     --nav-bar-type-colour: white;
     --primary-colour: #F0ECE1;
@@ -970,6 +970,12 @@ p {
 }
 
 /*---------------------------------------------*/
+header {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .3);
+    position: relative;
+
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
@@ -977,7 +983,7 @@ p {
     align-items: center;
     background-color: var(--white);
     padding: 15px;
-    background-color: var(--nav-bar-colour);
+    background-color: rgb(var(--nav-bar-colour));
     color: var(--nav-bar-type-colour);
 }
 
@@ -1031,6 +1037,67 @@ p {
 
 
 
+/* Hide the mobile menu by default */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Hidden off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: rgba(var(--nav-bar-colour), 0.6);
+    backdrop-filter: blur(10px) saturate(100%);
+    transition: right 0.4s ease;
+    z-index: 998;
+    /* Below the hamburger button */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+
+}
+
+.mobile-menu ul li a {
+    color: var(--font-white);
+    text-decoration: none;
+    font-size: var(--h4);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 999;
+    /* Above the mobile menu */
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--white);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
 
 
 
@@ -1181,6 +1248,28 @@ p {
         display: none;
 
     }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /*-----------------------------------------------------------------------*/
+    /* Hamburger active state - transforms into a cross */
+    .hamburger.active .line1 {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active .line2 {
+        opacity: 0;
+    }
+
+    .hamburger.active .line3 {
+        transform: translateY(-10px) rotate(-45deg);
+    }
 }
 
 @media (max-width: 480px) {
@@ -1206,8 +1295,8 @@ p {
         --card-menu-page-gap: calc((var(--container-width)*0.05)/1);
     }
 
-    .navbar {
-        display: none;
+    .mobile-menu {
+        width: 100vw;
     }
 
     .container-hero {
