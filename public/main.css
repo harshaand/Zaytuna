@@ -1139,7 +1139,7 @@ p {
         --h5: 20px;
         --h6: 16px;
         --p1: 16px;
-        --p2: 13px;
+        --p2: 14px;
         --p3: 10px;
 
         --container-spacing-vertical: 44px;
@@ -1193,6 +1193,13 @@ p {
         display: none;
     }
 
+    .card-food h5 {
+        font-size: var(--p1);
+    }
+
+    .food-name-description {
+        font-size: var(--p2);
+    }
 
     .text-review-source {
         font-size: var(--p2);
