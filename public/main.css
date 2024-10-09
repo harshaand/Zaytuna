@@ -1046,7 +1046,8 @@ header {
     width: 250px;
     height: 100%;
     background-color: rgba(var(--nav-bar-colour), 0.6);
-    backdrop-filter: blur(10px) saturate(100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: right 0.4s ease;
     z-index: 998;
     /* Below the hamburger button */
