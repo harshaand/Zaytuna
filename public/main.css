@@ -1098,7 +1098,6 @@ header {
     width: 30px;
     cursor: pointer;
     z-index: 1000;
-    position: fixed;
     height: 24px;
     top: calc((var(--nav-bar-height)-24px)/2);
     /* Adjust the top value as needed */
