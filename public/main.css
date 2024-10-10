@@ -78,6 +78,7 @@
     --nav-bar-colour: 60, 129, 141;
     --nav-bar-btn-colour: rgba(0, 0, 0, 0.2);
     --nav-bar-type-colour: white;
+    --nav-bar-height: 64px;
     --primary-colour: #F0ECE1;
     --secondary-colour: #C68B05;
     --secondary-colour-hover: #E3A70A;
@@ -196,6 +197,8 @@ p {
     width: 100%;
     overflow: hidden;
     background-color: var(--primary-colour);
+    margin-top: var(--nav-bar-height);
+
 
 
 }
@@ -207,7 +210,7 @@ p {
     width: var(--container-width-2);
     max-width: var(--container-max-width);
     height: 100%;
-    margin: 48px var(--container-spacing-horizontal-2);
+    padding: 48px var(--container-spacing-horizontal-2);
     gap: 56px;
 
 
@@ -810,6 +813,7 @@ p {
     padding: var(--container-spacing-vertical) 0;
     align-items: center;
     width: 100%;
+    margin-top: var(--nav-bar-height);
 }
 
 .container-menu {
@@ -875,6 +879,7 @@ p {
     gap: 0px;
     margin: 0;
     padding: 0;
+    margin-top: var(--nav-bar-height);
 }
 
 .section-contact h2 {
@@ -889,7 +894,7 @@ p {
     width: var(--container-width);
     max-width: var(--container-max-width);
     height: 100%;
-    margin: var(--container-spacing-vertical) 0;
+    padding: var(--container-spacing-vertical) 0;
     gap: 8px;
 }
 
@@ -972,7 +977,12 @@ p {
 /*---------------------------------------------*/
 header {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .3);
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    height: var(--nav-bar-height);
+    /* Ensure the header stays above other elements */
 
 }
 
@@ -982,9 +992,11 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: var(--white);
-    padding: 15px;
+    padding: 20px;
     background-color: rgb(var(--nav-bar-colour));
     color: var(--nav-bar-type-colour);
+    height: var(--nav-bar-height);
+    box-sizing: border-box;
 }
 
 .logo a {
@@ -1051,7 +1063,7 @@ header {
     transition: right 0.4s ease;
     z-index: 998;
     /* Below the hamburger button */
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1079,17 +1091,19 @@ header {
     font-size: var(--h4);
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
-    height: 24px;
     cursor: pointer;
-    z-index: 999;
-    /* Above the mobile menu */
-    position: relative;
+    z-index: 1000;
+    position: fixed;
+    height: 24px;
+    top: calc((var(--nav-bar-height)-24px)/2);
+    /* Adjust the top value as needed */
+    right: 20px;
+    /* Adjust the right value as needed */
 }
 
 .hamburger span {
@@ -1258,6 +1272,10 @@ header {
         display: flex;
     }
 
+    .mobile-menu {
+        display: flex;
+    }
+
     /*-----------------------------------------------------------------------*/
     /* Hamburger active state - transforms into a cross */
     .hamburger.active .line1 {
@@ -1287,6 +1305,8 @@ header {
 
         --container-spacing-vertical: 44px;
 
+        --nav-bar-height: 48px;
+
         --card-food-width: calc((var(--container-width)*0.95)/2);
         --card-food-gap: calc((var(--container-width)*0.05)/1);
         --card-reviews-width: calc((var(--container-width)*0.95)/1);
@@ -1303,7 +1323,7 @@ header {
 
     .container-hero {
         gap: 20px;
-        margin: 28px var(--container-spacing-horizontal-2);
+        padding: 28px var(--container-spacing-horizontal-2);
     }
 
     .columns-hero {
