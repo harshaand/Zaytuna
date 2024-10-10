@@ -981,7 +981,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 999;
-    height: var(--nav-bar-height);
+    height: fit-content;
     /* Ensure the header stays above other elements */
 
 }
@@ -992,10 +992,10 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: var(--white);
-    padding: 20px;
+    padding: 4px 20px;
     background-color: rgb(var(--nav-bar-colour));
     color: var(--nav-bar-type-colour);
-    height: var(--nav-bar-height);
+    height: fit-content;
     box-sizing: border-box;
 }
 
@@ -1207,6 +1207,11 @@ header {
 
         --card-menu-page-width: calc((var(--container-width)*0.95)/3);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/2);
+    }
+
+    .navbar {
+        padding: 8px 20px;
+
     }
 
     .container-hero {
