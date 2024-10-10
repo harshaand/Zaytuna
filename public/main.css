@@ -93,7 +93,7 @@
 
 html,
 body {
-    overscroll-behavior: none;
+    overscroll-behavior-y: contain;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     /* Enable smooth scrolling for iOS */
