@@ -105,7 +105,7 @@ body {
     color: var(--font-black);
     overflow: visible;
     font-family: var(--font-1), sans-serif;
-    background-color: grey;
+    background-color: var(--white);
     margin: 0;
     padding: 0;
 
@@ -1127,8 +1127,8 @@ header {
     right: -100%;
     /* Hidden off-screen */
     width: 250px;
-    height: 100%;
-    background-color: rgba(var(--nav-bar-colour), 0.6);
+    height: 100vh;
+    background-color: rgba(var(--nav-bar-colour), 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: right 0.4s ease;
@@ -1497,8 +1497,8 @@ header {
     }
 
     .mobile-menu {
-        width: 100vw;
-        right: -100vw;
+        width: 101vw;
+        right: -101vw;
     }
 
     .button-phone {
