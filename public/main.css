@@ -238,8 +238,11 @@ p {
     position: relative;
     overflow: hidden;
     background: linear-gradient(to right, var(--primary-colour) 50%, black 50%);
-    border-radius: var(--cards-border-radius);
+    border-radius: 20px;
     background-size: 200% 100%;
+}
+
+.background-animation {
     animation: background-load 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
@@ -381,6 +384,7 @@ p {
 }
 
 .container-cards {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     overflow: visible;
@@ -705,6 +709,7 @@ p {
 }
 
 .container-footer {
+    visibility: hidden;
     display: flex;
     max-width: var(--container-max-width);
     padding: var(--container-spacing-vertical) 0;
@@ -844,9 +849,18 @@ p {
 .section-menu {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    justify-content: center;
+    align-items: center;
     background-color: var(--primary-colour);
-    padding: var(--container-spacing-vertical) 0;
+    width: 100%;
+}
+
+.container-menu-page {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: var(--container-spacing-vertical) 0;
     align-items: center;
     width: 100%;
 }
@@ -855,6 +869,7 @@ p {
     width: var(--container-width);
     margin-top: -20px;
     max-width: var(--container-max-width);
+    min-height: 100vh;
 }
 
 .header-menu {
@@ -922,6 +937,7 @@ p {
 }
 
 .container-contact-form {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -958,7 +974,9 @@ p {
     grid-column-start: 2;
     height: 100%;
     width: 100%;
-
+    background: linear-gradient(to right, var(--primary-colour) 50%, black 50%);
+    border-radius: 20px;
+    background-size: 200% 100%;
 }
 
 
@@ -968,6 +986,9 @@ p {
     object-fit: cover;
     object-position: bottom;
     border-radius: 20px;
+    animation: image-load 1s forwards 0.3s;
+    /* Starts after background animation */
+    clip-path: inset(0 100% 0 0);
 }
 
 /* Form Styling */

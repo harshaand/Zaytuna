@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="menu.js"></script>
 </head>
 
@@ -50,25 +51,25 @@
     </a>
     <div class="section-menu">
 
+        <div class="container-menu-page">
+            <div class="headings-cards-section">
+                <h1 class="animation-section-heading">Menu</h1>
+            </div>
+            <div class="menu-btns animation-general-element">
+                <button id="breakfast-btn" class="menu-btn">
+                    <h4>Breakfast</h4>
+                </button>
+                <button id="lunch-btn" class="menu-btn">
+                    <h4>Lunch</h4>
+                </button>
+                <button id="dinner-btn" class="menu-btn">
+                    <h4>Dinner</h4>
+                </button>
+            </div>
 
-        <div class="headings-cards-section">
-            <h1>Menu</h1>
+
+            <div class="container-menu"></div>
         </div>
-        <div class="menu-btns">
-            <button id="breakfast-btn" class="menu-btn">
-                <h4>Breakfast</h4>
-            </button>
-            <button id="lunch-btn" class="menu-btn">
-                <h4>Lunch</h4>
-            </button>
-            <button id="dinner-btn" class="menu-btn">
-                <h4>Dinner</h4>
-            </button>
-        </div>
-
-
-        <div class="container-menu"></div>
-
     </div>
 
     <div class="section-footer">
@@ -110,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="map">
+            <div class="map animation-general-element">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.7410417013084!2d-1.1310412874738753!3d53.526681572226835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790d64dcb15a11%3A0x7d002679111a6f11!2sAL-BASHA%20RESTAURANT!5e0!3m2!1sen!2suk!4v1728034340175!5m2!1sen!2suk"
                     width="100%" height="100%" style="border: 0px; border-radius: var(--cards-border-radius);"

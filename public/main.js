@@ -51,14 +51,23 @@ window.addEventListener("load", function () {
     // Animate hero section
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
-    gsap.from(".section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".section-accent", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".hero-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".general-animated-element", { duration: .6, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-section-accent", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-section-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-general-element", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
     gsap.from(".button-CTA", { duration: 1, delay: 1, opacity: 0, ease: "power1.inOut" });
+    gsap.fromTo('.column-footer-top-row', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+    gsap.fromTo('.column-footer-bottom-row', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+
+    gsap.to(".navbar", { duration: 0, visibility: "visible" });
     gsap.to(".container-hero", { duration: 0, visibility: "visible" });
     gsap.to(".container-about", { duration: 0, visibility: "visible" });
-    gsap.to(".navbar", { duration: 0, visibility: "visible" });
+    gsap.to(".container-cards", { duration: 0, visibility: "visible" });
+    gsap.to(".container-footer", { duration: 0, visibility: "visible" });
+
+    document.querySelector('.column-hero-left').classList.add('background-animation');
+
+
 
 
 
@@ -225,6 +234,7 @@ window.addEventListener("load", function () {
             </div> `;
         })
         document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+        gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     }
 
 
@@ -252,6 +262,7 @@ window.addEventListener("load", function () {
         htmlinjection += `
                 <div id="cards-spacer-reviews"></div>`;
         reviews_slider.innerHTML = htmlinjection;
+        gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     }
 
     // Get the button and menu elements

@@ -1,5 +1,19 @@
 
 window.addEventListener("load", function () {
+    gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".animation-section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-general-element", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".animation-section-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".button-CTA", { duration: 1, delay: 1, opacity: 0, ease: "power1.inOut" });
+
+    gsap.fromTo('.column-footer-top-row', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+    gsap.fromTo('.column-footer-bottom-row', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+
+    gsap.to(".navbar", { duration: 0, visibility: "visible" });
+    gsap.to(".container-menu-page", { duration: 0, visibility: "visible" });
+    gsap.to(".container-footer", { duration: 0, visibility: "visible" });
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -54,7 +68,7 @@ window.addEventListener("load", function () {
         for (const time in menu_time) {
             htmlinjection += `
                                 <div class="container-menu-page-time-cards hidden" id="container-${time}-cards">
-                                <p class="description-menu"> ${menu_time[time]}</p>`;
+                                <p class="description-menu animation-section-p"> ${menu_time[time]}</p>`;
             const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
             const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
             orderedCategories.forEach(category => {
@@ -63,7 +77,7 @@ window.addEventListener("load", function () {
                 if (filteredRecords.length != 0) {
                     htmlinjection += `
                 <div class="container-category">
-                <h3 class="heading-menu-category">${category.replace(/[^a-zA-Z/s]/g, '')}</h3>
+                <h3 class="heading-menu-category animation-section-p">${category.replace(/[^a-zA-Z/s]/g, '')}</h3>
                 <div class="container-category-cards">`;
 
                     filteredRecords.forEach(item => {
@@ -119,6 +133,8 @@ window.addEventListener("load", function () {
             </div>`;
         }
         document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+        gsap.from(".animation-section-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+        gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
 
     }
 
@@ -144,12 +160,15 @@ window.addEventListener("load", function () {
             if (this.id === 'breakfast-btn') {
                 document.getElementById('container-Breakfast-cards').classList.remove('hidden');
                 document.getElementById('container-Breakfast-cards').classList.add('visible');
+                gsap.fromTo('#container-Breakfast-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'lunch-btn') {
                 document.getElementById('container-Lunch-cards').classList.remove('hidden');
                 document.getElementById('container-Lunch-cards').classList.add('visible');
+                gsap.fromTo('#container-Lunch-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'dinner-btn') {
                 document.getElementById('container-Dinner-cards').classList.remove('hidden');
                 document.getElementById('container-Dinner-cards').classList.add('visible');
+                gsap.fromTo('#container-Dinner-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             }
         });
     });
