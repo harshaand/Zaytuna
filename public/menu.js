@@ -2,6 +2,7 @@
 window.addEventListener("load", function () {
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
     gsap.from(".animation-general-element", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
     gsap.from(".animation-section-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
@@ -52,9 +53,9 @@ window.addEventListener("load", function () {
     // Function to display menu items
     function displayMenuItems(items) {
         const menu_time = {
-            Breakfast: "Baklava for breakfast? We won't judge—we might join you!<br> Breakfast served 9 AM - 11 AM",
-            Lunch: "We put the 'olive' in 'I love lunch here!' <br> Lunch served 11 AM - 4 PM",
-            Dinner: "Where dinner is always a celebration—no special occasion required. <br> Dinner served 4 PM - 10 PM "
+            Breakfast: "Breakfast served 9 AM - 11 AM",
+            Lunch: "Lunch served 11 AM - 4 PM",
+            Dinner: "Dinner served 4 PM - 10 PM "
         };
         const uniqueCategories = [...new Set(items.map(item => item.fields.Category))];
         const orderedCategories = uniqueCategories.sort((a, b) => parseFloat(a) - parseFloat(b));

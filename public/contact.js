@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
     // Animate hero section
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
     gsap.from(".animation-section-p", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
     gsap.from(".animation-general-element", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
