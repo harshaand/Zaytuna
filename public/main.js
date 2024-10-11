@@ -279,15 +279,15 @@ window.addEventListener("load", function () {
             if (this.id === 'breakfast-btn') {
                 document.getElementById('container-Breakfast-cards').classList.remove('hidden');
                 document.getElementById('container-Breakfast-cards').classList.add('visible');
-                gsap.fromTo('#container-Breakfast-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                gsap.fromTo('#container-Breakfast-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'lunch-btn') {
                 document.getElementById('container-Lunch-cards').classList.remove('hidden');
                 document.getElementById('container-Lunch-cards').classList.add('visible');
-                gsap.fromTo('#container-Lunch-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                gsap.fromTo('#container-Lunch-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'dinner-btn') {
                 document.getElementById('container-Dinner-cards').classList.remove('hidden');
                 document.getElementById('container-Dinner-cards').classList.add('visible');
-                gsap.fromTo('#container-Dinner-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                gsap.fromTo('#container-Dinner-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             }
         });
     });
