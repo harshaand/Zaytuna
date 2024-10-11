@@ -49,13 +49,13 @@ window.addEventListener("load", function () {
     // Animate header
 
     // Animate hero section
-    gsap.from(".logo", { duration: 1.6, delay: 1.6, y: 30, opacity: 0, ease: "power2.inOut" });
-    gsap.from(".nav-links", { duration: 1.6, delay: 1.6, y: 30, opacity: 0, ease: "power2.inOut" });
-    gsap.from(".section-heading", { duration: 1.6, delay: 1.7, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".section-accent", { duration: 1.6, delay: 1.8, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".hero-p", { duration: 1.6, delay: 1.9, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".general-animated-element", { duration: 1.6, delay: 1.9, opacity: 0, y: 30, ease: "power1.inOut" });
-    gsap.from(".button-CTA", { duration: 1.6, delay: 2, opacity: 0, ease: "power1.inOut" });
+    gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".section-heading", { duration: 1, delay: .7, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".section-accent", { duration: 1, delay: .8, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".hero-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".general-animated-element", { duration: .6, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".button-CTA", { duration: 1, delay: 1, opacity: 0, ease: "power1.inOut" });
     gsap.to(".container-hero", { duration: 0, visibility: "visible" });
     gsap.to(".container-about", { duration: 0, visibility: "visible" });
     gsap.to(".navbar", { duration: 0, visibility: "visible" });

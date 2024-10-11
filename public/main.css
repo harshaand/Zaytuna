@@ -240,7 +240,7 @@ p {
     background: linear-gradient(to right, var(--primary-colour) 50%, black 50%);
     border-radius: var(--cards-border-radius);
     background-size: 200% 100%;
-    animation: background-load 1.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation: background-load 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 @keyframes background-load {
@@ -259,7 +259,7 @@ p {
     object-fit: cover;
     object-position: bottom;
     border-radius: 20px;
-    animation: image-load 1s forwards 0.6s;
+    animation: image-load 1s forwards 0.3s;
     /* Starts after background animation */
     clip-path: inset(0 100% 0 0);
 }
