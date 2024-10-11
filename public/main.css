@@ -108,6 +108,7 @@ body {
     background-color: grey;
     margin: 0;
     padding: 0;
+
 }
 
 a {
@@ -214,6 +215,8 @@ p {
     padding: 48px var(--container-spacing-horizontal-2);
     gap: 56px;
 
+    visibility: hidden;
+
 
 }
 
@@ -232,9 +235,23 @@ p {
     grid-column-start: 1;
     height: 100%;
     width: 100%;
-
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--primary-colour) 50%, black 50%);
+    border-radius: var(--cards-border-radius);
+    background-size: 200% 100%;
+    animation: background-load 1.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
+@keyframes background-load {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -100% 0;
+    }
+}
 
 .column-hero-left img {
     height: 100%;
@@ -242,8 +259,19 @@ p {
     object-fit: cover;
     object-position: bottom;
     border-radius: 20px;
+    animation: image-load 1s forwards 0.6s;
+    /* Starts after background animation */
+    clip-path: inset(0 100% 0 0);
+}
 
+@keyframes image-load {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
 
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 .column-hero-right {
@@ -299,6 +327,7 @@ p {
 }
 
 .container-about {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -983,6 +1012,7 @@ p {
 header {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .3);
     position: sticky;
+    background-color: var(--secondary-accent-colour);
     position: -webkit-sticky;
     top: 0;
     width: 100%;
@@ -1003,6 +1033,8 @@ header {
     color: var(--nav-bar-type-colour);
     height: fit-content;
     box-sizing: border-box;
+
+    visibility: hidden;
 }
 
 .logo a {

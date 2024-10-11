@@ -4,13 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var overlay = document.getElementById('overlay');
     var closeBtn = document.querySelector('.close');
     var submitBtn = document.getElementById('submitBtn');
-
-    // Check if user details are already provided
-    if (!localStorage.getItem('userEmail') && !localStorage.getItem('userPhone')) {
-        modal.style.display = 'block';
-        overlay.style.display = 'block';
-    }
-
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+    /*
+        // Check if user details are already provided
+        if (!localStorage.getItem('userEmail') && !localStorage.getItem('userPhone')) {
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+    */
     closeBtn.onclick = function () {
         modal.style.display = 'none';
         overlay.style.display = 'none';
@@ -40,6 +42,31 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener("load", function () {
+
+    // Hide loading screen
+    gsap.to("#loading-screen", { duration: 1, opacity: 0, display: 'none' });
+
+    // Animate header
+
+    // Animate hero section
+    gsap.from(".logo", { duration: 1.6, delay: 1.6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".nav-links", { duration: 1.6, delay: 1.6, y: 30, opacity: 0, ease: "power2.inOut" });
+    gsap.from(".section-heading", { duration: 1.6, delay: 1.7, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".section-accent", { duration: 1.6, delay: 1.8, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".hero-p", { duration: 1.6, delay: 1.9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".general-animated-element", { duration: 1.6, delay: 1.9, opacity: 0, y: 30, ease: "power1.inOut" });
+    gsap.from(".button-CTA", { duration: 1.6, delay: 2, opacity: 0, ease: "power1.inOut" });
+    gsap.to(".container-hero", { duration: 0, visibility: "visible" });
+    gsap.to(".container-about", { duration: 0, visibility: "visible" });
+    gsap.to(".navbar", { duration: 0, visibility: "visible" });
+
+
+
+
+
+
+
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -234,7 +261,10 @@ window.addEventListener("load", function () {
         button.addEventListener('click', function () {
             // Remove the 'active' class from all buttons
             buttons.forEach(btn => btn.classList.remove('active'));
+            buttons.forEach(btn => btn.disabled = false);
             this.classList.add('active');
+            this.disabled = true;
+
 
             // Hide all menu cards
             document.getElementById('container-Breakfast-cards').classList.add('hidden');
@@ -249,12 +279,15 @@ window.addEventListener("load", function () {
             if (this.id === 'breakfast-btn') {
                 document.getElementById('container-Breakfast-cards').classList.remove('hidden');
                 document.getElementById('container-Breakfast-cards').classList.add('visible');
+                gsap.fromTo('#container-Breakfast-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'lunch-btn') {
                 document.getElementById('container-Lunch-cards').classList.remove('hidden');
                 document.getElementById('container-Lunch-cards').classList.add('visible');
+                gsap.fromTo('#container-Lunch-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             } else if (this.id === 'dinner-btn') {
                 document.getElementById('container-Dinner-cards').classList.remove('hidden');
                 document.getElementById('container-Dinner-cards').classList.add('visible');
+                gsap.fromTo('#container-Dinner-cards .card-food', { y: 50, opacity: .02 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
             }
         });
     });
