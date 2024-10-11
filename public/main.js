@@ -1,3 +1,44 @@
+/*Look at https://www.federalistpig.com/ for inspo */
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('myModal');
+    var overlay = document.getElementById('overlay');
+    var closeBtn = document.querySelector('.close');
+    var submitBtn = document.getElementById('submitBtn');
+
+    // Check if user details are already provided
+    if (!localStorage.getItem('userEmail') && !localStorage.getItem('userPhone')) {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    submitBtn.onclick = function () {
+        var emailInput = document.getElementById('emailInput').value;
+        var phoneInput = document.getElementById('phoneInput').value;
+        if (emailInput || phoneInput) {
+            if (emailInput) {
+                localStorage.setItem('userEmail', emailInput);
+            }
+            if (phoneInput) {
+                localStorage.setItem('userPhone', phoneInput);
+            }
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    }
+
+    window.onclick = function (event) {
+        if (event.target == overlay) {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    }
+});
+
 window.addEventListener("load", function () {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');

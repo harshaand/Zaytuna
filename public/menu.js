@@ -37,7 +37,11 @@ window.addEventListener("load", function () {
     const container_menu = document.querySelector(".container-menu");
     // Function to display menu items
     function displayMenuItems(items) {
-        const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
+        const menu_time = {
+            Breakfast: "Baklava for breakfast? We won't judge—we might join you!<br> Breakfast served 9 AM - 11 AM",
+            Lunch: "We put the 'olive' in 'I love lunch here!' <br> Lunch served 11 AM - 4 PM",
+            Dinner: "Where dinner is always a celebration—no special occasion required. <br> Dinner served 4 PM - 10 PM "
+        };
         const uniqueCategories = [...new Set(items.map(item => item.fields.Category))];
         const orderedCategories = uniqueCategories.sort((a, b) => parseFloat(a) - parseFloat(b));
 
@@ -47,8 +51,10 @@ window.addEventListener("load", function () {
         let htmlinjection = '';
 
 
-        menu_time.forEach(time => {
-            htmlinjection += `<div class="container-menu-page-time-cards hidden" id="container-${time}-cards">`;
+        for (const time in menu_time) {
+            htmlinjection += `
+                                <div class="container-menu-page-time-cards hidden" id="container-${time}-cards">
+                                <p class="description-menu"> ${menu_time[time]}</p>`;
             const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
             const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
             orderedCategories.forEach(category => {
@@ -111,7 +117,7 @@ window.addEventListener("load", function () {
             htmlinjection += `
 
             </div>`;
-        })
+        }
         document.getElementById('container-Breakfast-cards').classList.remove('hidden');
 
     }
