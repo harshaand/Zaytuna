@@ -53,9 +53,9 @@ window.addEventListener("load", function () {
     // Function to display menu items
     function displayMenuItems(items) {
         const menu_time = {
-            Breakfast: "Breakfast served 9 AM - 11 AM",
-            Lunch: "Lunch served 11 AM - 4 PM",
-            Dinner: "Dinner served 4 PM - 10 PM "
+            Breakfast: "Served 9 AM - 11 AM",
+            Lunch: "Served 11 AM - 4 PM",
+            Dinner: "Served 4 PM - 10 PM "
         };
         const uniqueCategories = [...new Set(items.map(item => item.fields.Category))];
         const orderedCategories = uniqueCategories.sort((a, b) => parseFloat(a) - parseFloat(b));

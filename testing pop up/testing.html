@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Code Popup</title>
+    <link rel="stylesheet" href="testing.css">
+    <script src="testing.js"></script>
+
+</head>
+
+<body>
+    <!-- Pop-up container -->
+    <div id="popup-container" class="popup">
+        <div class="popup-content">
+            <h2>Get Your Discount Code!</h2>
+            <form id="discountForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Submit</button>
+            </form>
+            <p id="responseMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
