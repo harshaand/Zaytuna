@@ -1237,6 +1237,15 @@ header {
     background-repeat: no-repeat;
 }
 
+#thankYouMessage {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
 .modal-form {
     background-color: black;
     padding: 20px;

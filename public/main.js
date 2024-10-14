@@ -1,54 +1,9 @@
 /*Look at https://www.federalistpig.com/ for inspo */
-document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById('myModal');
-    var overlay = document.getElementById('overlay');
-    var closeBtn = document.querySelector('.close');
-    var submitBtn = document.getElementById('submitBtn');
-    modal.style.display = 'none';
-    overlay.style.display = 'none';
-    /*
-        // Check if user details are already provided
-        if (!localStorage.getItem('userEmail') && !localStorage.getItem('userPhone')) {
-            modal.style.display = 'block';
-            overlay.style.display = 'block';
-        }
-    */
-    closeBtn.onclick = function () {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
-    }
-
-    submitBtn.onclick = function () {
-        var emailInput = document.getElementById('emailInput').value;
-        var phoneInput = document.getElementById('phoneInput').value;
-        if (emailInput || phoneInput) {
-            if (emailInput) {
-                localStorage.setItem('userEmail', emailInput);
-            }
-            if (phoneInput) {
-                localStorage.setItem('userPhone', phoneInput);
-            }
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-    }
-
-    window.onclick = function (event) {
-        if (event.target == overlay) {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-    }
-});
-
 window.addEventListener("load", function () {
 
     // Hide loading screen
     gsap.to("#loading-screen", { duration: 1, opacity: 0, display: 'none' });
 
-    // Animate header
-
-    // Animate hero section
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
@@ -69,14 +24,6 @@ window.addEventListener("load", function () {
     document.querySelector('.column-hero-left').classList.add('background-animation');
 
 
-
-
-
-
-
-
-
-
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -89,9 +36,73 @@ window.addEventListener("load", function () {
 
     const serverApiMenuUrl = 'https://zaytuna.onrender.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytuna.onrender.com/api/reviews';
+    const serverApiSubscribeUrl = 'https://zaytuna.onrender.com/api/subscribe';
     // Fetch menu items on page load
     fetchMenuItems();
     fetchReviewsItems();
+
+    const modal = document.getElementById('myModal');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.querySelector('.close');
+    const form = document.getElementById('form-modal');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+
+
+    // Check if user details are already provided
+    if (localStorage.getItem('userEmail') !== null) {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    // Function to subscribe a user
+    async function subscribeUser(name, email) {
+        try {
+            const response = await fetch(serverApiSubscribeUrl, { // Adjust the URL if the server is hosted elsewhere
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('Subscriber added successfully:', data);
+            } else {
+                console.error('Error subscribing user:', data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    // Add an event listener for the form's submit event
+    form.addEventListener('submit', function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        subscribeUser(name, email);
+
+        if (email) {
+            localStorage.setItem('userEmail', email);
+            form.style.display = 'none';
+            modalTitle.style.display = 'none';
+            modalDescription.style.display = 'none';
+            thankYouMessage.style.display = 'flex';
+        }
+    });
+
+
 
     const container_menu_cards = document.querySelector(".container-menu-cards");
 
