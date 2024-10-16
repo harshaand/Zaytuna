@@ -1601,6 +1601,10 @@ header {
         --card-menu-page-gap: calc((var(--container-width)*0.05)/2);
     }
 
+    #modal-mobile {
+        display: none;
+    }
+
     .modal {
         height: 60vh;
         width: 80vw;
@@ -1749,7 +1753,7 @@ header {
     }
 
     #modal-mobile {
-        display: flex;
+        display: none;
     }
 
     .overlay {

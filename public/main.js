@@ -107,7 +107,9 @@ window.addEventListener("load", function () {
             modalDescription.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
         }
     });
-
+    closeBtn_mobile.onclick = function () {
+        modal_mobile.style.display = 'none';
+    }
     // Add an event listener for the form's submit event
     form_mobile.addEventListener('submit', function (event) {
         // Prevent the default form submission
@@ -129,6 +131,47 @@ window.addEventListener("load", function () {
             modal_mobile.style.padding = '36px var(--container-spacing-horizontal)'
         }
     });
+    // Function to show the popup
+    function showExitPopup() {
+        modal_mobile.style.display = 'flex';
+    }
+
+    // Function to hide the popup
+    function hideExitPopup() {
+        modal_mobile.style.display = 'none';
+    }
+
+    // Detect back button press (requires history management)
+    window.addEventListener('popstate', function (event) {
+        // Trigger the popup if the back button is pressed
+        showExitPopup();
+    });
+
+    // Scroll up detection
+    let lastScrollTop = window.scrollY;
+    window.addEventListener('scroll', function () {
+        let st = window.scrollY;
+        if (st < lastScrollTop) {
+            // Scrolling up
+            showExitPopup();
+        }
+        lastScrollTop = st;
+    });
+
+    // Idle time detection (e.g., after 10 seconds of inactivity)
+    let idleTimeout;
+    function resetIdleTimer() {
+        clearTimeout(idleTimeout);
+        idleTimeout = setTimeout(showExitPopup, 10000); // 10 seconds
+    }
+
+    document.addEventListener('scroll', resetIdleTimer);
+    document.addEventListener('touchstart', resetIdleTimer);
+    document.addEventListener('mousemove', resetIdleTimer); // For completeness in case it's used on tablet
+
+
+    // Initial idle timer
+    resetIdleTimer();
 
     function generateDiscountCode(email) {
         const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
