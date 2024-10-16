@@ -48,6 +48,12 @@ window.addEventListener("load", function () {
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
 
+    const modal_mobile = document.getElementById('modal-mobile');
+    const closeBtn_mobile = document.getElementById('modal-close-button-mobile');
+    const form_mobile = document.getElementById('form-modal-mobile');
+    const modalTitle_mobile = document.getElementById('modal-title-mobile');
+    const modalDescription_mobile = document.getElementById('modal-description-mobile');
+
     /*
         // Check if user details are already provided
         if (localStorage.getItem('userEmail') !== null) {
@@ -101,6 +107,29 @@ window.addEventListener("load", function () {
             modalDescription.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
         }
     });
+
+    // Add an event listener for the form's submit event
+    form_mobile.addEventListener('submit', function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        const email = document.getElementById('email_mobile').value;
+        const discount_code = generateDiscountCode(email);
+
+        subscribeUser(email, discount_code);
+
+        if (email) {
+            localStorage.setItem('userEmail', email);
+            form_mobile.style.display = 'none';
+            modalTitle_mobile.innerHTML = "You're in!🎉";
+            modalDescription_mobile.style.lineHeight = '140%';
+            modalDescription_mobile.style.fontFamily = 'var(--font-1)'
+            modalDescription_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+            modal_mobile.style.minHeight = '30vh';
+            modal_mobile.style.padding = '36px var(--container-spacing-horizontal)'
+        }
+    });
+
     function generateDiscountCode(email) {
         const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
         const randomPart = Math.random().toString(36).substring(2, 10 - prefix.length).toUpperCase();
