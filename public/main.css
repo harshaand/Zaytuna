@@ -32,6 +32,12 @@
 
 @font-face {
     font-family: 'Helvetica';
+    src: url('fonts/helvetica-light.otf') format('OpenType');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Helvetica';
     src: url('fonts/helvetica-bold.ttf') format('truetype');
     font-weight: 700;
 }
@@ -1192,6 +1198,132 @@ header {
     -webkit-backdrop-filter: blur(10px);
 }
 
+
+
+.modal-mobile {
+    width: 100%;
+    background-color: var(--secondary-accent-colour);
+
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 11;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    color: var(--font-white);
+    padding: 36px var(--container-spacing-horizontal) 12px var(--container-spacing-horizontal);
+    box-sizing: border-box;
+    border-radius: var(--cards-border-radius) var(--cards-border-radius) 0 0;
+}
+
+
+
+.modal-text-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    gap: 12px;
+}
+
+#modal-close-button-mobile {
+    position: absolute;
+    top: 4px;
+    right: 12px;
+    font-size: 36px;
+    cursor: pointer;
+    z-index: 13;
+}
+
+.modal-h3-mobile {
+    text-align: center;
+    font-weight: 300;
+    width: 100%;
+    font-size: 24px;
+    color: var(--font-white);
+    font-family: 'Helvetica';
+    font-weight: 300;
+}
+
+.modal-h3-mobile-colored {
+    color: var(--secondary-colour-hover);
+}
+
+.modal-p-mobile {
+    text-align: center;
+    font-family: 'EBGaramond';
+    font-size: 16px;
+    width: 100%;
+}
+
+.form-modal-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.form-modal-mobile input {
+    width: 100%;
+    max-width: 600px;
+    padding: 16px 20px;
+    border: 0px;
+    border-radius: var(--cards-border-radius);
+    font-size: 16px;
+    font-family: var(--font-2);
+    color: var(--secondary-accent-colour);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-modal-mobile input:focus {
+    outline: none;
+}
+
+.subscribe-btn-and-text-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.text-unsubscribe-mobile {
+    font-family: var(--font-1);
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.modal-button-CTA-mobile {
+    font-size: var(--p1);
+    padding: 12px 32px;
+    width: 220px;
+    height: fit-content;
+    border-radius: 48px;
+    background-color: var(--secondary-colour);
+    color: var(--font-white);
+    border: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.modal-button-CTA-mobile:active {
+    transform: scale(0.98);
+}
+
+.modal-button-CTA-mobile:hover {
+    background-color: var(--secondary-colour-hover);
+}
+
+
 .modal {
     height: 60vh;
     min-height: 488px;
@@ -1613,6 +1745,10 @@ header {
 
         --card-menu-page-width: calc((var(--container-width)*0.95)/2);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/1);
+    }
+
+    .modal-mobile {
+        display: flex;
     }
 
     .overlay {
