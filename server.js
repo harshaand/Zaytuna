@@ -59,12 +59,13 @@ const BASE_URL = 'https://api.mailerlite.com/api/v2';
 app.use(express.json());
 
 app.post('/api/subscribe', async (req, res) => {
-    const { name, email } = req.body; // Extracting name and email from request body
+    const { email, discount_code } = req.body; // Extracting name and email from request body
     try {
         const subscriberData = {
             email: email,
-            name: name,
-            fields: {},
+            fields: {
+                discount_code: discount_code,
+            },
             groups: [process.env.MAILERLITE_GROUP_ID],
         };
 

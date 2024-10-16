@@ -36,40 +36,39 @@ window.addEventListener("load", function () {
 
     const serverApiMenuUrl = 'https://zaytuna.onrender.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytuna.onrender.com/api/reviews';
-    const serverApiSubscribeUrl = 'https://zaytuna.onrender.com/api/subscribe';
+    const serverApiSubscribeUrl = 'http://localhost:3002/api/subscribe';
     // Fetch menu items on page load
     fetchMenuItems();
     fetchReviewsItems();
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
-    const closeBtn = document.querySelector('.close');
+    const closeBtn = document.getElementById('modal-close-button');
     const form = document.getElementById('form-modal');
-    const thankYouMessage = document.getElementById('thankYouMessage');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
 
-
-    // Check if user details are already provided
-    if (localStorage.getItem('userEmail') !== null) {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
-    }
-
+    /*
+        // Check if user details are already provided
+        if (localStorage.getItem('userEmail') !== null) {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    */
     closeBtn.onclick = function () {
         modal.style.display = 'none';
         overlay.style.display = 'none';
     }
 
     // Function to subscribe a user
-    async function subscribeUser(name, email) {
+    async function subscribeUser(email, discount_code) {
         try {
             const response = await fetch(serverApiSubscribeUrl, { // Adjust the URL if the server is hosted elsewhere
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email }),
+                body: JSON.stringify({ email, discount_code }),
             });
 
             const data = await response.json();
@@ -88,19 +87,26 @@ window.addEventListener("load", function () {
         // Prevent the default form submission
         event.preventDefault();
 
-        const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
+        const discount_code = generateDiscountCode(email);
 
-        subscribeUser(name, email);
+        subscribeUser(email, discount_code);
 
         if (email) {
             localStorage.setItem('userEmail', email);
             form.style.display = 'none';
-            modalTitle.style.display = 'none';
-            modalDescription.style.display = 'none';
-            thankYouMessage.style.display = 'flex';
+            modalTitle.innerHTML = "You're in!🎉";
+            modalDescription.style.lineHeight = '140%';
+            modalDescription.style.fontFamily = 'var(--font-1)'
+            modalDescription.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
         }
     });
+    function generateDiscountCode(email) {
+        const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
+        const randomPart = Math.random().toString(36).substring(2, 10 - prefix.length).toUpperCase();
+        console.log(prefix, randomPart)
+        return prefix + randomPart;
+    }
 
 
 
