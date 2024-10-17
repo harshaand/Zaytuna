@@ -40,6 +40,8 @@ window.addEventListener("load", function () {
     // Fetch menu items on page load
     fetchMenuItems();
     fetchReviewsItems();
+    //------------------------------------------------------MODALS----------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
@@ -61,11 +63,6 @@ window.addEventListener("load", function () {
             overlay.style.display = 'none';
         }
     */
-    closeBtn.onclick = function () {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
-    }
-
     // Function to subscribe a user
     async function subscribeUser(email, discount_code) {
         try {
@@ -88,8 +85,24 @@ window.addEventListener("load", function () {
             console.error('Error:', error);
         }
     }
+
+    function generateDiscountCode(email) {
+        const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
+        const randomPart = Math.random().toString(36).substring(2, 10 - prefix.length).toUpperCase();
+        console.log(prefix, randomPart)
+        return prefix + randomPart;
+    }
+    //-----------------------------------------------------DESKTOP---------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
     // Add an event listener for the form's submit event
     form.addEventListener('submit', function (event) {
+        console.log('yeehaw');
+
         // Prevent the default form submission
         event.preventDefault();
 
@@ -111,7 +124,7 @@ window.addEventListener("load", function () {
     let modal_countdown_display = false;
 
     function show_modal() {
-        if (window.innerWidth > 470) {
+        if (window.innerWidth > 480) {
             modal.style.display = 'flex';
             overlay.style.display = 'block';
         }
@@ -137,57 +150,71 @@ window.addEventListener("load", function () {
             close_modal();
         }
     });
+    //----------------------------------------------------MOBILE--------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
+    let dontShowModal = localStorage.getItem('dontShowModal');
+    if (dontShowModal === null) {
+        modalMobile();
+    }
 
     closeBtn_mobile.onclick = function () {
         modal_mobile.style.display = 'none';
+        localStorage.setItem('dontShowModal', 'true');
+        removeModalListeners();
     }
 
-    // Add an event listener for the form's submit event
-    form_mobile.addEventListener('submit', function (event) {
-        // Prevent the default form submission
-        event.preventDefault();
-
-        const email = document.getElementById('email_mobile').value;
-        const discount_code = generateDiscountCode(email);
-
-        subscribeUser(email, discount_code);
-
-        if (email) {
-            localStorage.setItem('userEmail', email);
-            form_mobile.style.display = 'none';
-            modalTitle_mobile.innerHTML = "You're in!🎉";
-            modalDescription_mobile.style.lineHeight = '140%';
-            modalDescription_mobile.style.fontFamily = 'var(--font-1)'
-            modalDescription_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
-            modal_mobile.style.minHeight = '30vh';
-            modal_mobile.style.padding = '36px var(--container-spacing-horizontal)'
+    window.addEventListener('storage', function (event) {
+        if (event.key === 'dontShowModal') {
+            if (event.newValue === 'true') {
+                removeModalListeners();
+            } else {
+                modalMobile();
+            }
         }
     });
 
-    // Push a new history state when the page loads
-    window.history.pushState({ page: "current" }, "", window.location.href);
-
-    // Listen for popstate event to detect back button press
-    window.addEventListener('popstate', function (event) {
-        // Show popup or other behavior
+    function preventNavigation(e) {
         modal_mobile.style.display = 'flex';
-    });
-
-    window.addEventListener('beforeunload', function (e) {
-        // Trigger the popup before the user leaves the page
-        modal_mobile.style.display = 'flex';
-
-        // Prevent the default behavior to show a warning (optional)
         e.preventDefault();
-    });
-
-    function generateDiscountCode(email) {
-        const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
-        const randomPart = Math.random().toString(36).substring(2, 10 - prefix.length).toUpperCase();
-        console.log(prefix, randomPart)
-        return prefix + randomPart;
     }
 
+    function removeModalListeners() {
+        window.removeEventListener('beforeunload', preventNavigation);
+
+        document.querySelectorAll('a').forEach(function (link) {
+            link.removeEventListener('click', preventNavigation);
+        });
+    }
+
+    function modalMobile() {
+        form_mobile.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('email_mobile').value;
+            const discount_code = generateDiscountCode(email);
+            subscribeUser(email, discount_code);
+
+            if (email) {
+                localStorage.setItem('userEmail', email);
+                form_mobile.style.display = 'none';
+                modalTitle_mobile.innerHTML = "You're in!🎉";
+                modalDescription_mobile.style.lineHeight = '140%';
+                modalDescription_mobile.style.fontFamily = 'var(--font-1)';
+                modalDescription_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_mobile.style.minHeight = '30vh';
+                modal_mobile.style.padding = '36px var(--container-spacing-horizontal)';
+            }
+        });
+
+        if (window.innerWidth < 480) {
+            window.addEventListener('beforeunload', preventNavigation);
+
+            document.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', preventNavigation);
+            });
+        }
+    }
+    //----------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------
 
 
     const container_menu_cards = document.querySelector(".container-menu-cards");
