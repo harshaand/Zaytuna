@@ -107,9 +107,41 @@ window.addEventListener("load", function () {
             modalDescription.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
         }
     });
+    let modal_timer;
+    let modal_countdown_display = false;
+
+    function show_modal() {
+        if (window.innerWidth > 470) {
+            modal.style.display = 'flex';
+            overlay.style.display = 'block';
+        }
+    }
+
+    function close_modal() {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    document.addEventListener('mousemove', function (event) {
+        if (event.clientY < 10 && modal_countdown_display === true) {
+            show_modal();
+        }
+    });
+
+    modal_timer = setTimeout(function () {
+        modal_countdown_display = true;
+    }, 10000);
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth <= 470) {
+            close_modal();
+        }
+    });
+
     closeBtn_mobile.onclick = function () {
         modal_mobile.style.display = 'none';
     }
+
     // Add an event listener for the form's submit event
     form_mobile.addEventListener('submit', function (event) {
         // Prevent the default form submission
@@ -131,47 +163,23 @@ window.addEventListener("load", function () {
             modal_mobile.style.padding = '36px var(--container-spacing-horizontal)'
         }
     });
-    // Function to show the popup
-    function showExitPopup() {
-        modal_mobile.style.display = 'flex';
-    }
 
-    // Function to hide the popup
-    function hideExitPopup() {
-        modal_mobile.style.display = 'none';
-    }
+    // Push a new history state when the page loads
+    window.history.pushState({ page: "current" }, "", window.location.href);
 
-    // Detect back button press (requires history management)
+    // Listen for popstate event to detect back button press
     window.addEventListener('popstate', function (event) {
-        // Trigger the popup if the back button is pressed
-        showExitPopup();
+        // Show popup or other behavior
+        modal_mobile.style.display = 'flex';
     });
 
-    // Scroll up detection
-    let lastScrollTop = window.scrollY;
-    window.addEventListener('scroll', function () {
-        let st = window.scrollY;
-        if (st < lastScrollTop) {
-            // Scrolling up
-            showExitPopup();
-        }
-        lastScrollTop = st;
+    window.addEventListener('beforeunload', function (e) {
+        // Trigger the popup before the user leaves the page
+        modal_mobile.style.display = 'flex';
+
+        // Prevent the default behavior to show a warning (optional)
+        e.preventDefault();
     });
-
-    // Idle time detection (e.g., after 10 seconds of inactivity)
-    let idleTimeout;
-    function resetIdleTimer() {
-        clearTimeout(idleTimeout);
-        idleTimeout = setTimeout(showExitPopup, 10000); // 10 seconds
-    }
-
-    document.addEventListener('scroll', resetIdleTimer);
-    document.addEventListener('touchstart', resetIdleTimer);
-    document.addEventListener('mousemove', resetIdleTimer); // For completeness in case it's used on tablet
-
-
-    // Initial idle timer
-    resetIdleTimer();
 
     function generateDiscountCode(email) {
         const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
@@ -321,7 +329,7 @@ window.addEventListener("load", function () {
                 }
             });
             htmlinjection += `
-            </div> `;
+        </div> `;
         })
         document.getElementById('container-Breakfast-cards').classList.remove('hidden');
         gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
@@ -338,19 +346,19 @@ window.addEventListener("load", function () {
         sortedRecords.forEach(item => {
             const { Name, Image, ReviewText, URL, Source } = item.fields;
             htmlinjection += `
-                <a href="${URL}" class="card-review" target="_blank">
-                    <p class="text-review">${ReviewText}</p>
-                    <div class="info-review">
-                        <img class="image-reviewer" src="${Image[0].url}" alt="">
+            <a href="${URL}" class="card-review" target="_blank">
+                <p class="text-review">${ReviewText}</p>
+                <div class="info-review">
+                    <img class="image-reviewer" src="${Image[0].url}" alt="">
                         <h5>${Name}</h5>
                         <p class="text-review-source">Review from ${Source}</p>
-                    </div>
-                </a>
-                `;
+                </div>
+            </a>
+            `;
 
         });
         htmlinjection += `
-                <div id="cards-spacer-reviews"></div>`;
+            <div id="cards-spacer-reviews"></div>`;
         reviews_slider.innerHTML = htmlinjection;
         gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     }

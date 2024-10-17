@@ -1185,20 +1185,6 @@ header {
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.overlay {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-
 
 #modal-mobile {
     height: auto;
@@ -1324,6 +1310,19 @@ header {
     background-color: var(--secondary-colour-hover);
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 
 .modal {
     height: 60vh;
@@ -1335,12 +1334,10 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 12;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-between;
     border-radius: var(--cards-border-radius);
-
-
 }
 
 .modal-image-div {
