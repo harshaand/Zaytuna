@@ -1,18 +1,56 @@
-<html>
+<html lang="en"> <!-- Specify language for SEO -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zaytuna - Mediterranean Restaurant in Bawtry | Authentic Syrian Cuisine</title>
+    <!-- Optimized for keywords -->
+
+    <meta name="description"
+        content="Zaytuna offers authentic Mediterranean and Syrian cuisine in the heart of Bawtry. Enjoy traditional recipes passed down through generations. Dine with us today!">
+    <!-- SEO optimized description -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <script src="main.js"></script>
-    <script src="modal.js"></script>
+
+    <script src="indexLoadingScript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="main.js"></script> <!-- Defer loading for faster page speed -->
+
+
+    <!-- Schema.org markup for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Zaytuna Mediterranean Cuisine",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "55 Copley Road",
+            "addressLocality": "Doncaster",
+            "postalCode": "DN1 2QP",
+            "addressCountry": "UK"
+        },
+        "telephone": "+447432553666",
+        "servesCuisine": "Mediterranean",
+        "priceRange": "$$",
+        "openingHours": [
+            "Mo-Th 07:00-22:00",
+            "Fr-Su 07:00-23:00"
+        ],
+        "url": "https://www.zaytuna.onrender.com",
+        "sameAs": [
+            "https://www.facebook.com/zaytunafalafelbar",
+            "https://www.instagram.com/zaytuna_mediterranean_cuisine_/"
+        ]
+    }
+    </script> <!-- Structured data for SEO -->
 </head>
+
 
 
 <body>
@@ -22,7 +60,7 @@
                 d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.54 11.54 0 003.61.61 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.79a1 1 0 011 1 11.54 11.54 0 00.61 3.61 1 1 0 01-.21 1.11l-2.2 2.2z" />
         </svg>
     </a>
-
+    <!-- Modal section -->
     <div id="modal-mobile">
         <span id="modal-close-button-mobile">&times;</span>
         <div class="modal-text-mobile">
@@ -34,7 +72,8 @@
             </p>
         </div>
         <form action="" method="" id="form-modal-mobile" class="form-modal-mobile">
-            <input type="text" id='email_mobile' name="email" placeholder="johndoe@gmail.com">
+            <input type="email" id='email_mobile' name="email" placeholder="johndoe@gmail.com"
+                aria-label="Email Address"> <!-- Changed to 'email' type for validation -->
             <div class="subscribe-btn-and-text-mobile">
                 <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
                 <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
@@ -52,7 +91,8 @@
             <h2 id="modal-title" class="modal-h2">Wait!</h2>
             <p id="modal-description" class="modal-p">Before you go, we'd like to offer 15% off your next meal.</p>
             <form action="" method="" id="form-modal" class="form-modal">
-                <input type="text" id='email' name="email" placeholder="johndoe@gmail.com">
+                <input type="email" id='email' name="email" placeholder="johndoe@gmail.com" aria-label="Email Address">
+                <!-- Changed to 'email' type for validation -->
                 <div class="subscribe-btn-and-text">
                     <button type="submit" class="modal-button-CTA">GET 15% OFF</button>
                     <p class="text-unsubscribe">you may unsubscribe at any point</p>

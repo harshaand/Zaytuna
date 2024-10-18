@@ -1192,7 +1192,7 @@ header {
     background-color: var(--secondary-accent-colour);
 
     position: fixed;
-    bottom: 0%;
+    bottom: calc(var(--cards-border-radius)*-1);
     left: 50%;
     transform: translate(-50%, 0%);
     z-index: 11;
@@ -1204,9 +1204,9 @@ header {
 
     gap: 20px;
     color: var(--font-white);
-    padding: 36px var(--container-spacing-horizontal) 12px var(--container-spacing-horizontal);
+    padding: 36px var(--container-spacing-horizontal) calc(12px +var(--cards-border-radius)) var(--container-spacing-horizontal);
     box-sizing: border-box;
-    border-radius: var(--cards-border-radius) var(--cards-border-radius) 0 0;
+    border-radius: var(--cards-border-radius);
 }
 
 

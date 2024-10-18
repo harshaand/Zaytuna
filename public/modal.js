@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
     //------------------------------------------------------MODALS----------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
+    const serverApiSubscribeUrl = 'http://localhost:3002/api/subscribe';
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
@@ -53,8 +54,11 @@ window.addEventListener("load", function () {
     //-----------------------------------------------------DESKTOP---------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
     closeBtn.onclick = function () {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
+        // Hide modal and overlay
+        gsap.to(modal, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("myModal").style.display = "none"; } });
+        gsap.to(overlay, {
+            duration: 0.3, opacity: 0, onComplete: () => { document.getElementById("overlay").style.display = "none"; }
+        });
         localStorage.setItem('dontShowModal', 'true');
         removeModalListeners()
     }
@@ -70,15 +74,20 @@ window.addEventListener("load", function () {
         modal_countdown_display = true;
     }, 5000);
     function showModal(event) {
-        if (event.clientY < 10 && modal_countdown_display === true && window.innerWidth > 480) {
+        if (event.clientY < 10 && modal_countdown_display === true && window.innerWidth > 480 && modal.style.display !== 'flex') {
+            gsap.to(overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
+            gsap.fromTo(modal,
+                { scale: 0.7, opacity: 0, visibility: "visible" },
+                { duration: 0.6, scale: 1, opacity: 1, ease: "elastic.out(1, 0.75)" }
+            );
             modal.style.display = 'flex';
             overlay.style.display = 'block';
         }
     }
     function closeModal() {
         if (window.innerWidth <= 480) {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
+            gsap.to(modal, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("myModal").style.display = "none"; } });
+            gsap.to(overlay, { duration: 0.3, opacity: 0, onComplete: () => { document.getElementById("overlay").style.display = "none"; } });
         }
     }
 
@@ -113,12 +122,19 @@ window.addEventListener("load", function () {
     //----------------------------------------------------------------------------------------------------------------------------
     let modal_mobile_timer;
     //Modal after 10 seconds
-    modal_mobile_timer = setTimeout(function () {
-        modal_mobile.style.display = 'flex';
-    }, 10000);
+    if (localStorage.getItem('dontShowModal') !== 'true') {
+        modal_mobile_timer = setTimeout(function () {
+            if (window.innerWidth < 480 && modal_mobile.style.display !== 'flex') {
+                gsap.from(modal_mobile, { y: "100%", ease: "elastic.out(1, 0.75)", duration: 1.5 });
+                modal_mobile.style.display = 'flex';
+            }
+        }, 10000);
+    }
 
     closeBtn_mobile.onclick = function () {
-        modal_mobile.style.display = 'none';
+        gsap.to(modal_mobile, { y: "100%", opacity: 0, duration: 0.5, ease: "power2.in", onComplete: () => { modal_mobile.style.display = "none"; } });
+
+
         localStorage.setItem('dontShowModal', 'true');
         removeModalListenersMobile();
         clearTimeout(modal_mobile_timer);
@@ -126,7 +142,10 @@ window.addEventListener("load", function () {
     }
 
     function preventNavigationMobile(e) {
-        modal_mobile.style.display = 'flex';
+        if (modal_mobile.style.display !== 'flex') {
+            gsap.from(modal_mobile, { y: "100%", ease: "elastic.out(1, 0.75)", duration: 1.5 });
+            modal_mobile.style.display = 'flex';
+        }
         e.preventDefault();
     }
 
