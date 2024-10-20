@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
 
 
 
-    const serverApiMenuUrl = 'https://zaytuna.onrender.com/api/menu';
+    const serverApiMenuUrl = 'https://zaytunabawtry.com/api/menu';
     // Fetch menu items on page load
     fetchMenuItems();
 

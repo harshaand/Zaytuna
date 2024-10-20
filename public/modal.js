@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
     //------------------------------------------------------MODALS----------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
-    const serverApiSubscribeUrl = 'http://localhost:3002/api/subscribe';
+    const serverApiSubscribeUrl = 'https://zaytunabawtry.com/api/subscribe';
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
