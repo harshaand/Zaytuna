@@ -1,7 +1,7 @@
 /*Look at https://www.federalistpig.com/ for inspo */
 window.addEventListener("load", function () {
-    const serverApiMenuUrl = 'https://zaytunabawtry.com/api/menu';
-    const serverApiReviewsUrl = 'https://zaytunabawtry.com/api/reviews';
+    const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
+    const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
     // Fetch menu items on page load
     fetchMenuItems();
     fetchReviewsItems();
