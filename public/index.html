@@ -72,8 +72,9 @@
             </p>
         </div>
         <form action="" method="" id="form-modal-mobile" class="form-modal-mobile">
-            <input type="email" id='email_mobile' name="email" placeholder="johndoe@gmail.com"
-                aria-label="Email Address"> <!-- Changed to 'email' type for validation -->
+            <input type="email" id='email_mobile' class="form-modal-mobile-input" name="email"
+                placeholder="johndoe@gmail.com" aria-label="Email Address">
+            <!-- Changed to 'email' type for validation -->
             <div class="subscribe-btn-and-text-mobile">
                 <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
                 <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
@@ -229,8 +230,8 @@
                     <div class="column-info">
                         <h5>Contact</h5>
                         <p class="p-contact">
-                            <b>Email</b> johndoe@gmail.com<br>
-                            <b>Phone</b> 07886 102567
+                            <b>Email</b> <a href="mailto:hello@zaytunacuisine.com">hello@zaytunacuisine.com</a><br>
+                            <b>Phone</b> <a href="tel:07432553666">07476 864422</a>
                         </p>
                     </div>
                 </div>
@@ -252,14 +253,14 @@
                     <div class="column-info">
                         <h5>Location</h5>
 
-                        <p class="p-location">Al-Basha Restaurant,</br>55 Copley Road,</br>Doncaster</br>DN1 2QP</p>
+                        <p class="p-location">Zaytuna Restaurant,</br>18-19 The Courtyard,</br>Bawtry</br>DN10 6JG</p>
 
                     </div>
                 </div>
             </div>
             <div class="map animation-general-element">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.7410417013084!2d-1.1310412874738753!3d53.526681572226835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790d64dcb15a11%3A0x7d002679111a6f11!2sAL-BASHA%20RESTAURANT!5e0!3m2!1sen!2suk!4v1728034340175!5m2!1sen!2suk"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d148.5758804951136!2d-1.0198016108661712!3d53.428880271410094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1729694385780!5m2!1sen!2suk"
                     width="100%" height="100%" style="border: 0px; border-radius: var(--cards-border-radius);"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -286,21 +287,19 @@
                 </div>
 
                 <div class="column-footer-bottom-row">
-                    <h5>Order From Us</h5>
-                    <p>
-                        We provide deliveries on JustEat and UbeEats. You can also call us to place orders.
+                    <h5 id="modal-title-footer">Join Our Community</h5>
+                    <p id="modal-description-footer">Drop your email below, and get 15%</span>
+                        off your next visit. Let's keep in touch!
                     </p>
-                    <a class="delivery-a-tag" href="" target="_blank">
-                        <svg class="svg-delivery-apps">
-                            <use href="#svg-justeat"></use>
-                        </svg>
-                    </a>
-                    <a class="delivery-a-tag" href="" target="_blank">
-                        <svg class="svg-delivery-apps">
-                            <use href="#svg-ubereats"></use>
-                        </svg>
-                    </a>
-
+                    <form action="" method="" id="form-modal-footer" class="form-modal-mobile">
+                        <input type="email" id='email_footer' class="form-modal-footer-input" name="email"
+                            placeholder="johndoe@gmail.com" aria-label="Email Address">
+                        <!-- Changed to 'email' type for validation -->
+                        <div class="subscribe-btn-and-text-mobile">
+                            <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
+                        </div>
+                        <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
+                    </form>
 
                 </div>
 

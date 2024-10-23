@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
     //------------------------------------------------------MODALS----------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
-    const serverApiSubscribeUrl = 'https://zaytunabawtry.com/api/subscribe';
+    const serverApiSubscribeUrl = 'https://zaytunacuisine.com/api/subscribe';
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
@@ -15,6 +15,11 @@ window.addEventListener("load", function () {
     const form_mobile = document.getElementById('form-modal-mobile');
     const modalTitle_mobile = document.getElementById('modal-title-mobile');
     const modalDescription_mobile = document.getElementById('modal-description-mobile');
+
+    const form_footer = document.getElementById('form-modal-footer');
+    const modalTitle_footer = document.getElementById('modal-title-footer');
+    const modalDescription_footer = document.getElementById('modal-description-footer');
+    modalFooter();
 
     async function subscribeUser(email, discount_code) {
         try {
@@ -185,4 +190,19 @@ window.addEventListener("load", function () {
     }
     //----------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
+    function modalFooter() {
+
+        form_footer.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('email_footer').value;
+            const discount_code = generateDiscountCode(email);
+            subscribeUser(email, discount_code);
+
+            if (email) {
+                form_footer.style.display = 'none';
+                modalTitle_footer.innerHTML = "You're in!🎉";
+                modalDescription_footer.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+            }
+        });
+    }
 });

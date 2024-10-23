@@ -1257,7 +1257,7 @@ header {
     gap: 20px;
 }
 
-.form-modal-mobile input {
+.form-modal-mobile-input {
     width: 100%;
     max-width: 600px;
     padding: 16px 20px;
@@ -1309,6 +1309,26 @@ header {
 .modal-button-CTA-mobile:hover {
     background-color: var(--secondary-colour-hover);
 }
+
+.form-modal-footer-input {
+    width: 80%;
+    max-width: 400px;
+    padding: 16px 20px;
+    border: 1px solid var(--secondary-accent-colour);
+    border-radius: var(--cards-border-radius);
+    font-size: 16px;
+    color: var(--font-black);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.modal-p-mobile {
+    text-align: center;
+    font-family: 'Helvetica';
+    font-size: 16px;
+    width: 100%;
+}
+
 
 .overlay {
     display: none;
@@ -1859,8 +1879,8 @@ header {
     }
 
     .columns-footer-bottom-row {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 36px;
 
     }
