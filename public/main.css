@@ -379,7 +379,7 @@ p {
     aspect-ratio: 21 / 9;
     width: 100%;
     max-width: 600px;
-    border-radius: 48px;
+    border-radius: var(--cards-border-radius);
     object-fit: cover;
     object-position: center center;
 }
@@ -403,6 +403,7 @@ p {
 }
 
 #container-food {
+    display: none;
     align-items: center;
 }
 
@@ -760,7 +761,7 @@ p {
 }
 
 .p-hours {
-    line-height: 2.1;
+    line-height: 1.5;
 }
 
 .p-contact {
@@ -1819,7 +1820,6 @@ header {
 
     .about-image {
         margin-bottom: 8px;
-        border-radius: 28px;
     }
 
     .container-cards {
