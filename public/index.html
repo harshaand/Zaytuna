@@ -56,7 +56,47 @@
                 d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.54 11.54 0 003.61.61 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.79a1 1 0 011 1 11.54 11.54 0 00.61 3.61 1 1 0 01-.21 1.11l-2.2 2.2z" />
         </svg>
     </a>
+    <!-- Modal section -->
+    <div id="modal-mobile">
+        <span id="modal-close-button-mobile">&times;</span>
+        <div class="modal-text-mobile">
+            <h3 id="modal-title-mobile" class="modal-h3-mobile">Want <span class="modal-h3-mobile-colored">15%</span>
+                off your
+                next meal?</h3>
+            <p id="modal-description-mobile" class="modal-p-mobile">Drop your email below, and we'll send you a tasty
+                discount for your next visit. Let's keep in touch!
+            </p>
+        </div>
+        <form action="" method="" id="form-modal-mobile" class="form-modal-mobile">
+            <input type="email" id='email_mobile' class="form-modal-mobile-input" name="email"
+                placeholder="johndoe@gmail.com" aria-label="Email Address">
+            <!-- Changed to 'email' type for validation -->
+            <div class="subscribe-btn-and-text-mobile">
+                <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
+                <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
+            </div>
+        </form>
+    </div>
 
+    <div id="overlay" class="overlay"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-image-div">
+            <img src="images/website images/modelimage.jpg" class="modal-image" alt="">
+        </div>
+        <div class="modal-text">
+            <span id="modal-close-button">&times;</span>
+            <h2 id="modal-title" class="modal-h2">Wait!</h2>
+            <p id="modal-description" class="modal-p">Before you go, we'd like to offer 15% off your next meal.</p>
+            <form action="" method="" id="form-modal" class="form-modal">
+                <input type="email" id='email' name="email" placeholder="johndoe@gmail.com" aria-label="Email Address">
+                <!-- Changed to 'email' type for validation -->
+                <div class="subscribe-btn-and-text">
+                    <button type="submit" class="modal-button-CTA">GET 15% OFF</button>
+                    <p class="text-unsubscribe">you may unsubscribe at any point</p>
+                </div>
+            </form>
+        </div>
+    </div>
     <header>
         <nav class="navbar">
             <div class="logo">
