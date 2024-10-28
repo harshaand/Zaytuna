@@ -1,4 +1,11 @@
 {
+    "redirects": [
+        {
+            "source": "/(.*[^/])",
+            "destination": "/$1/",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/menu",
