@@ -1,12 +1,12 @@
 {
     "rewrites": [
         {
-            "source": "/menu",
-            "destination": "/menu.html"
+            "source": "menu",
+            "destination": "menu.html"
         },
         {
-            "source": "/contact",
-            "destination": "/contact.html"
+            "source": "contact",
+            "destination": "contact.html"
         }
     ],
     "redirects": [
