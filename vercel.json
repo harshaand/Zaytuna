@@ -21,6 +21,16 @@
             "permanent": true
         },
         {
+            "source": "/menu/",
+            "destination": "/menu.html",
+            "permanent": true
+        },
+        {
+            "source": "/contact/",
+            "destination": "/contact.html",
+            "permanent": true
+        },
+        {
             "source": "/(.*[^/])",
             "destination": "/$1/",
             "permanent": true
