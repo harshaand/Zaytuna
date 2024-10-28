@@ -2,11 +2,18 @@
     "rewrites": [
         {
             "source": "/menu",
-            "destination": "/menu.html"
+            "destination": "menu.html"
         },
         {
             "source": "/contact",
             "destination": "/contact.html"
+        }
+    ],
+    "redirects": [
+        {
+            "source": "/(.*[^/])",
+            "destination": "/$1/",
+            "permanent": true
         }
     ]
 }
