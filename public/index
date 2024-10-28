@@ -1,22 +1,102 @@
-<html>
-
-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zaytuna Restaurant | One of the Top Restaurants in Bawtry</title>
+    <meta name="description"
+        content="Looking for restaurants in Bawtry? Zaytuna offers authentic Mediterranean breakfast, lunch, afternoon tea, and dinner with a cozy, welcoming ambiance.">
+    <link rel="canonical" href="https://www.zaytunarestaurant-bawtry.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+
+    <script src="indexLoadingScript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="menu.js"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="main.js"></script>
+
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Zaytuna Restaurant",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "18-19 The Courtyard",
+            "addressLocality": "Bawtry",
+            "postalCode": "DN10 6JG",
+            "addressCountry": "UK"
+        },
+        "telephone": "+447476864422",
+        "servesCuisine": "Mediterranean",
+        "priceRange": "$$",
+        "openingHours": [
+            "Mo-Th 07:00-22:00",
+            "Fr-Su 07:00-23:00"
+        ],
+        "url": "https://www.zaytunacuisine.com",
+        "sameAs": [
+            "https://www.facebook.com/zaytunafalafelbar",
+            "https://www.instagram.com/zaytuna_mediterranean_cuisine_/"
+        ]
+    }
+    </script>
 </head>
 
 
+
 <body>
+    <a href="tel:+447476864422" class="button-phone animation-mobile-btns">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path
+                d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.54 11.54 0 003.61.61 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.79a1 1 0 011 1 11.54 11.54 0 00.61 3.61 1 1 0 01-.21 1.11l-2.2 2.2z" />
+        </svg>
+    </a>
+    <!-- Modal section -->
+    <div id="modal-mobile">
+        <span id="modal-close-button-mobile">&times;</span>
+        <div class="modal-text-mobile">
+            <h3 id="modal-title-mobile" class="modal-h3-mobile">Want <span class="modal-h3-mobile-colored">15%</span>
+                off your
+                next meal?</h3>
+            <p id="modal-description-mobile" class="modal-p-mobile">Drop your email below, and we'll send you a tasty
+                discount for your next visit. Let's keep in touch!
+            </p>
+        </div>
+        <form action="" method="" id="form-modal-mobile" class="form-modal-mobile">
+            <input type="email" id='email_mobile' class="form-modal-mobile-input" name="email"
+                placeholder="johndoe@gmail.com" aria-label="Email Address">
+            <!-- Changed to 'email' type for validation -->
+            <div class="subscribe-btn-and-text-mobile">
+                <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
+                <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-image-div">
+            <img src="images/website images/modelimage.jpg" class="modal-image" alt="">
+        </div>
+        <div class="modal-text">
+            <span id="modal-close-button">&times;</span>
+            <h2 id="modal-title" class="modal-h2">Wait!</h2>
+            <p id="modal-description" class="modal-p">Before you go, we'd like to offer 15% off your next meal.</p>
+            <form action="" method="" id="form-modal" class="form-modal">
+                <input type="email" id='email' name="email" placeholder="johndoe@gmail.com" aria-label="Email Address">
+                <!-- Changed to 'email' type for validation -->
+                <div class="subscribe-btn-and-text">
+                    <button type="submit" class="modal-button-CTA">GET 15% OFF</button>
+                    <p class="text-unsubscribe">you may unsubscribe at any point</p>
+                </div>
+            </form>
+        </div>
+    </div>
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -24,9 +104,7 @@
             </div>
             <div class="nav-links">
                 <div class="nav-link"><a href="/">Home</a></div>
-                <div class="nav-link"><a href="menu.html">Menu</a></div>
-                <div class="nav-link"><a href="contact.html">Contact</a> </div>
-                <a href="contact.html" class="button-CTA" id="nav-CTA-btn">Book a Table</a>
+                <a href="contact.html" class="button-CTA" id="nav-CTA-btn">Contact</a>
             </div>
             <!-- Hamburger Menu -->
             <div class="hamburger animation-mobile-btns" id="hamburger">
@@ -39,23 +117,59 @@
         <div class="mobile-menu" id="mobile-menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="contact.html">Book a Table</a></li>
             </ul>
         </div>
     </header>
-    <a href="tel:+447432553666" class="button-phone animation-mobile-btns">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-            <path
-                d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.54 11.54 0 003.61.61 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.79a1 1 0 011 1 11.54 11.54 0 00.61 3.61 1 1 0 01-.21 1.11l-2.2 2.2z" />
-        </svg>
-    </a>
-    <div class="section-menu">
+    <div class="section-hero">
+        <div class="container-hero">
+            <h1 class="animation-section-accent">Taste Authencity at Our Restaurant in Bawtry</span>
+            </h1>
+            <div class="columns-hero">
+                <div class="column-hero-left">
+                    <img class="hero-image" src="images/website images/heroimage.jpg" alt="">
+                </div>
+                <div class="column-hero-right">
+                    <div class="column-hero-right-text">
+                        <h3 class="animation-section-accent">#timeless recipes</h3>
 
-        <div class="container-menu-page">
+                        <p class="hero-p animation-section-p">Among the wonderful restaurants in Bawtry, we pride
+                            ourselves on offering a menu that celebrates the vibrant flavors of the Mediterranean. Each
+                            dish is prepared with recipes handed down through generations—come for a meal, and we hope
+                            you'll carry a piece of our tradition with you.</p>
+                    </div>
+                    <a href="contact.html" class="button-CTA">Book a Table</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section-about">
+        <div class="container-about">
+            <div class="headings-about-section">
+                <h3 class="animation-section-accent">#about us</h3>
+                <h2 class="animation-section-accent">One of a kind dining</h2>
+            </div>
+            <div class="div-about-image">
+                <img class="about-image animation-general-element" src="images/website images/zaytunaopening.png"
+                    alt="">
+            </div>
+            <p class="animation-general-element">Welcome to Zaytuna, our new Mediterranean restaurant in Bawtry. We’re a
+                small, family-run spot where every dish is made with love, using traditional recipes passed down through
+                generations. We specialize in homemade Syrian classics, like creamy hummus, crispy falafel, and rich
+                lamb shawarma. Our goal is to give you a warm, fast, and friendly place to enjoy fresh, flavorful food
+                that feels like home.
+            </p>
+        </div>
+    </div>
+    <div class="section-cards">
+        <div class="container-cards" id="container-food">
+
             <div class="headings-cards-section">
-                <h1 class="animation-section-heading">Menu</h1>
+                <h3 class="animation-section-accent">#our menu</h3>
+                <h2 class="animation-section-heading">Find delicious food</h2>
             </div>
             <div class="menu-btns animation-general-element">
                 <button id="breakfast-btn" class="menu-btn">
@@ -70,7 +184,28 @@
             </div>
 
 
-            <div class="container-menu"></div>
+            <div class="container-menu-cards">
+            </div>
+
+            <a href="menu.html" class="button-CTA">View Menu</a>
+
+        </div>
+
+        <div class="container-cards" id="container-reviews">
+            <div class="cards-nav">
+                <h2 class="animation-section-heading">Our Guests</h2>
+                <div class="cards-btns">
+                    <a class="button-CTA" target="_blank" href="https://maps.app.goo.gl/o6pKuqfeN2TCjZJv7">
+                        Leave a review</a>
+                    <div class="slider-btns animation-general-element">
+                        <button id="reviews-left-btn" class="slider-btn">&#8249;</button>
+                        <button id="reviews-right-btn" class="slider-btn">&#8250;</button>
+                    </div>
+                </div>
+            </div>
+            <div id="slider-reviews" class="slider">
+            </div>
+
         </div>
     </div>
 
@@ -86,7 +221,7 @@
                         <h5>Contact</h5>
                         <p class="p-contact">
                             <b>Email</b> <a href="mailto:hello@zaytunacuisine.com">hello@zaytunacuisine.com</a><br>
-                            <b>Phone</b> <a href="tel:07432553666">07476 864422</a>
+                            <b>Phone</b> <a href="tel:+447476864422">07476 864422</a>
                         </p>
                     </div>
                 </div>
@@ -96,8 +231,14 @@
                     </svg>
                     <div class="column-info">
                         <h5>Business Hours</h5>
-                        <p class="p-hours"><b>Sun - Thur</b> 7:00 am - 10:00 pm<br>
-                            <b>Fri - Sun</b> 7:00 am - 11:00 pm
+                        <p class="p-hours">
+                            <b>Sun</b> 10:30 am - 6:00 pm<br>
+                            <b>Mon</b> Closed<br>
+                            <b>Tue</b> 9:30 am - 4:00 pm<br>
+                            <b>Wed</b> 9:30 am - 4:00 pm<br>
+                            <b>Thu</b> 9:30 am - 10:00 pm<br>
+                            <b>Fri</b> 9:30 am - 11:00 pm<br>
+                            <b>Sat</b> 9:30 am - 11:00 pm
                         </p>
                     </div>
                 </div>
@@ -107,15 +248,17 @@
                     </svg>
                     <div class="column-info">
                         <h5>Location</h5>
-
-                        <p class="p-location">Zaytuna Restaurant,</br>18-19 The Courtyard,</br>Bawtry</br>DN10 6JG</p>
+                        <a href="https://maps.app.goo.gl/V5SSZMs3Mi9nok7f9" target="_blank">
+                            <p class="p-location">Zaytuna Restaurant,</br>18-19 The Courtyard,</br>Bawtry</br>DN10 6JG
+                            </p>
+                        </a>
 
                     </div>
                 </div>
             </div>
             <div class="map animation-general-element">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d148.5758804951136!2d-1.0198016108661712!3d53.428880271410094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1729694385780!5m2!1sen!2suk"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d148.57590538842612!2d-1.0199395588971714!3d53.42887314955885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487909a61b73510b%3A0x28d40389eb737321!2sZaytuna%20Restaurant!5e0!3m2!1sen!2suk!4v1729821358661!5m2!1sen!2suk"
                     width="100%" height="100%" style="border: 0px; border-radius: var(--cards-border-radius);"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -169,6 +312,8 @@
 
 
     </div>
+
+
     <!-- SVG's below -->
     <div>
         <svg class="hidden" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +404,10 @@ l-121.63-93.012c-1.263-1.77-2.975-3.029-4.883-3.733l-47.29-36.163L480.392,60.86L
     </div>
 
 
-</body>
 
+
+
+
+</body>
 
 </html>
