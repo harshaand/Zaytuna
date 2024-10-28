@@ -8,11 +8,11 @@
     ],
     "rewrites": [
         {
-            "source": "/menu/",
+            "source": "menu/",
             "destination": "/menu.html"
         },
         {
-            "source": "/contact/",
+            "source": "contact/",
             "destination": "/contact.html"
         }
     ]
