@@ -2,38 +2,11 @@
     "rewrites": [
         {
             "source": "/menu.html",
-            "destination": "/menu/"
+            "destination": "/menu"
         },
         {
             "source": "/contact.html",
-            "destination": "/contact/"
-        }
-    ],
-    "redirects": [
-        {
-            "source": "/menu",
-            "destination": "/menu/",
-            "permanent": true
-        },
-        {
-            "source": "/contact",
-            "destination": "/contact/",
-            "permanent": true
-        },
-        {
-            "source": "/menu/",
-            "destination": "/menu.html",
-            "permanent": true
-        },
-        {
-            "source": "/contact/",
-            "destination": "/contact.html",
-            "permanent": true
-        },
-        {
-            "source": "/(.*[^/])",
-            "destination": "/$1/",
-            "permanent": true
+            "destination": "/contact"
         }
     ]
 }
