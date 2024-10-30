@@ -1,6 +1,5 @@
 /*Look at https://www.federalistpig.com/ for inspo */
 window.addEventListener("load", function () {
-    // Assuming GSAP is included
     const images = Array.from(document.querySelectorAll('.gallery img'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -14,7 +13,10 @@ window.addEventListener("load", function () {
 
     function showLightbox(index) {
         currentIndex = index;
-        updateLightbox();
+        const selectedImage = images[index];
+        lightboxImage.src = selectedImage.src;
+        caption.innerText = selectedImage.alt;
+        highlightThumbnail(index);
         lightbox.style.display = 'flex';
     }
 
@@ -35,42 +37,14 @@ window.addEventListener("load", function () {
         lightbox.style.display = 'none';
     }
 
-    function updateLightbox() {
-        const selectedImage = images[currentIndex];
-        lightboxImage.src = selectedImage.src;
-        caption.innerText = selectedImage.alt;
-        highlightThumbnail(currentIndex);
-    }
-
-    function slideImage(direction) {
-        const fromPosition = direction === 'next' ? '100%' : '-100%';
-        const toPosition = direction === 'next' ? '-100%' : '100%';
-
-        gsap.fromTo(
-            lightboxImage,
-            { x: fromPosition },
-            {
-                x: '0%',
-                duration: 0.5,
-                onStart: () => {
-                    currentIndex = (direction === 'next')
-                        ? (currentIndex + 1) % images.length
-                        : (currentIndex - 1 + images.length) % images.length;
-                    updateLightbox();
-                },
-                onComplete: () => {
-                    gsap.set(lightboxImage, { x: '0%' });
-                },
-            }
-        );
-    }
-
     function nextImage() {
-        slideImage('next');
+        currentIndex = (currentIndex + 1) % images.length;
+        showLightbox(currentIndex);
     }
 
     function prevImage() {
-        slideImage('prev');
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showLightbox(currentIndex);
     }
 
     images.forEach((img, index) => {
@@ -79,15 +53,17 @@ window.addEventListener("load", function () {
         thumbnail.addEventListener('click', () => showLightbox(index));
         thumbnailBar.appendChild(thumbnail);
     });
-
+    // Event listeners for buttons
     nextButton.addEventListener('click', nextImage);
     prevButton.addEventListener('click', prevImage);
     closeButton.addEventListener('click', closeLightbox);
 
+    // Close lightbox when clicking outside the image
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
 
+    // Swipe functionality
     let startX;
     lightbox.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
@@ -98,6 +74,10 @@ window.addEventListener("load", function () {
         if (startX > endX + 50) nextImage();
         else if (startX < endX - 50) prevImage();
     });
+
+
+
+
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
     // Fetch menu items on page load

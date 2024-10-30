@@ -684,19 +684,20 @@ p {
 
 /*----------------------------------------------------------------------------------------------------*/
 
-/* Lightbox styling */
 .lightbox {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: none;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 11;
 
 }
 
@@ -706,8 +707,10 @@ p {
     justify-content: space-between;
     align-items: center;
     width: 90vw;
+    max-width: 1024px;
     min-height: 50vh;
     max-height: 80vh;
+    gap: 8px;
 }
 
 .lightbox-image-and-caption {
@@ -717,47 +720,45 @@ p {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    gap: 16px;
 }
 
 .lightbox img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 90%;
     object-fit: contain;
-    border-radius: 10px;
-    opacity: 90%;
 }
 
 .caption {
-    color: #fff;
-    font-size: 1.2em;
-    margin-top: 10px;
+    color: var(--font-white);
+    font-size: var(--h5);
     text-align: center;
 }
 
 
-/* Close button styling */
 .close-button {
     position: absolute;
     top: 20px;
-    right: 20px;
-    font-size: 2em;
-    color: white;
+    right: 40px;
+    font-size: 36px;
+    color: var(--white);
     cursor: pointer;
-    z-index: 1002;
+    z-index: 12;
     user-select: none;
 }
 
 /* Thumbnails bar */
 .thumbnail-bar {
     display: flex;
-    justify-content: center;
     overflow-x: auto;
-    width: 100%;
-    padding: 10px 0;
-    gap: 10px;
+    padding: 8px 16px;
+    gap: 8px;
     scroll-behavior: smooth;
-    /* Smooth scrolling for centering */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
+
+
 
 .thumbnail-bar img {
     width: fit-content;
@@ -765,6 +766,8 @@ p {
     cursor: pointer;
     opacity: 0.6;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0);
+
 }
 
 .thumbnail-bar img:hover,
@@ -774,8 +777,6 @@ p {
     border: 2px solid white;
     border-radius: 5px;
 }
-
-/*----------------------------------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------------------------------*/
 .container-menu-cards {
@@ -1323,7 +1324,7 @@ header {
     bottom: calc(var(--cards-border-radius)*-1);
     left: 50%;
     transform: translate(-50%, 0%);
-    z-index: 11;
+    z-index: 12;
 
     display: none;
     flex-direction: column;
