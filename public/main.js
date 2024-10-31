@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
     const images = Array.from(document.querySelectorAll('.gallery img'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClickSwipeArea = document.querySelector('.lightbox-image-and-btns');
     const caption = document.getElementById('caption');
     const thumbnailBar = document.getElementById('thumbnailBar');
     const prevButton = document.getElementById('lightbox-left-btn');
@@ -87,11 +88,11 @@ window.addEventListener("load", function () {
     // Swipe functionality on the lightboxImage only
     let startX;
 
-    lightboxImage.addEventListener('touchstart', (e) => {
+    lightboxClickSwipeArea.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
     });
 
-    lightboxImage.addEventListener('touchend', (e) => {
+    lightboxClickSwipeArea.addEventListener('touchend', (e) => {
         const endX = e.changedTouches[0].clientX;
         if (startX > endX + 50) nextImage();
         else if (startX < endX - 50) prevImage();
