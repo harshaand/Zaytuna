@@ -166,62 +166,62 @@ window.addEventListener("load", function () {
             alert('Error fetching menu items. Please check the console for more details.');
         }
     }
-
-    // Function to display menu items
-    function displayMenuItems(items) {
-        container_menu_cards.innerHTML = ''; // Clear the container
-        let htmlinjection = '';
-        const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
-        const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
-        menu_time.forEach(time => {
-            htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
-            const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
-            const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
-            sortedRecords.forEach(item => {
-                const { Name, Image, OutOfStock } = item.fields;
-                const Description = item.fields.Description != null ? item.fields.Description : ""
-                if (item.fields.Image != null) {
-                    htmlinjection += `
-                    <div class="card-food" id="card-feature-food">
-                        <img class="image-food" src="${Image[0].url}" alt="">
-                        <div class="text-food">
-                        <div class="food-name-description">
-                            <h5>${Name}</h5>
-                            <p>${Description}</p>
-                        </div>
-                `;
-                } else {
-                    htmlinjection += `
-                   <div class="card-food" id="card-feature-food">
-                    
-                        <div class="text-food">
+    /*
+        // Function to display menu items
+        function displayMenuItems(items) {
+            container_menu_cards.innerHTML = ''; // Clear the container
+            let htmlinjection = '';
+            const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
+            const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
+            menu_time.forEach(time => {
+                htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
+                const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
+                const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
+                sortedRecords.forEach(item => {
+                    const { Name, Image, OutOfStock } = item.fields;
+                    const Description = item.fields.Description != null ? item.fields.Description : ""
+                    if (item.fields.Image != null) {
+                        htmlinjection += `
+                        <div class="card-food" id="card-feature-food">
+                            <img class="image-food" src="${Image[0].url}" alt="">
+                            <div class="text-food">
                             <div class="food-name-description">
                                 <h5>${Name}</h5>
                                 <p>${Description}</p>
                             </div>
-                `;
-                }
-                container_menu_cards.innerHTML = htmlinjection;
-                if (OutOfStock === true) {
-                    htmlinjection += `
+                    `;
+                    } else {
+                        htmlinjection += `
+                       <div class="card-food" id="card-feature-food">
+                        
+                            <div class="text-food">
+                                <div class="food-name-description">
+                                    <h5>${Name}</h5>
+                                    <p>${Description}</p>
+                                </div>
+                    `;
+                    }
+                    container_menu_cards.innerHTML = htmlinjection;
+                    if (OutOfStock === true) {
+                        htmlinjection += `
+                            </div>
+                        <h3 class="card-food-out-of-stock">Fresh out, sorry!<h3>
                         </div>
-                    <h3 class="card-food-out-of-stock">Fresh out, sorry!<h3>
-                    </div>
-                    `}
-                else {
-                    htmlinjection += `
+                        `}
+                    else {
+                        htmlinjection += `
+                            </div>
                         </div>
-                    </div>
-                `;
-                }
-            });
-            htmlinjection += `
-        </div> `;
-        })
-        document.getElementById('container-Breakfast-cards').classList.remove('hidden');
-        gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
-    }
-
+                    `;
+                    }
+                });
+                htmlinjection += `
+            </div> `;
+            })
+            document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+            gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+        }
+    */
     function displayReviewItems(items) {
         reviews_slider.innerHTML = ''; // Clear the container
         let htmlinjection = '<div id="cards-spacer-reviews"></div>';
