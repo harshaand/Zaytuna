@@ -17,12 +17,11 @@ window.addEventListener("load", function () {
         }
     }
 
-    function showLightbox(index) {
-        currentIndex = index;
-        const selectedImage = images[index];
+    function showLightbox() {
+        const selectedImage = images[currentIndex];
         lightboxImage.src = selectedImage.src;
         caption.innerText = selectedImage.alt;
-        highlightThumbnail(index);
+        highlightThumbnail();
         lightbox.style.display = 'flex';
         window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
@@ -30,13 +29,18 @@ window.addEventListener("load", function () {
 
     let isFirstHighlight = true; // Flag to track if it's the first highlight
 
-    function highlightThumbnail(index) {
+    function highlightThumbnail() {
 
         thumbnailBar.querySelectorAll('img').forEach((img, i) => {
-            img.classList.toggle('active', i === index);
+            if (i === currentIndex) {
+                img.classList.add('active');
+            }
+            else {
+                img.classList.remove('active');
+            }
         });
 
-        const activeThumbnail = thumbnailBar.querySelectorAll('img')[index];
+        const activeThumbnail = thumbnailBar.querySelectorAll('img')[currentIndex];
         const thumbnailBarWidth = thumbnailBar.offsetWidth;
         const thumbnailWidth = activeThumbnail.offsetWidth;
         const thumbnailPosition = activeThumbnail.offsetLeft + thumbnailWidth / 2;
@@ -56,26 +60,28 @@ window.addEventListener("load", function () {
 
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
-        showLightbox(currentIndex);
+        showLightbox();
     }
 
     function prevImage() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showLightbox(currentIndex);
+        showLightbox();
     }
 
-    function thumbnailImage(newIndex) {
-        currentIndex = (newIndex + images.length) % images.length;
-        showLightbox(currentIndex);
+    function changeImage(index) {
+        currentIndex = (index + images.length) % images.length;
+        showLightbox();
     }
 
 
     images.forEach((img, index) => {
-        img.addEventListener('click', () => thumbnailImage(index));
+        img.addEventListener('click', () => changeImage(index));
         const thumbnail = img.cloneNode();
-        thumbnail.addEventListener('click', () => thumbnailImage(index));
+        thumbnail.addEventListener('click', () => changeImage(index));
         thumbnailBar.appendChild(thumbnail);
     });
+
+
 
     // Swipe functionality on the lightboxImage only
     let startX;
