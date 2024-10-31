@@ -1665,13 +1665,6 @@ header {
 
 
 @media (min-width: 1600px) {
-    .thumbnail-bar img:hover {
-        opacity: 1;
-        transform: scale(1.1);
-        border: 2px solid white;
-        border-radius: 5px;
-    }
-
     :root {
         --card-food-width: calc((var(--container-max-width)*0.9)/6);
         --card-food-gap: calc((var(--container-max-width)*0.1)/5);
@@ -1700,13 +1693,6 @@ header {
 
 
 @media (max-width: 1279px) {
-    .thumbnail-bar img:hover {
-        opacity: 1;
-        transform: scale(1.1);
-        border: 2px solid white;
-        border-radius: 5px;
-    }
-
     :root {
         --h1: 76px;
         --h2: 61px;
@@ -1773,13 +1759,6 @@ header {
 }
 
 @media (max-width: 775px) {
-    .thumbnail-bar img:hover {
-        opacity: 1;
-        transform: scale(1.1);
-        border: 2px solid white;
-        border-radius: 5px;
-    }
-
     :root {
         --h1: 61px;
         --h2: 49px;
