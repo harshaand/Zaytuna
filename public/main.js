@@ -10,11 +10,13 @@ window.addEventListener("load", function () {
     const closeButton = document.getElementById('closeButton');
 
     let currentIndex = 0;
+
     function preventScrollOutsideThumbnailBar(event) {
         if (!event.target.closest('.thumbnail-bar')) {
             event.preventDefault();
         }
     }
+
     function showLightbox(index) {
         currentIndex = index;
         const selectedImage = images[index];
@@ -26,10 +28,10 @@ window.addEventListener("load", function () {
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
     }
 
-
     let isFirstHighlight = true; // Flag to track if it's the first highlight
 
     function highlightThumbnail(index) {
+
         thumbnailBar.querySelectorAll('img').forEach((img, i) => {
             img.classList.toggle('active', i === index);
         });
@@ -45,6 +47,7 @@ window.addEventListener("load", function () {
             isFirstHighlight = false; // Disable further automatic scrolling
         }
     }
+
     function closeLightbox() {
         lightbox.style.display = 'none';
         window.removeEventListener('wheel', preventScrollOutsideThumbnailBar);
@@ -61,36 +64,36 @@ window.addEventListener("load", function () {
         showLightbox(currentIndex);
     }
 
+    function thumbnailImage(newIndex) {
+        currentIndex = (newIndex + images.length) % images.length;
+        showLightbox(currentIndex);
+    }
+
+
     images.forEach((img, index) => {
-        img.addEventListener('click', () => showLightbox(index));
+        img.addEventListener('click', () => thumbnailImage(index));
         const thumbnail = img.cloneNode();
-        thumbnail.addEventListener('click', () => showLightbox(index));
+        thumbnail.addEventListener('click', () => thumbnailImage(index));
         thumbnailBar.appendChild(thumbnail);
     });
-    // Event listeners for buttons
-    nextButton.addEventListener('click', nextImage);
-    prevButton.addEventListener('click', prevImage);
-    closeButton.addEventListener('click', closeLightbox);
 
-    // Close lightbox when clicking outside the image
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    // Swipe functionality
+    // Swipe functionality on the lightboxImage only
     let startX;
-    lightbox.addEventListener('touchstart', (e) => {
+
+    lightboxImage.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
     });
 
-    lightbox.addEventListener('touchend', (e) => {
+    lightboxImage.addEventListener('touchend', (e) => {
         const endX = e.changedTouches[0].clientX;
         if (startX > endX + 50) nextImage();
         else if (startX < endX - 50) prevImage();
     });
 
-
-
+    // Event listeners for buttons
+    nextButton.addEventListener('click', nextImage);
+    prevButton.addEventListener('click', prevImage);
+    closeButton.addEventListener('click', closeLightbox);
 
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
