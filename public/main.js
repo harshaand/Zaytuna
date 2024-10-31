@@ -26,6 +26,9 @@ window.addEventListener("load", function () {
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
     }
 
+
+    let isFirstHighlight = true; // Flag to track if it's the first highlight
+
     function highlightThumbnail(index) {
         thumbnailBar.querySelectorAll('img').forEach((img, i) => {
             img.classList.toggle('active', i === index);
@@ -36,9 +39,12 @@ window.addEventListener("load", function () {
         const thumbnailWidth = activeThumbnail.offsetWidth;
         const thumbnailPosition = activeThumbnail.offsetLeft + thumbnailWidth / 2;
 
-        thumbnailBar.scrollLeft = thumbnailPosition - thumbnailBarWidth / 2;
+        // Only scroll if this is the first highlight
+        if (isFirstHighlight) {
+            thumbnailBar.scrollLeft = thumbnailPosition - thumbnailBarWidth / 2;
+            isFirstHighlight = false; // Disable further automatic scrolling
+        }
     }
-
     function closeLightbox() {
         lightbox.style.display = 'none';
         window.removeEventListener('wheel', preventScrollOutsideThumbnailBar);
