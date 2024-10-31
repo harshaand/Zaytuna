@@ -5,8 +5,8 @@ window.addEventListener("load", function () {
     const lightboxImage = document.getElementById('lightboxImage');
     const caption = document.getElementById('caption');
     const thumbnailBar = document.getElementById('thumbnailBar');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
+    const prevButton = document.getElementById('lightbox-left-btn');
+    const nextButton = document.getElementById('lightbox-right-btn');
     const closeButton = document.getElementById('closeButton');
 
     let currentIndex = 0;
