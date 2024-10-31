@@ -30,6 +30,7 @@ window.addEventListener("load", function () {
     let isFirstHighlight = true; // Flag to track if it's the first highlight
 
     function highlightThumbnail() {
+        isFirstHighlight = true;
 
         thumbnailBar.querySelectorAll('img').forEach((img, i) => {
             if (i === currentIndex) {

@@ -772,7 +772,7 @@ p {
     font-size: 36px;
     color: var(--white);
     cursor: pointer;
-    z-index: 12;
+    z-index: 13;
     user-select: none;
 }
 
@@ -785,6 +785,12 @@ p {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 8px;
+    z-index: 12;
+
 }
 
 
@@ -1352,7 +1358,7 @@ header {
     bottom: calc(var(--cards-border-radius)*-1);
     left: 50%;
     transform: translate(-50%, 0%);
-    z-index: 12;
+    z-index: 13;
 
     display: none;
     flex-direction: column;
@@ -1382,7 +1388,7 @@ header {
     right: 12px;
     font-size: 36px;
     cursor: pointer;
-    z-index: 13;
+    z-index: 14;
 }
 
 .modal-h3-mobile {
@@ -1510,7 +1516,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 12;
+    z-index: 13;
     display: none;
     flex-direction: row;
     justify-content: space-between;
@@ -1548,7 +1554,7 @@ header {
     right: 12px;
     font-size: 36px;
     cursor: pointer;
-    z-index: 13;
+    z-index: 14;
 }
 
 .modal-h2 {
