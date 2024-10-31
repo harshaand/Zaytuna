@@ -10,7 +10,11 @@ window.addEventListener("load", function () {
     const closeButton = document.getElementById('closeButton');
 
     let currentIndex = 0;
-
+    function preventScrollOutsideThumbnailBar(event) {
+        if (!event.target.closest('.thumbnail-bar')) {
+            event.preventDefault();
+        }
+    }
     function showLightbox(index) {
         currentIndex = index;
         const selectedImage = images[index];
@@ -18,6 +22,8 @@ window.addEventListener("load", function () {
         caption.innerText = selectedImage.alt;
         highlightThumbnail(index);
         lightbox.style.display = 'flex';
+        window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
+        window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
     }
 
     function highlightThumbnail(index) {
@@ -35,6 +41,8 @@ window.addEventListener("load", function () {
 
     function closeLightbox() {
         lightbox.style.display = 'none';
+        window.removeEventListener('wheel', preventScrollOutsideThumbnailBar);
+        window.removeEventListener('touchmove', preventScrollOutsideThumbnailBar);
     }
 
     function nextImage() {

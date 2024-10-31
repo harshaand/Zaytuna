@@ -1999,6 +1999,13 @@ header {
         display: none;
     }
 
+    .thumbnail-bar img:hover {
+        opacity: 0.6;
+        transform: scale(1);
+        border: 2px solid rgba(255, 255, 255, 0);
+        border-radius: 0px;
+    }
+
     .menu-btns {
         width: var(--container-width);
         justify-content: space-between;
