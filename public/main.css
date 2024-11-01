@@ -791,7 +791,7 @@ p {
 
     position: sticky;
     position: -webkit-sticky;
-    bottom: 8px;
+    bottom: 16px;
     z-index: 12;
 
 }
