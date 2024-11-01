@@ -77,6 +77,9 @@
     --card-menu-page-width: calc((var(--container-width)*0.9)/4);
     --card-menu-page-gap: calc((var(--container-width)*0.1)/3);
 
+    --masonry-gap: calc((var(--container-width)*0.1)/4);
+    --masonry-brick-width: calc((var(--container-width)*0.9)/5);
+
 
     --font-1: 'Helvetica';
     --font-2: 'EBGaramond';
@@ -1032,6 +1035,47 @@ p {
 }
 
 /*----------------------------------------------------------------------------------------------------*/
+.masonry {
+    column-gap: var(--masonry-gap);
+    column-fill: initial;
+    column-width: var(--masonry-brick-width);
+    max-width: var(--container-max-width);
+}
+
+.masonry>* {
+    break-inside: avoid;
+    margin-bottom: var(--masonry-gap);
+}
+
+@supports(grid-template-rows: masonry) {
+    .masonry {
+        display: grid;
+        gap: var(--masonry-gap);
+        grid-template-rows: masonry;
+        grid-template-columns: repeat(auto-fill, minmax(var(--masonry-brick-width), 1fr));
+        align-tracks: stretch;
+    }
+
+    .masonry>* {
+        margin-bottom: initial;
+    }
+}
+
+/* some styling not important */
+.masonry {
+    width: var(--container-width);
+    max-width: var(--container-max-width);
+}
+
+
+.brick {
+    width: 100%;
+    color: white;
+    border-radius: var(--cards-border-radius);
+    width: var(--masonry-brick-width);
+}
+
+/*----------------------------------------------------------------------------------------------------*/
 
 .section-menu {
     display: flex;
@@ -1692,6 +1736,9 @@ header {
 
         --card-menu-page-width: calc((var(--container-max-width)*0.9)/6);
         --card-menu-page-gap: calc((var(--container-max-width)*0.1)/5);
+
+        --masonry-gap: calc((var(--container-max-width)*0.1)/4);
+        --masonry-brick-width: calc((var(--container-max-width)*0.9)/5);
     }
 
     .cards-nav {
@@ -1730,6 +1777,9 @@ header {
 
         --card-menu-page-width: calc((var(--container-width)*0.9)/4);
         --card-menu-page-gap: calc((var(--container-width)*0.1)/3);
+
+        --masonry-gap: calc((var(--container-width)*0.1)/3);
+        --masonry-brick-width: calc((var(--container-width)*0.9)/4);
     }
 
     #card-feature-food:nth-child(n+9) {
@@ -1796,6 +1846,9 @@ header {
 
         --card-menu-page-width: calc((var(--container-width)*0.95)/3);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/2);
+
+        --masonry-gap: calc((var(--container-width)*0.05)/2);
+        --masonry-brick-width: calc((var(--container-width)*0.95)/3);
     }
 
     #modal-mobile {
@@ -1951,6 +2004,9 @@ header {
 
         --card-menu-page-width: calc((var(--container-width)*0.95)/2);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/1);
+
+        --masonry-gap: calc((var(--container-width)*0.02)/1);
+        --masonry-brick-width: calc((var(--container-width)*0.98)/2);
     }
 
     #modal-mobile {
