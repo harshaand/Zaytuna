@@ -120,6 +120,7 @@ window.addEventListener("load", function () {
 
 
     gsap.fromTo('.gallery-image', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+    gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
 
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
