@@ -124,9 +124,10 @@ window.addEventListener("load", function () {
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
     // Fetch menu items on page load
-    //fetchMenuItems();
+    /*
+    fetchMenuItems();
     fetchReviewsItems();
-
+    */
     const container_menu_cards = document.querySelector(".container-menu-cards");
 
 
@@ -179,22 +180,22 @@ window.addEventListener("load", function () {
         resizeObserver.observe(slider);
 
     }
-
-    // Function to fetch data from the server
-    async function fetchMenuItems() {
-        try {
-            const response = await fetch(serverApiMenuUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data from server');
+    /*
+        // Function to fetch data from the server
+        async function fetchMenuItems() {
+            try {
+                const response = await fetch(serverApiMenuUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data from server');
+                }
+                const data = await response.json();
+                displayMenuItems(data.records);
+            } catch (error) {
+                console.error(error);
+                alert('Error fetching menu items. Please check the console for more details.');
             }
-            const data = await response.json();
-            displayMenuItems(data.records);
-        } catch (error) {
-            console.error(error);
-            alert('Error fetching menu items. Please check the console for more details.');
         }
-    }
-
+    
     // Function to fetch data from the server
     async function fetchReviewsItems() {
         try {
@@ -264,7 +265,7 @@ window.addEventListener("load", function () {
             document.getElementById('container-Breakfast-cards').classList.remove('hidden');
             gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
         }
-    */
+    
     function displayReviewItems(items) {
         reviews_slider.innerHTML = ''; // Clear the container
         let htmlinjection = '<div id="cards-spacer-reviews"></div>';
@@ -327,4 +328,5 @@ window.addEventListener("load", function () {
             }
         });
     });
+    */
 });
