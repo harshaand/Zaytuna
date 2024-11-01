@@ -1,6 +1,7 @@
 /*Look at https://www.federalistpig.com/ for inspo */
 window.addEventListener("load", function () {
     const images = Array.from(document.querySelectorAll('.gallery img'));
+    const lightbox_overlay = document.querySelector('.lightbox-overlay');
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxClickSwipeArea = document.querySelector('.lightbox-image-and-btns');
@@ -23,9 +24,20 @@ window.addEventListener("load", function () {
         lightboxImage.src = selectedImage.src;
         caption.innerText = selectedImage.alt;
         highlightThumbnail();
-        lightbox.style.display = 'flex';
         window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
+        if (lightbox.style.display !== 'flex') {
+            gsap.fromTo(lightbox,
+                { scale: 0.7, opacity: 1, display: "flex" },
+                { duration: 0.6, scale: 1, opacity: 1, ease: "power2.out" }
+            );
+            gsap.to(lightbox_overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
+
+
+        }
+        lightbox.style.display = 'flex';
+        lightbox_overlay.style.display = 'block';
+
     }
 
     let isFirstHighlight = true; // Flag to track if it's the first highlight
@@ -55,9 +67,12 @@ window.addEventListener("load", function () {
     }
 
     function closeLightbox() {
-        lightbox.style.display = 'none';
         window.removeEventListener('wheel', preventScrollOutsideThumbnailBar);
         window.removeEventListener('touchmove', preventScrollOutsideThumbnailBar);
+        gsap.to(lightbox, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { lightbox.style.display = "none"; } });
+        gsap.to(lightbox_overlay, { duration: 0.3, opacity: 0, onComplete: () => { lightbox_overlay.style.display = "none"; } });
+
+
     }
 
     function nextImage() {
@@ -102,6 +117,9 @@ window.addEventListener("load", function () {
     nextButton.addEventListener('click', nextImage);
     prevButton.addEventListener('click', prevImage);
     closeButton.addEventListener('click', closeLightbox);
+
+
+    gsap.fromTo('.gallery-image', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
 
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
@@ -161,22 +179,22 @@ window.addEventListener("load", function () {
         resizeObserver.observe(slider);
 
     }
-    /*
-        // Function to fetch data from the server
-        async function fetchMenuItems() {
-            try {
-                const response = await fetch(serverApiMenuUrl);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data from server');
-                }
-                const data = await response.json();
-                displayMenuItems(data.records);
-            } catch (error) {
-                console.error(error);
-                alert('Error fetching menu items. Please check the console for more details.');
+
+    // Function to fetch data from the server
+    async function fetchMenuItems() {
+        try {
+            const response = await fetch(serverApiMenuUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data from server');
             }
+            const data = await response.json();
+            displayMenuItems(data.records);
+        } catch (error) {
+            console.error(error);
+            alert('Error fetching menu items. Please check the console for more details.');
         }
-    */
+    }
+
     // Function to fetch data from the server
     async function fetchReviewsItems() {
         try {
