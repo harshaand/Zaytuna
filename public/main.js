@@ -29,7 +29,7 @@ window.addEventListener("load", function () {
         if (lightbox.style.display !== 'flex') {
             gsap.fromTo(lightbox,
                 { scale: 0.7, opacity: 1, display: "flex" },
-                { duration: 0.6, scale: 1, opacity: 1, ease: "power2.out" }
+                { duration: 0.6, scale: 1, opacity: 1, ease: "back.out(1.7)" }
             );
             gsap.to(lightbox_overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
 

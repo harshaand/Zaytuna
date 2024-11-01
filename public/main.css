@@ -778,10 +778,10 @@ p {
 .close-button {
     position: sticky;
     top: 20px;
+    margin-bottom: -16px;
     width: var(--container-width);
     max-width: var(--container-max-width);
     text-align: right;
-
     font-size: 36px;
     color: var(--white);
     cursor: pointer;
