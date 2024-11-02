@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
 
     gsap.to(".navbar", { duration: 0, visibility: "visible" });
     gsap.to(".container-gallery-page", { duration: 0, visibility: "visible" });
-    gsap.fromTo('.brick', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+    gsap.to(".brick", { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut", onComplete: () => { lightbox.style.opacity = "1"; } });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
     const hamburger = document.getElementById('hamburger');
