@@ -650,12 +650,31 @@ p {
 }
 
 /*----------------------------------------------------------------------------------------------------*/
-
 .container-gallery {
     display: flex;
     flex-direction: column;
     overflow: visible;
     gap: 36px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Gallery page-------------------------------------*/
+.section-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-colour);
+    width: 100%;
+}
+
+.container-gallery-page {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: var(--container-spacing-vertical) 0;
     align-items: center;
     width: 100%;
 }
@@ -1854,8 +1873,12 @@ header {
         --card-menu-page-width: calc((var(--container-width)*0.95)/3);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/2);
 
-        --masonry-gap: calc((var(--container-width)*0.05)/2);
-        --masonry-brick-width: calc((var(--container-width)*0.95)/3);
+        --masonry-gap: calc((var(--container-width-2)*0.05)/2);
+        --masonry-brick-width: calc((var(--container-width-2)*0.95)/3);
+    }
+
+    .masonry {
+        width: var(--container-width-2);
     }
 
     #modal-mobile {
