@@ -995,7 +995,7 @@ p {
     color: var(--secondary-colour-hover);
 }
 
-.menu-btn.active {
+.menu-btn.active h2 {
     color: var(--secondary-colour);
 }
 
@@ -1244,6 +1244,13 @@ p {
 .heading-menu-category {
     font-family: var(--font-2);
     color: var(--font-black);
+}
+
+.heading-menu-time {
+    font-family: var(--font-2);
+    color: var(--font-black);
+    font-size: var(--h5);
+
 }
 
 #cards-menu-page {
