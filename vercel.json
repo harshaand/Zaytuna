@@ -7,6 +7,10 @@
         {
             "source": "/contact",
             "destination": "/contact.html"
+        },
+        {
+            "source": "/gallery",
+            "destination": "/gallery.html"
         }
     ]
 }
