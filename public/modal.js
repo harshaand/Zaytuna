@@ -133,7 +133,7 @@ window.addEventListener("load", function () {
                 gsap.from(modal_mobile, { y: "100%", ease: "elastic.out(1, 0.75)", duration: 1.5 });
                 modal_mobile.style.display = 'flex';
             }
-        }, 10000);
+        }, 15000);
     }
 
     closeBtn_mobile.onclick = function () {
