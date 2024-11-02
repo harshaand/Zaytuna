@@ -1570,7 +1570,7 @@ header {
     z-index: 14;
 }
 
-.modal-h2-mobile {
+.modal-h-mobile {
     text-align: center;
     font-weight: 300;
     width: 100%;
@@ -1580,7 +1580,7 @@ header {
     font-weight: 300;
 }
 
-.modal-h2-mobile-colored {
+.modal-h-mobile-colored {
     color: var(--secondary-colour-hover);
 }
 
@@ -1736,12 +1736,13 @@ header {
     z-index: 14;
 }
 
-.modal-h3 {
+.modal-h-desktop {
     text-align: center;
     margin-bottom: -8px;
     font-family: 'Helvetica';
     font-weight: 300;
     font-style: italic;
+    font-size: var(--h3);
     width: 100%;
 
 }
