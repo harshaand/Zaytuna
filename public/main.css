@@ -2017,7 +2017,7 @@ header {
     }
 
     .masonry {
-        width: var(--container-max-width-2);
+        width: var(--container-width-2);
     }
 
     #modal-mobile {
