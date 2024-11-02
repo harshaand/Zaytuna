@@ -52,8 +52,8 @@
     --h1: 95px;
     --h3: 76px;
     --h2: 61px;
-    --h4: 31px;
-    --h5: 20px;
+    --h5: 31px;
+    --h4: 20px;
     --h6: 20px;
     --p1: 20px;
     --p2: 16px;
@@ -174,20 +174,20 @@ h2 {
     font-size: var(--h2);
 }
 
-h4 {
+h5 {
     padding: 0;
     margin: 0 0 4px 0;
     font-family: var(--font-2);
     font-weight: 400;
-    font-size: var(--h4);
+    font-size: var(--h5);
 }
 
-h5 {
+h4 {
     padding: 0;
     margin: 0;
     font-family: var(--font-1);
     font-weight: 700;
-    font-size: var(--h5);
+    font-size: var(--h4);
 }
 
 h6 {
@@ -564,7 +564,7 @@ p {
     transform-origin: center;
     background-color: #ff4d4d;
     color: white;
-    font-size: var(--h5);
+    font-size: var(--h4);
     font-weight: bold;
     padding: 4px 8px;
     border: 2px solid white;
@@ -638,6 +638,12 @@ p {
     font-weight: 400;
     font-size: var(--p2);
     width: 100%;
+}
+
+.text-reviewer-name {
+    font-size: var(--h4);
+    font-family: var(--font-1);
+    font-weight: 700;
 }
 
 .text-review-source {
@@ -771,7 +777,7 @@ p {
 
 .caption {
     color: var(--font-white);
-    font-size: var(--h5);
+    font-size: var(--h4);
     text-align: center;
 }
 
@@ -899,9 +905,9 @@ p {
     font-weight: 300;
 }
 
-.menu-pdf-btn h5 {
+.menu-pdf-btn h4 {
     font-weight: 400;
-    font-size: var(--h5);
+    font-size: var(--h4);
 }
 
 .menu-pdf-btn:hover {
@@ -977,7 +983,7 @@ p {
 
     font-family: var(--font-2);
     font-weight: 400;
-    font-size: var(--h4);
+    font-size: var(--h5);
 
     color: var(--black);
     -webkit-tap-highlight-color: transparent;
@@ -1407,7 +1413,7 @@ header {
 
 .logo a {
     font-family: 'Mahalia';
-    font-size: var(--h4);
+    font-size: var(--h5);
     color: var(--nav-bar-type-colour);
     margin: 0;
     padding: 0;
@@ -1496,7 +1502,7 @@ header {
 .mobile-menu ul li a {
     color: var(--font-white);
     text-decoration: none;
-    font-size: var(--h4);
+    font-size: var(--h5);
 }
 
 .hamburger {
@@ -1881,8 +1887,8 @@ header {
         --h1: 76px;
         --h3: 61px;
         --h2: 49px;
-        --h4: 25px;
-        --h5: 20px;
+        --h5: 25px;
+        --h4: 20px;
         --h6: 20px;
         --p1: 20px;
         --p2: 16px;
@@ -1952,8 +1958,8 @@ header {
         --h1: 61px;
         --h3: 49px;
         --h2: 39px;
-        --h4: 25px;
-        --h5: 20px;
+        --h5: 25px;
+        --h4: 20px;
         --h6: 20px;
         --p1: 20px;
         --p2: 16px;
@@ -2117,8 +2123,8 @@ header {
         --h1: 49px;
         --h3: 39px;
         --h2: 31px;
-        --h4: 20px;
         --h5: 20px;
+        --h4: 20px;
         --h6: 16px;
         --p1: 16px;
         --p2: 14px;
@@ -2216,9 +2222,9 @@ header {
         width: var(--container-width-2);
     }
 
-    .menu-pdf-btn h5 {
+    .menu-pdf-btn h4 {
         font-weight: 400;
-        font-size: var(--h4);
+        font-size: var(--h5);
     }
 
     .menu-btns {
@@ -2235,7 +2241,7 @@ header {
         display: none;
     }
 
-    .card-food h5 {
+    .card-food h4 {
         font-size: var(--p1);
     }
 
