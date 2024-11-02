@@ -1073,6 +1073,13 @@ p {
     color: white;
     border-radius: var(--cards-border-radius);
     width: var(--masonry-brick-width);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.brick:hover {
+    transform: scale(1.05);
+
 }
 
 /*----------------------------------------------------------------------------------------------------*/
