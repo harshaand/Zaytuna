@@ -927,12 +927,12 @@ p {
 }
 
 .menu-pdf-btn.breakfast {
-    background-image: url('images/website images/tea Cropped.jpg');
+    background-image: url('images/website images/breakfast-menu.webp');
     /* Replace with your image URL */
 }
 
 .menu-pdf-btn.dinner {
-    background-image: url('images/website images/dinner Cropped.jpg');
+    background-image: url('images/website images/dinner-menu.webp');
     /* Replace with your image URL */
 }
 
