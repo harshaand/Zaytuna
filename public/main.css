@@ -2012,8 +2012,8 @@ header {
         --card-menu-page-width: calc((var(--container-width)*0.95)/2);
         --card-menu-page-gap: calc((var(--container-width)*0.05)/1);
 
-        --masonry-gap: calc((var(--container-width)*0.02)/1);
-        --masonry-brick-width: calc((var(--container-width)*0.98)/2);
+        --masonry-gap: calc((var(--container-width-2)*0.02)/1);
+        --masonry-brick-width: calc((var(--container-width-2)*0.98)/2);
     }
 
     #modal-mobile {
