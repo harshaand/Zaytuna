@@ -2016,6 +2016,10 @@ header {
         --masonry-brick-width: calc((var(--container-width-2)*0.98)/2);
     }
 
+    .masonry {
+        max-width: var(--container-max-width-2);
+    }
+
     #modal-mobile {
         display: none;
     }
