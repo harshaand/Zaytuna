@@ -30,7 +30,7 @@ window.addEventListener("load", function () {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxClickSwipeArea = document.querySelector('.lightbox-image-and-btns');
-    const caption = document.getElementById('caption');
+    //const caption = document.getElementById('caption');
     const thumbnailBar = document.getElementById('thumbnailBar');
     const prevButton = document.getElementById('lightbox-left-btn');
     const nextButton = document.getElementById('lightbox-right-btn');
@@ -47,7 +47,7 @@ window.addEventListener("load", function () {
     function showLightbox() {
         const selectedImage = images[currentIndex];
         lightboxImage.src = selectedImage.src;
-        caption.innerText = selectedImage.alt;
+        //caption.innerText = selectedImage.alt;
         highlightThumbnail();
         window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });

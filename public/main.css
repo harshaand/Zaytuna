@@ -50,8 +50,8 @@
 
 :root {
     --h1: 95px;
-    --h2: 76px;
-    --h3: 61px;
+    --h3: 76px;
+    --h2: 61px;
     --h4: 31px;
     --h5: 20px;
     --h6: 20px;
@@ -156,22 +156,22 @@ h1 {
     text-align: center;
 }
 
-h2 {
+h3 {
     padding: 0;
     margin: 0;
     font-family: var(--font-2);
     font-weight: 400;
-    font-size: var(--h2);
+    font-size: var(--h3);
 }
 
-h3 {
+h2 {
     padding: 0;
     margin: 0;
     color: var(--secondary-accent-colour);
     line-height: 0.9;
     font-family: var(--font-3);
     font-weight: 400;
-    font-size: var(--h3);
+    font-size: var(--h2);
 }
 
 h4 {
@@ -371,7 +371,7 @@ p {
     text-align: center;
 }
 
-.container-about h2 {
+.container-about h3 {
     width: 100%;
     max-width: 450px;
     text-align: center;
@@ -1278,7 +1278,7 @@ p {
     padding: 0;
 }
 
-.section-contact h2 {
+.section-contact h3 {
     text-align: left;
     width: 100%;
 }
@@ -1564,7 +1564,7 @@ header {
     z-index: 14;
 }
 
-.modal-h3-mobile {
+.modal-h2-mobile {
     text-align: center;
     font-weight: 300;
     width: 100%;
@@ -1574,7 +1574,7 @@ header {
     font-weight: 300;
 }
 
-.modal-h3-mobile-colored {
+.modal-h2-mobile-colored {
     color: var(--secondary-colour-hover);
 }
 
@@ -1730,7 +1730,7 @@ header {
     z-index: 14;
 }
 
-.modal-h2 {
+.modal-h3 {
     text-align: center;
     margin-bottom: -8px;
     font-family: 'Helvetica';
@@ -1879,8 +1879,8 @@ header {
 @media (max-width: 1279px) {
     :root {
         --h1: 76px;
-        --h2: 61px;
-        --h3: 49px;
+        --h3: 61px;
+        --h2: 49px;
         --h4: 25px;
         --h5: 20px;
         --h6: 20px;
@@ -1950,8 +1950,8 @@ header {
 @media (max-width: 775px) {
     :root {
         --h1: 61px;
-        --h2: 49px;
-        --h3: 39px;
+        --h3: 49px;
+        --h2: 39px;
         --h4: 25px;
         --h5: 20px;
         --h6: 20px;
@@ -2115,8 +2115,8 @@ header {
 @media (max-width: 480px) {
     :root {
         --h1: 49px;
-        --h2: 39px;
-        --h3: 31px;
+        --h3: 39px;
+        --h2: 31px;
         --h4: 20px;
         --h5: 20px;
         --h6: 16px;

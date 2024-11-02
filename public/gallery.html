@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="gallery.js"></script>
+    <script defer src="modal.js"></script>
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z5E6J7LFN"></script>
@@ -32,6 +34,48 @@
 </script>
 
 <body>
+    <!-- Modal section -->
+    <div id="modal-mobile">
+        <span id="modal-close-button-mobile">&times;</span>
+        <div class="modal-text-mobile">
+            <h2 id="modal-title-mobile" class="modal-h2-mobile">Want <span class="modal-h2-mobile-colored">15%</span>
+                off your
+                next meal?</h2>
+            <p id="modal-description-mobile" class="modal-p-mobile">Drop your email below, and we'll send you a tasty
+                discount for your next visit. Let's keep in touch!
+            </p>
+        </div>
+        <form action="" method="" id="form-modal-mobile" class="form-modal-mobile">
+            <input type="email" id='email_mobile' class="form-modal-mobile-input" name="email"
+                placeholder="johndoe@gmail.com" aria-label="Email Address">
+            <!-- Changed to 'email' type for validation -->
+            <div class="subscribe-btn-and-text-mobile">
+                <button type="submit" class="modal-button-CTA-mobile">GET 15% OFF</button>
+                <p class="text-unsubscribe-mobile">you may unsubscribe at any point</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-image-div">
+            <img loading="lazy" src="images/website images/modelimage.webp" class="modal-image" alt="">
+        </div>
+        <div class="modal-text">
+            <span id="modal-close-button">&times;</span>
+            <h3 id="modal-title" class="modal-h3">Wait!</h3>
+            <p id="modal-description" class="modal-p">Before you go, we'd like to offer 15% off your next meal.</p>
+            <form action="" method="" id="form-modal" class="form-modal">
+                <input type="email" id='email' name="email" placeholder="johndoe@gmail.com" aria-label="Email Address">
+                <!-- Changed to 'email' type for validation -->
+                <div class="subscribe-btn-and-text">
+                    <button type="submit" class="modal-button-CTA">GET 15% OFF</button>
+                    <p class="text-unsubscribe">you may unsubscribe at any point</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -39,6 +83,7 @@
             </div>
             <div class="nav-links">
                 <div class="nav-link"><a href="/">Home</a></div>
+                <div class="nav-link"><a href="gallery">Gallery</a></div>
                 <a href="contact" class="button-CTA" id="nav-CTA-btn">Contact</a>
             </div>
             <!-- Hamburger Menu -->
@@ -52,6 +97,7 @@
         <div class="mobile-menu" id="mobile-menu">
             <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="gallery">Gallery</a></li>
                 <li><a href="contact">Contact</a></li>
             </ul>
         </div>
@@ -159,7 +205,7 @@
             </div>
             <div class="map animation-general-element">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d148.57590538842612!2d-1.0199395588971714!3d53.42887314955885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487909a61b73510b%3A0x28d40389eb737321!2sZaytuna%20Restaurant!5e0!3m2!1sen!2suk!4v1729821358661!5m2!1sen!2suk"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2377.2234581208927!2d-1.019506340219114!3d53.42871272331544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487909a61b73510b%3A0x28d40389eb737321!2sZaytuna%20Restaurant!5e0!3m2!1sen!2suk!4v1730520475702!5m2!1sen!2suk"
                     width="100%" height="100%" style="border: 0px; border-radius: var(--cards-border-radius);"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -172,7 +218,7 @@
                         menu features Syrian Classics.
                     </p>
                     <div class="social-media-links">
-                        <a class="social-media-a-tag" href="https://www.facebook.com/zaytunarestaurantbawtry"
+                        <a class="social-media-a-tag" href="https://www.facebook.com/zaytunarestaurantbawtry/"
                             target="_blank">
                             <svg class="svg-social-media">
                                 <use href="#svg-facebook"></use>
