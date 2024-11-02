@@ -408,7 +408,6 @@ p {
 }
 
 #container-food {
-    display: none;
     align-items: center;
 }
 
@@ -573,6 +572,9 @@ p {
     text-align: center;
     letter-spacing: 1px;
     white-space: nowrap;
+
+    font-size: var(--h6);
+    font-family: var(--font-3);
 
 }
 
@@ -999,6 +1001,12 @@ p {
 
 .menu-card.hidden {
     display: none;
+}
+
+.text-food-name {
+    font-size: var(--h4);
+    font-family: var(--font-1);
+    font-weight: 700;
 }
 
 /*----------------------------------------------------------------------------------------------------*/

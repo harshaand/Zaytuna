@@ -90,7 +90,7 @@ window.addEventListener("load", function () {
                         <img class="image-food" src="${Image[0].url}" alt="">
                         <div class="text-food">
                         <div class="food-name-description">
-                            <h5>${Name}</h5>
+                            <p class="text-food-name">${Name}</p>
                             <p>${Description}</p>
                         </div>
                 `;
@@ -100,7 +100,7 @@ window.addEventListener("load", function () {
                     
                         <div class="text-food">
                             <div class="food-name-description">
-                                <h5>${Name}</h5>
+                                <p class="text-food-name">${Name}</p>
                                 <p>${Description}</p>
                             </div>
                 `;
@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
                         if (OutOfStock === true) {
                             htmlinjection += `
                         </div>
-                    <h3 class="card-food-out-of-stock">Fresh out, sorry!<h3>
+                    <p class="card-food-out-of-stock">Fresh out, sorry!<p>
                     </div>
                     `}
                         else {
