@@ -17,6 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+
 // Route to fetch menu items from Airtable
 app.get('/api/menu', async (req, res) => {
     try {
@@ -32,7 +34,7 @@ app.get('/api/menu', async (req, res) => {
     }
 });
 
-// Route to fetch menu items from Airtable
+// Route to fetch reviews from Airtable
 app.get('/api/reviews', async (req, res) => {
     try {
         const response = await fetch(airtableApiUrlReviewsTable, {
@@ -46,6 +48,8 @@ app.get('/api/reviews', async (req, res) => {
         res.status(500).json({ error: 'Error fetching data from Airtable' });
     }
 });
+
+// Serve the index.html file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -55,11 +59,8 @@ const axios = require('axios');
 
 const BASE_URL = 'https://api.mailerlite.com/api/v2';
 
-// Use the built-in Express middleware to parse JSON requests
-app.use(express.json());
-
 app.post('/api/subscribe', async (req, res) => {
-    const { email, discount_code } = req.body; // Extracting name and email from request body
+    const { email, discount_code } = req.body; // Extracting email and discount_code from request body
     try {
         const subscriberData = {
             email: email,
@@ -83,10 +84,7 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-

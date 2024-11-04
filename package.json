@@ -1,10 +1,4 @@
 {
-  "name": "zaytuna",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
   "dependencies": {
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
