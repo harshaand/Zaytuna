@@ -1,5 +1,6 @@
 
 window.addEventListener("load", function () {
+    //-------------------------------------ANIMATIONS-------------------------------------
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
@@ -15,28 +16,28 @@ window.addEventListener("load", function () {
     gsap.to(".container-gallery-page", { duration: 0, visibility: "visible" });
     gsap.to(".brick", { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut", onComplete: () => { lightbox.style.opacity = "1"; } });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
-
+    //-------------------------------------NAVBAR-------------------------------------
     const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobile_menu = document.getElementById('mobile-menu');
 
     // Toggle mobile menu and hamburger animation
     hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+        mobile_menu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
-
+    //-------------------------------------GALLERY SECTION (LIGHTBOX)-------------------------------------
     const images = Array.from(document.querySelectorAll('.masonry img'));
     const lightbox_overlay = document.querySelector('.lightbox-overlay');
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxClickSwipeArea = document.querySelector('.lightbox-image-and-btns');
+    const lightbox_click_swipe_area = document.querySelector('.lightbox-image-and-btns');
     //const caption = document.getElementById('caption');
-    const thumbnailBar = document.getElementById('thumbnailBar');
-    const prevButton = document.getElementById('lightbox-left-btn');
-    const nextButton = document.getElementById('lightbox-right-btn');
-    const closeButton = document.getElementById('closeButton');
+    const thumbnail_bar = document.getElementById('thumbnail-bar');
+    const lightbox_left_btn = document.getElementById('lightbox-left-btn');
+    const lightbox_right_btn = document.getElementById('lightbox-right-btn');
+    const lightbox_close_btn = document.getElementById('lightbox_close_btn');
 
-    let currentIndex = 0;
+    let current_index = 0;
 
     function preventScrollOutsideThumbnailBar(event) {
         if (!event.target.closest('.thumbnail-bar')) {
@@ -45,7 +46,7 @@ window.addEventListener("load", function () {
     }
 
     function showLightbox() {
-        const selectedImage = images[currentIndex];
+        const selectedImage = images[current_index];
         lightboxImage.src = selectedImage.src;
         //caption.innerText = selectedImage.alt;
         highlightThumbnail();
@@ -65,13 +66,13 @@ window.addEventListener("load", function () {
 
     }
 
-    let isFirstHighlight = true; // Flag to track if it's the first highlight
+    let is_first_highlight = true; // Flag to track if it's the first highlight
 
     function highlightThumbnail() {
-        isFirstHighlight = true;
+        is_first_highlight = true;
 
-        thumbnailBar.querySelectorAll('img').forEach((img, i) => {
-            if (i === currentIndex) {
+        thumbnail_bar.querySelectorAll('img').forEach((img, i) => {
+            if (i === current_index) {
                 img.classList.add('active');
             }
             else {
@@ -79,15 +80,15 @@ window.addEventListener("load", function () {
             }
         });
 
-        const activeThumbnail = thumbnailBar.querySelectorAll('img')[currentIndex];
-        const thumbnailBarWidth = thumbnailBar.offsetWidth;
-        const thumbnailWidth = activeThumbnail.offsetWidth;
-        const thumbnailPosition = activeThumbnail.offsetLeft + thumbnailWidth / 2;
+        const active_thumbnail = thumbnail_bar.querySelectorAll('img')[current_index];
+        const thumbnail_bar_width = thumbnail_bar.offsetWidth;
+        const thumbnail_width = active_thumbnail.offsetWidth;
+        const thumbnail_position = active_thumbnail.offsetLeft + thumbnail_width / 2;
 
         // Only scroll if this is the first highlight
-        if (isFirstHighlight) {
-            thumbnailBar.scrollLeft = thumbnailPosition - thumbnailBarWidth / 2;
-            isFirstHighlight = false; // Disable further automatic scrolling
+        if (is_first_highlight) {
+            thumbnail_bar.scrollLeft = thumbnail_position - thumbnail_bar_width / 2;
+            is_first_highlight = false; // Disable further automatic scrolling
         }
     }
 
@@ -101,17 +102,17 @@ window.addEventListener("load", function () {
     }
 
     function nextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
+        current_index = (current_index + 1) % images.length;
         showLightbox();
     }
 
     function prevImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        current_index = (current_index - 1 + images.length) % images.length;
         showLightbox();
     }
 
     function changeImage(index) {
-        currentIndex = (index + images.length) % images.length;
+        current_index = (index + images.length) % images.length;
         showLightbox();
     }
 
@@ -121,28 +122,28 @@ window.addEventListener("load", function () {
         const thumbnail = img.cloneNode();
         thumbnail.addEventListener('click', () => changeImage(index));
         thumbnail.style.borderRadius = '4px';
-        thumbnailBar.appendChild(thumbnail);
+        thumbnail_bar.appendChild(thumbnail);
     });
 
 
 
     // Swipe functionality on the lightboxImage only
-    let startX;
+    let start_x;
 
-    lightboxClickSwipeArea.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
+    lightbox_click_swipe_area.addEventListener('touchstart', (e) => {
+        start_x = e.touches[0].clientX;
     });
 
-    lightboxClickSwipeArea.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        if (startX > endX + 50) nextImage();
-        else if (startX < endX - 50) prevImage();
+    lightbox_click_swipe_area.addEventListener('touchend', (e) => {
+        const end_x = e.changedTouches[0].clientX;
+        if (start_x > end_x + 50) nextImage();
+        else if (start_x < end_x - 50) prevImage();
     });
 
     // Event listeners for buttons
-    nextButton.addEventListener('click', nextImage);
-    prevButton.addEventListener('click', prevImage);
-    closeButton.addEventListener('click', closeLightbox);
+    lightbox_right_btn.addEventListener('click', nextImage);
+    lightbox_left_btn.addEventListener('click', prevImage);
+    lightbox_close_btn.addEventListener('click', closeLightbox);
 
 
     gsap.fromTo('.gallery-image', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });

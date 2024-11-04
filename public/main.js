@@ -1,17 +1,18 @@
 
 window.addEventListener("load", function () {
+    //-------------------------------------GALLERY SECTION (LIGHTBOX)-------------------------------------
     const images = Array.from(document.querySelectorAll('.gallery img'));
     const lightbox_overlay = document.querySelector('.lightbox-overlay');
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxClickSwipeArea = document.querySelector('.lightbox-image-and-btns');
+    const lightbox_image = document.getElementById('lightbox-image');
+    const lightbox_click_swipe_area = document.querySelector('.lightbox-image-and-btns');
     //const caption = document.getElementById('caption');
-    const thumbnailBar = document.getElementById('thumbnailBar');
-    const prevButton = document.getElementById('lightbox-left-btn');
-    const nextButton = document.getElementById('lightbox-right-btn');
-    const closeButton = document.getElementById('closeButton');
+    const thumbnail_bar = document.getElementById('thumbnail-bar');
+    const lightbox_left_btn = document.getElementById('lightbox-left-btn');
+    const lightbox_right_btn = document.getElementById('lightbox-right-btn');
+    const lightbox_close_btn = document.getElementById('lightbox-close-btn');
 
-    let currentIndex = 0;
+    let current_index = 0;
 
     function preventScrollOutsideThumbnailBar(event) {
         if (!event.target.closest('.thumbnail-bar')) {
@@ -20,9 +21,9 @@ window.addEventListener("load", function () {
     }
 
     function showLightbox() {
-        const selectedImage = images[currentIndex];
-        lightboxImage.src = selectedImage.src;
-        //caption.innerText = selectedImage.alt;
+        const selected_image = images[current_index];
+        lightbox_image.src = selected_image.src;
+        //caption.innerText = selected_image.alt;
         highlightThumbnail();
         window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });
@@ -32,21 +33,19 @@ window.addEventListener("load", function () {
                 { duration: 0.6, scale: 1, opacity: 1, ease: "back.out(1.7)" }
             );
             gsap.to(lightbox_overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
-
-
         }
         lightbox.style.display = 'flex';
         lightbox_overlay.style.display = 'block';
 
     }
 
-    let isFirstHighlight = true; // Flag to track if it's the first highlight
+    let is_first_highlight = true; // Flag to track if it's the first highlight
 
     function highlightThumbnail() {
-        isFirstHighlight = true;
+        is_first_highlight = true;
 
-        thumbnailBar.querySelectorAll('img').forEach((img, i) => {
-            if (i === currentIndex) {
+        thumbnail_bar.querySelectorAll('img').forEach((img, i) => {
+            if (i === current_index) {
                 img.classList.add('active');
             }
             else {
@@ -54,15 +53,15 @@ window.addEventListener("load", function () {
             }
         });
 
-        const activeThumbnail = thumbnailBar.querySelectorAll('img')[currentIndex];
-        const thumbnailBarWidth = thumbnailBar.offsetWidth;
-        const thumbnailWidth = activeThumbnail.offsetWidth;
-        const thumbnailPosition = activeThumbnail.offsetLeft + thumbnailWidth / 2;
+        const active_thumbnail = thumbnail_bar.querySelectorAll('img')[current_index];
+        const thumbnail_bar_width = thumbnail_bar.offsetWidth;
+        const thumbnail_width = active_thumbnail.offsetWidth;
+        const thumbnail_position = active_thumbnail.offsetLeft + thumbnail_width / 2;
 
         // Only scroll if this is the first highlight
-        if (isFirstHighlight) {
-            thumbnailBar.scrollLeft = thumbnailPosition - thumbnailBarWidth / 2;
-            isFirstHighlight = false; // Disable further automatic scrolling
+        if (is_first_highlight) {
+            thumbnail_bar.scrollLeft = thumbnail_position - thumbnail_bar_width / 2;
+            is_first_highlight = false; // Disable further automatic scrolling
         }
     }
 
@@ -76,17 +75,17 @@ window.addEventListener("load", function () {
     }
 
     function nextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
+        current_index = (current_index + 1) % images.length;
         showLightbox();
     }
 
     function prevImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        current_index = (current_index - 1 + images.length) % images.length;
         showLightbox();
     }
 
     function changeImage(index) {
-        currentIndex = (index + images.length) % images.length;
+        current_index = (index + images.length) % images.length;
         showLightbox();
     }
 
@@ -95,38 +94,37 @@ window.addEventListener("load", function () {
         img.addEventListener('click', () => changeImage(index));
         const thumbnail = img.cloneNode();
         thumbnail.addEventListener('click', () => changeImage(index));
-        thumbnailBar.appendChild(thumbnail);
+        thumbnail_bar.appendChild(thumbnail);
     });
 
+    // Swipe functionality on the lightbox_image only
+    let start_x;
 
-
-    // Swipe functionality on the lightboxImage only
-    let startX;
-
-    lightboxClickSwipeArea.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
+    lightbox_click_swipe_area.addEventListener('touchstart', (e) => {
+        start_x = e.touches[0].clientX;
     });
 
-    lightboxClickSwipeArea.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        if (startX > endX + 50) nextImage();
-        else if (startX < endX - 50) prevImage();
+    lightbox_click_swipe_area.addEventListener('touchend', (e) => {
+        const end_x = e.changedTouches[0].clientX;
+        if (start_x > end_x + 50) nextImage();
+        else if (start_x < end_x - 50) prevImage();
     });
 
-    // Event listeners for buttons
-    nextButton.addEventListener('click', nextImage);
-    prevButton.addEventListener('click', prevImage);
-    closeButton.addEventListener('click', closeLightbox);
-
+    lightbox_right_btn.addEventListener('click', nextImage);
+    lightbox_left_btn.addEventListener('click', prevImage);
+    lightbox_close_btn.addEventListener('click', closeLightbox);
 
     gsap.fromTo('.gallery-image', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.1, ease: "power1.inOut" });
+
+
+
+
+    //-------------------------------------REVIEWS SECTION-------------------------------------
     const reviews_slider = document.querySelector(".slider");
     const reviews_left_btn = document.querySelector("#reviews-left-btn");
     const reviews_right_btn = document.querySelector("#reviews-right-btn");
     updateSliderBtnVisibility(reviews_slider, reviews_left_btn, reviews_right_btn);
-
-
 
     function updateSliderBtnVisibility(slider, left_btn, right_btn) {
         function updateButtonVisibility() {
@@ -170,8 +168,8 @@ window.addEventListener("load", function () {
         resizeObserver.observe(slider);
 
     }
-
-
+    //-------------------------------------API CARDS (menu and reviews)-------------------------------------
+    /*
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
     const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
     // Fetch menu items on page load
@@ -213,7 +211,7 @@ window.addEventListener("load", function () {
 
     // Function to display menu items
     function displayMenuItems(items) {
-        container_menu_cards.innerHTML = ''; // Clear the container
+        container_menu_cards.innerHTML = '';
         let htmlinjection = '';
         const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
         const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
@@ -267,7 +265,7 @@ window.addEventListener("load", function () {
     }
 
     function displayReviewItems(items) {
-        reviews_slider.innerHTML = ''; // Clear the container
+        reviews_slider.innerHTML = '';
         let htmlinjection = '<div id="cards-spacer-reviews"></div>';
         const filteredRecords = items.filter(item => item.fields.Display != null);
         const sortedRecords = filteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
@@ -291,7 +289,6 @@ window.addEventListener("load", function () {
         gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     }
 
-    // Get the button and menu elements
     const buttons = document.querySelectorAll('.menu-btn');
     document.getElementById('breakfast-btn').classList.add('active');
     buttons.forEach(button => {
@@ -328,5 +325,5 @@ window.addEventListener("load", function () {
             }
         });
     });
-
+*/
 });

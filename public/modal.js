@@ -1,29 +1,29 @@
 window.addEventListener("load", function () {
-    //------------------------------------------------------MODALS----------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------
     const serverApiSubscribeUrl = 'https://zaytunacuisine.com/api/subscribe';
 
-    const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
-    const closeBtn = document.getElementById('modal-close-button');
-    const form = document.getElementById('form-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDescription = document.getElementById('modal-description');
+
+    const modal_desktop = document.getElementById('modal-desktop');
+    const close_button_desktop = document.getElementById('modal-close-button-desktop');
+    const form_desktop = document.getElementById('form-modal-desktop');
+    const modal_title_desktop = document.getElementById('modal-title-desktop');
+    const modal_description_desktop = document.getElementById('modal-description-desktop');
 
     const modal_mobile = document.getElementById('modal-mobile');
-    const closeBtn_mobile = document.getElementById('modal-close-button-mobile');
+    const close_button_mobile = document.getElementById('modal-close-button-mobile');
     const form_mobile = document.getElementById('form-modal-mobile');
-    const modalTitle_mobile = document.getElementById('modal-title-mobile');
-    const modalDescription_mobile = document.getElementById('modal-description-mobile');
+    const modal_title_mobile = document.getElementById('modal-title-mobile');
+    const modal_description_mobile = document.getElementById('modal-description-mobile');
 
     const form_footer = document.getElementById('form-modal-footer');
-    const modalTitle_footer = document.getElementById('modal-title-footer');
-    const modalDescription_footer = document.getElementById('modal-description-footer');
+    const modal_title_footer = document.getElementById('modal-title-footer');
+    const modal_description_footer = document.getElementById('modal-description-footer');
     modalFooter();
+    //-------------------------------MODAL FUNCTIONALITY (POST REQUEST, DISCOUNT CODE, LOCAL STORAGE)-------------------------------
 
     async function subscribeUser(email, discount_code) {
         try {
-            const response = await fetch(serverApiSubscribeUrl, { // Adjust the URL if the server is hosted elsewhere
+            const response = await fetch(serverApiSubscribeUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,11 +33,6 @@ window.addEventListener("load", function () {
 
             const data = await response.json();
 
-            if (response.ok) {
-                console.log('Subscriber added successfully:', data);
-            } else {
-                console.error('Error subscribing user:', data);
-            }
         } catch (error) {
             console.error('Error:', error);
         }
@@ -46,7 +41,6 @@ window.addEventListener("load", function () {
     function generateDiscountCode(email) {
         const prefix = email.split('@')[0].toUpperCase().slice(0, 4);
         const randomPart = Math.random().toString(36).substring(2, 10 - prefix.length).toUpperCase();
-        console.log(prefix, randomPart)
         return prefix + randomPart;
     }
 
@@ -56,11 +50,10 @@ window.addEventListener("load", function () {
         displayModal();
     }
 
-    //-----------------------------------------------------DESKTOP---------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------
-    closeBtn.onclick = function () {
+    //-----------------------------------------------------DESKTOP MODAL---------------------------------------------------------------------
+    close_button_desktop.onclick = function () {
         // Hide modal and overlay
-        gsap.to(modal, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("myModal").style.display = "none"; } });
+        gsap.to(modal_desktop, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("modal-desktop").style.display = "none"; } });
         gsap.to(overlay, {
             duration: 0.3, opacity: 0, onComplete: () => { document.getElementById("overlay").style.display = "none"; }
         });
@@ -78,20 +71,21 @@ window.addEventListener("load", function () {
     modal_timer = setTimeout(function () {
         modal_countdown_display = true;
     }, 5000);
+
     function showModal(event) {
-        if (event.clientY < 10 && modal_countdown_display === true && window.innerWidth > 480 && modal.style.display !== 'flex') {
+        if (event.clientY < 10 && modal_countdown_display === true && window.innerWidth > 480 && modal_desktop.style.display !== 'flex') {
             gsap.to(overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
-            gsap.fromTo(modal,
+            gsap.fromTo(modal_desktop,
                 { scale: 0.7, opacity: 0, visibility: "visible" },
                 { duration: 0.6, scale: 1, opacity: 1, ease: "elastic.out(1, 0.75)" }
             );
-            modal.style.display = 'flex';
+            modal_desktop.style.display = 'flex';
             overlay.style.display = 'block';
         }
     }
     function closeModal() {
         if (window.innerWidth <= 480) {
-            gsap.to(modal, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("myModal").style.display = "none"; } });
+            gsap.to(modal_desktop, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { document.getElementById("modal-desktop").style.display = "none"; } });
             gsap.to(overlay, { duration: 0.3, opacity: 0, onComplete: () => { document.getElementById("overlay").style.display = "none"; } });
         }
     }
@@ -100,9 +94,7 @@ window.addEventListener("load", function () {
         window.addEventListener('resize', closeModal);
         document.addEventListener('mousemove', showModal);
 
-        // Add an event listener for the form's submit event
-        form.addEventListener('submit', function (event) {
-            console.log('yeehaw');
+        form_desktop.addEventListener('submit', function (event) {
 
             // Prevent the default form submission
             event.preventDefault();
@@ -114,17 +106,16 @@ window.addEventListener("load", function () {
 
             if (email) {
                 localStorage.setItem('userEmail', email);
-                form.style.display = 'none';
-                modalTitle.innerHTML = "You're in!🎉";
-                modalDescription.style.lineHeight = '140%';
-                modalDescription.style.fontFamily = 'var(--font-1)'
-                modalDescription.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                form_desktop.style.display = 'none';
+                modal_title_desktop.innerHTML = "You're in!🎉";
+                modal_description_desktop.style.lineHeight = '140%';
+                modal_description_desktop.style.fontFamily = 'var(--font-1)'
+                modal_description_desktop.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
             }
         });
 
     }
-    //----------------------------------------------------MOBILE--------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------MOBILE MODAL--------------------------------------------------------------
     let modal_mobile_timer;
     //Modal after 10 seconds
     if (localStorage.getItem('dontShowModal') !== 'true') {
@@ -136,7 +127,7 @@ window.addEventListener("load", function () {
         }, 15000);
     }
 
-    closeBtn_mobile.onclick = function () {
+    close_button_mobile.onclick = function () {
         gsap.to(modal_mobile, { y: "100%", opacity: 0, duration: 0.5, ease: "power2.in", onComplete: () => { modal_mobile.style.display = "none"; } });
 
 
@@ -172,10 +163,10 @@ window.addEventListener("load", function () {
             if (email) {
                 localStorage.setItem('userEmail', email);
                 form_mobile.style.display = 'none';
-                modalTitle_mobile.innerHTML = "You're in!🎉";
-                modalDescription_mobile.style.lineHeight = '140%';
-                modalDescription_mobile.style.fontFamily = 'var(--font-1)';
-                modalDescription_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_title_mobile.innerHTML = "You're in!🎉";
+                modal_description_mobile.style.lineHeight = '140%';
+                modal_description_mobile.style.fontFamily = 'var(--font-1)';
+                modal_description_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
                 modal_mobile.style.minHeight = '30vh';
                 modal_mobile.style.padding = '36px var(--container-spacing-horizontal) calc(36px + calc(var(--cards-border-radius))) var(--container-spacing-horizontal)';
             }
@@ -188,8 +179,8 @@ window.addEventListener("load", function () {
             });
         }
     }
-    //----------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------MOBILE FOOTER--------------------------------------------------------------
+
     function modalFooter() {
 
         form_footer.addEventListener('submit', function (event) {
@@ -200,8 +191,8 @@ window.addEventListener("load", function () {
 
             if (email) {
                 form_footer.style.display = 'none';
-                modalTitle_footer.innerHTML = "You're in!🎉";
-                modalDescription_footer.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_title_footer.innerHTML = "You're in!🎉";
+                modal_description_footer.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
             }
         });
     }

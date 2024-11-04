@@ -1,5 +1,6 @@
 
 window.addEventListener("load", function () {
+    //-------------------------------------ANIMATIONS-------------------------------------
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
@@ -15,22 +16,20 @@ window.addEventListener("load", function () {
     gsap.to(".container-menu-page", { duration: 0, visibility: "visible" });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
+    //-------------------------------------NAVBAR-------------------------------------
     const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobile_menu = document.getElementById('mobile-menu');
 
-    // Toggle mobile menu and hamburger animation
     hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+        mobile_menu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
 
-
-
+    //-------------------------------------MENU API CALL-------------------------------------
     const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
-    // Fetch menu items on page load
+
     fetchMenuItems();
 
-    // Function to fetch data from the server
     async function fetchMenuItems() {
         try {
             const response = await fetch(serverApiMenuUrl);
@@ -45,34 +44,29 @@ window.addEventListener("load", function () {
         }
     }
 
-    // Function to display menu items
-
-
-
+    //-------------------------------------MENU DISPLAY-------------------------------------
     const container_menu = document.querySelector(".container-menu");
-    // Function to display menu items
+
     function displayMenuItems(items) {
         const menu_time = {
             Breakfast: "Served 9 AM - 11 AM",
             Lunch: "Served 11 AM - 4 PM",
             Dinner: "Served 4 PM - 10 PM "
         };
-        const uniqueCategories = [...new Set(items.map(item => item.fields.Category))];
-        const orderedCategories = uniqueCategories.sort((a, b) => parseFloat(a) - parseFloat(b));
+        const unique_categories = [...new Set(items.map(item => item.fields.Category))];
+        const ordered_categories = unique_categories.sort((a, b) => parseFloat(a) - parseFloat(b));
 
-        const displayFilteredRecords = items.filter(item => item.fields.Display);
-
+        const display_filtered_records = items.filter(item => item.fields.Display);
 
         let htmlinjection = '';
-
 
         for (const time in menu_time) {
             htmlinjection += `
                                 <div class="container-menu-page-time-cards hidden" id="container-${time}-cards">
                                 <p class="description-menu animation-section-p"> ${menu_time[time]}</p>`;
-            const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
-            const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
-            orderedCategories.forEach(category => {
+            const time_filtered_records = display_filtered_records.filter(item => item.fields.MenuTime === time);
+            const sortedRecords = time_filtered_records.sort((a, b) => a.fields.Order - b.fields.Order);
+            ordered_categories.forEach(category => {
                 //<div class="category-${category.replace(/[^a-zA-Z/s]/g, '')}">
                 const filteredRecords = sortedRecords.filter(item => item.fields.Category === category);
                 if (filteredRecords.length != 0) {
@@ -139,7 +133,6 @@ window.addEventListener("load", function () {
 
     }
 
-    // Get the button and menu elements
     const buttons = document.querySelectorAll('.menu-btn');
     document.getElementById('breakfast-btn').classList.add('active');
     buttons.forEach(button => {

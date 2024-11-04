@@ -1,9 +1,6 @@
-/*Look at https://www.federalistpig.com/ for inspo */
 window.addEventListener("load", function () {
-
-    // Hide loading screen
+    //-------------------------------------ANIMATIONS-------------------------------------
     gsap.to("#loading-screen", { duration: 1, opacity: 0, display: 'none' });
-
     gsap.from(".logo", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".nav-links", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     gsap.from(".animation-mobile-btns", { duration: 1, delay: .6, x: 30, opacity: 0, ease: "power2.inOut" });
@@ -22,14 +19,13 @@ window.addEventListener("load", function () {
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
     document.querySelector('.column-hero-left').classList.add('background-animation');
-
-
+    //-------------------------------------NAV MOBILE-------------------------------------
     const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobile_menu = document.getElementById('mobile-menu');
 
     // Toggle mobile menu and hamburger animation
     hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+        mobile_menu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
 });
