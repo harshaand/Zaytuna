@@ -172,8 +172,8 @@ window.addEventListener("load", function () {
     }
 
 
-    const serverApiMenuUrl = 'https://www.zaytunarestaurant-bawtry.com/api/menu';
-    const serverApiReviewsUrl = 'https://www.zaytunarestaurant-bawtry.com/api/reviews';
+    const serverApiMenuUrl = `${window.location.origin}/api/menu`;
+    const serverApiReviewsUrl = `${window.location.origin}/api/reviews`;
     // Fetch menu items on page load
 
     fetchMenuItems();

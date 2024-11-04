@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
 
 
 
-    const serverApiMenuUrl = 'https://www.zaytunarestaurant-bawtry.com/api/menu';
+    const serverApiMenuUrl = `${window.location.origin}/api/menu`;
     // Fetch menu items on page load
     fetchMenuItems();
 

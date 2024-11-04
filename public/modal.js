@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
     //------------------------------------------------------MODALS----------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
-    const serverApiSubscribeUrl = 'https://www.zaytunarestaurant-bawtry.com/api/subscribe';
+    const serverApiSubscribeUrl = `${window.location.origin}/api/subscribe`;;
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
