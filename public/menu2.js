@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
     });
 
     //-------------------------------------iFrame PDF-------------------------------------
-    const pdfUrl = '/public/menus/zaytuna-breakfast-menu.pdf';
+    const pdfUrl = '/menus/zaytuna-breakfast-menu.pdf';
 
     // Initialize PDF.js
     const pdfjsLib = window['pdfjs-dist/build/pdf'];
