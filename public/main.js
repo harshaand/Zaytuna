@@ -171,61 +171,61 @@ window.addEventListener("load", function () {
 
     }
 
-
-    const serverApiMenuUrl = 'https://www.zaytunarestaurant-bawtry.com/api/menu';
-    const serverApiReviewsUrl = 'https://www.zaytunarestaurant-bawtry.com/api/reviews';
-    // Fetch menu items on page load
-
-    fetchMenuItems();
-    fetchReviewsItems();
-
-    const container_menu_cards = document.querySelector(".container-menu-cards");
-
-    // Function to fetch data from the server
-    async function fetchMenuItems() {
-        try {
-            const response = await fetch(serverApiMenuUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data from server');
+    /*
+        const serverApiMenuUrl = 'https://www.zaytunarestaurant-bawtry.com/api/menu';
+        const serverApiReviewsUrl = 'https://www.zaytunarestaurant-bawtry.com/api/reviews';
+        // Fetch menu items on page load
+    
+        fetchMenuItems();
+        fetchReviewsItems();
+    
+        const container_menu_cards = document.querySelector(".container-menu-cards");
+    
+        // Function to fetch data from the server
+        async function fetchMenuItems() {
+            try {
+                const response = await fetch(serverApiMenuUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data from server');
+                }
+                const data = await response.json();
+                displayMenuItems(data.records);
+            } catch (error) {
+                console.error(error);
+                alert('Error fetching menu items. Please check the console for more details.');
             }
-            const data = await response.json();
-            displayMenuItems(data.records);
-        } catch (error) {
-            console.error(error);
-            alert('Error fetching menu items. Please check the console for more details.');
         }
-    }
-
-    // Function to fetch data from the server
-    async function fetchReviewsItems() {
-        try {
-            const response = await fetch(serverApiReviewsUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data from server');
+    
+        // Function to fetch data from the server
+        async function fetchReviewsItems() {
+            try {
+                const response = await fetch(serverApiReviewsUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data from server');
+                }
+                const data = await response.json();
+                displayReviewItems(data.records);
+            } catch (error) {
+                console.error(error);
+                alert('Error fetching menu items. Please check the console for more details.');
             }
-            const data = await response.json();
-            displayReviewItems(data.records);
-        } catch (error) {
-            console.error(error);
-            alert('Error fetching menu items. Please check the console for more details.');
         }
-    }
-
-    // Function to display menu items
-    function displayMenuItems(items) {
-        container_menu_cards.innerHTML = ''; // Clear the container
-        let htmlinjection = '';
-        const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
-        const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
-        menu_time.forEach(time => {
-            htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
-            const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
-            const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
-            sortedRecords.forEach(item => {
-                const { Name, Image, OutOfStock } = item.fields;
-                const Description = item.fields.Description != null ? item.fields.Description : ""
-                if (item.fields.Image != null) {
-                    htmlinjection += `
+    
+        // Function to display menu items
+        function displayMenuItems(items) {
+            container_menu_cards.innerHTML = ''; // Clear the container
+            let htmlinjection = '';
+            const menu_time = ['Breakfast', 'Lunch', 'Dinner'];
+            const displayFilteredRecords = items.filter(item => item.fields.Display && item.fields.Feature != null);
+            menu_time.forEach(time => {
+                htmlinjection += `<div class="container-menu-time-cards hidden" id="container-${time}-cards">`;
+                const timeFilteredRecords = displayFilteredRecords.filter(item => item.fields.MenuTime === time);
+                const sortedRecords = timeFilteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
+                sortedRecords.forEach(item => {
+                    const { Name, Image, OutOfStock } = item.fields;
+                    const Description = item.fields.Description != null ? item.fields.Description : ""
+                    if (item.fields.Image != null) {
+                        htmlinjection += `
                             <div class="card-food" id="card-feature-food">
                                 <img class="image-food" src="${Image[0].url}" alt="">
                                 <div class="text-food">
@@ -234,8 +234,8 @@ window.addEventListener("load", function () {
                                     <p>${Description}</p>
                                 </div>
                         `;
-                } else {
-                    htmlinjection += `
+                    } else {
+                        htmlinjection += `
                            <div class="card-food" id="card-feature-food">
                             
                                 <div class="text-food">
@@ -244,36 +244,36 @@ window.addEventListener("load", function () {
                                         <p>${Description}</p>
                                     </div>
                         `;
-                }
-                container_menu_cards.innerHTML = htmlinjection;
-                if (OutOfStock === true) {
-                    htmlinjection += `
+                    }
+                    container_menu_cards.innerHTML = htmlinjection;
+                    if (OutOfStock === true) {
+                        htmlinjection += `
                                 </div>
                             <p class="card-food-out-of-stock">Fresh out, sorry!</p>
                             </div>
                             `}
-                else {
-                    htmlinjection += `
+                    else {
+                        htmlinjection += `
                                 </div>
                             </div>
                         `;
-                }
-            });
-            htmlinjection += `
+                    }
+                });
+                htmlinjection += `
                 </div> `;
-        })
-        document.getElementById('container-Breakfast-cards').classList.remove('hidden');
-        gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
-    }
-
-    function displayReviewItems(items) {
-        reviews_slider.innerHTML = ''; // Clear the container
-        let htmlinjection = '<div id="cards-spacer-reviews"></div>';
-        const filteredRecords = items.filter(item => item.fields.Display != null);
-        const sortedRecords = filteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
-        sortedRecords.forEach(item => {
-            const { Name, Image, ReviewText, URL, Source } = item.fields;
-            htmlinjection += `
+            })
+            document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+            gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+        }
+    
+        function displayReviewItems(items) {
+            reviews_slider.innerHTML = ''; // Clear the container
+            let htmlinjection = '<div id="cards-spacer-reviews"></div>';
+            const filteredRecords = items.filter(item => item.fields.Display != null);
+            const sortedRecords = filteredRecords.sort((a, b) => a.fields.Order - b.fields.Order);
+            sortedRecords.forEach(item => {
+                const { Name, Image, ReviewText, URL, Source } = item.fields;
+                htmlinjection += `
                 <a href="${URL}" class="card-review" target="_blank">
                     <p class="text-review">${ReviewText}</p>
                     <div class="info-review">
@@ -283,50 +283,50 @@ window.addEventListener("load", function () {
                     </div>
                 </a>
                 `;
-
-        });
-        htmlinjection += `
+    
+            });
+            htmlinjection += `
                 <div id="cards-spacer-reviews"></div>`;
-        reviews_slider.innerHTML = htmlinjection;
-        gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
-    }
-
-    // Get the button and menu elements
-    const buttons = document.querySelectorAll('.menu-btn');
-    document.getElementById('breakfast-btn').classList.add('active');
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Remove the 'active' class from all buttons
-            buttons.forEach(btn => btn.classList.remove('active'));
-            buttons.forEach(btn => btn.disabled = false);
-            this.classList.add('active');
-            this.disabled = true;
-
-
-            // Hide all menu cards
-            document.getElementById('container-Breakfast-cards').classList.add('hidden');
-            document.getElementById('container-Breakfast-cards').classList.remove('visible');
-            document.getElementById('container-Lunch-cards').classList.add('hidden');
-            document.getElementById('container-Lunch-cards').classList.remove('visible');
-            document.getElementById('container-Dinner-cards').classList.add('hidden');
-            document.getElementById('container-Dinner-cards').classList.remove('visible');
-
-
-            // Show the corresponding menu cards based on the button clicked
-            if (this.id === 'breakfast-btn') {
-                document.getElementById('container-Breakfast-cards').classList.remove('hidden');
-                document.getElementById('container-Breakfast-cards').classList.add('visible');
-                gsap.fromTo('#container-Breakfast-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
-            } else if (this.id === 'lunch-btn') {
-                document.getElementById('container-Lunch-cards').classList.remove('hidden');
-                document.getElementById('container-Lunch-cards').classList.add('visible');
-                gsap.fromTo('#container-Lunch-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
-            } else if (this.id === 'dinner-btn') {
-                document.getElementById('container-Dinner-cards').classList.remove('hidden');
-                document.getElementById('container-Dinner-cards').classList.add('visible');
-                gsap.fromTo('#container-Dinner-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
-            }
+            reviews_slider.innerHTML = htmlinjection;
+            gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+        }
+    
+        // Get the button and menu elements
+        const buttons = document.querySelectorAll('.menu-btn');
+        document.getElementById('breakfast-btn').classList.add('active');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove the 'active' class from all buttons
+                buttons.forEach(btn => btn.classList.remove('active'));
+                buttons.forEach(btn => btn.disabled = false);
+                this.classList.add('active');
+                this.disabled = true;
+    
+    
+                // Hide all menu cards
+                document.getElementById('container-Breakfast-cards').classList.add('hidden');
+                document.getElementById('container-Breakfast-cards').classList.remove('visible');
+                document.getElementById('container-Lunch-cards').classList.add('hidden');
+                document.getElementById('container-Lunch-cards').classList.remove('visible');
+                document.getElementById('container-Dinner-cards').classList.add('hidden');
+                document.getElementById('container-Dinner-cards').classList.remove('visible');
+    
+    
+                // Show the corresponding menu cards based on the button clicked
+                if (this.id === 'breakfast-btn') {
+                    document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+                    document.getElementById('container-Breakfast-cards').classList.add('visible');
+                    gsap.fromTo('#container-Breakfast-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                } else if (this.id === 'lunch-btn') {
+                    document.getElementById('container-Lunch-cards').classList.remove('hidden');
+                    document.getElementById('container-Lunch-cards').classList.add('visible');
+                    gsap.fromTo('#container-Lunch-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                } else if (this.id === 'dinner-btn') {
+                    document.getElementById('container-Dinner-cards').classList.remove('hidden');
+                    document.getElementById('container-Dinner-cards').classList.add('visible');
+                    gsap.fromTo('#container-Dinner-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                }
+            });
         });
-    });
-
+    */
 });
