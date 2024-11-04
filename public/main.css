@@ -84,8 +84,11 @@
 
 
     --font-1: 'Helvetica';
+    --font-1-backup: Arial;
     --font-2: 'EBGaramond';
+    --font-2-backup: Garamond;
     --font-3: 'Qwigley';
+    --font-3-backup: 'Brush Script MT';
 
     --nav-bar-colour: 60, 129, 141;
     --nav-bar-btn-colour: rgba(0, 0, 0, 0.2);
@@ -109,15 +112,13 @@ body {
     overscroll-behavior-x: none;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    /* Enable smooth scrolling for iOS */
     scroll-behavior: smooth;
-    /* Optional: Smooth scrolling */
 }
 
 body {
     color: var(--font-black);
     overflow: visible;
-    font-family: var(--font-1), sans-serif;
+    font-family: var(--font-1), var(--font-1-backup);
     background-color: var(--white);
     margin: 0;
     padding: 0;
@@ -150,7 +151,7 @@ h1 {
     padding: 0;
     margin: 0;
     line-height: 0.9;
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     font-weight: 400;
     font-size: var(--h1);
     text-align: center;
@@ -159,7 +160,7 @@ h1 {
 h3 {
     padding: 0;
     margin: 0;
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     font-weight: 400;
     font-size: var(--h3);
 }
@@ -169,7 +170,7 @@ h2 {
     margin: 0;
     color: var(--secondary-accent-colour);
     line-height: 0.9;
-    font-family: var(--font-3);
+    font-family: var(--font-3), var(--font-3-backup);
     font-weight: 400;
     font-size: var(--h2);
 }
@@ -177,7 +178,7 @@ h2 {
 h5 {
     padding: 0;
     margin: 0 0 4px 0;
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     font-weight: 400;
     font-size: var(--h5);
 }
@@ -185,7 +186,7 @@ h5 {
 h4 {
     padding: 0;
     margin: 0;
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 700;
     font-size: var(--h4);
 }
@@ -193,7 +194,7 @@ h4 {
 h6 {
     padding: 0;
     margin: 0;
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 400;
     font-size: var(--h6);
     color: var(--secondary-colour);
@@ -831,7 +832,7 @@ header {
 .menu-pdf-btn span {
     position: relative;
     z-index: 2;
-    font-family: 'Helvetica';
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 300;
 }
 
@@ -964,7 +965,7 @@ header {
 .text-review {
     padding: 0;
     margin: 0;
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 400;
     font-size: var(--p2);
     width: 100%;
@@ -972,7 +973,7 @@ header {
 
 .text-reviewer-name {
     font-size: var(--h4);
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 700;
 }
 
@@ -980,7 +981,7 @@ header {
     padding: 0;
     margin: 0;
     margin-top: -4px;
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 400;
     font-style: italic;
     font-size: var(--p3);
@@ -1262,7 +1263,7 @@ header {
     transition: all 0.2s linear;
     cursor: pointer;
 
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     font-weight: 400;
     font-size: var(--h5);
 
@@ -1284,7 +1285,7 @@ header {
 }
 
 .heading-menu-time {
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     color: var(--font-black);
     font-size: var(--h5);
 }
@@ -1325,7 +1326,7 @@ header {
 }
 
 .heading-menu-category {
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     color: var(--font-black);
 }
 
@@ -1396,7 +1397,7 @@ header {
 
 .text-food-name {
     font-size: var(--h4);
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 700;
 }
 
@@ -1419,7 +1420,7 @@ header {
     letter-spacing: 1px;
     white-space: nowrap;
     font-size: var(--h6);
-    font-family: var(--font-3);
+    font-family: var(--font-3), var(--font-3-backup);
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++CONTACT PAGE++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -1522,7 +1523,7 @@ header {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: var(--p2);
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     transition: border-color 0.3s;
 }
 
@@ -1582,7 +1583,7 @@ header {
     width: 100%;
     font-size: 24px;
     color: var(--font-white);
-    font-family: 'Helvetica';
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 300;
 }
 
@@ -1592,7 +1593,7 @@ header {
 
 .modal-p-mobile {
     text-align: center;
-    font-family: 'EBGaramond';
+    font-family: var(--font-2), var(--font-2-backup);
     font-size: 16px;
     width: 100%;
 }
@@ -1612,7 +1613,7 @@ header {
     border: 0px;
     border-radius: var(--cards-border-radius);
     font-size: 16px;
-    font-family: var(--font-2);
+    font-family: var(--font-2), var(--font-2-backup);
     color: var(--secondary-accent-colour);
     transition: border-color 0.3s;
     box-sizing: border-box;
@@ -1630,7 +1631,7 @@ header {
 }
 
 .text-unsubscribe-mobile {
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-size: 14px;
     text-align: center;
 }
@@ -1672,7 +1673,7 @@ header {
 
 .modal-p-mobile {
     text-align: center;
-    font-family: 'Helvetica';
+    font-family: var(--font-1), var(--font-1-backup);
     font-size: 16px;
     width: 100%;
 }
@@ -1745,7 +1746,7 @@ header {
 .modal-h-desktop {
     text-align: center;
     margin-bottom: -8px;
-    font-family: 'Helvetica';
+    font-family: var(--font-1), var(--font-1-backup);
     font-weight: 300;
     font-style: italic;
     font-size: var(--h3);
@@ -1755,7 +1756,7 @@ header {
 
 .modal-p {
     text-align: center;
-    font-family: 'EBGaramond';
+    font-family: var(--font-2), var(--font-2-backup);
     color: var(--font-black);
     font-size: var(--p1);
     line-height: 208%;
@@ -1779,7 +1780,7 @@ header {
     border: 1px solid var(--secondary-accent-colour);
     border-radius: var(--cards-border-radius);
     font-size: var(--p1);
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     transition: border-color 0.3s;
     box-sizing: border-box;
 }
@@ -1797,7 +1798,7 @@ header {
 
 .text-unsubscribe {
     color: var(--font-black);
-    font-family: var(--font-1);
+    font-family: var(--font-1), var(--font-1-backup);
     font-size: var(--p2);
     text-align: center;
 }
