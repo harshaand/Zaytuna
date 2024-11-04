@@ -140,6 +140,7 @@ body {
     background-color: var(--white);
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 
 }
 
@@ -225,6 +226,32 @@ p {
 
 .h1-coloured {
     color: var(--font-black);
+}
+
+#pdf-viewer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
+    box-sizing: border-box;
+    border-radius: var(--cards-border-radius);
+    background-color: var(--secondary-accent-colour);
+
+}
+
+.pdf-page {
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    width: var(--container-width-2);
+    height: auto;
+    max-width: 90vh;
 }
 
 /*-------------------------------------CTA buttons-------------------------------------*/
