@@ -1545,7 +1545,7 @@ header {
 
     gap: 20px;
     color: var(--font-white);
-    padding: 36px var(--container-spacing-horizontal) calc(12px + calc(var(--cards-border-radius))) var(--container-spacing-horizontal);
+    padding: 28px var(--container-spacing-horizontal) calc(16px + calc(var(--cards-border-radius))) var(--container-spacing-horizontal);
     box-sizing: border-box;
     border-radius: var(--cards-border-radius);
 }
