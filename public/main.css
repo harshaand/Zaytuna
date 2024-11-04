@@ -1,3 +1,19 @@
+/* HOW THE CSS IS STRUCUTRED
+- Universal stuff (fonts/root vars/headings/header/footer) css is at the top.
+- Main css is in the middle
+- modal code + media queries are at the bottom.
+
+- Each web page's css starts with:
+++++++++++++++++++++++++++++++++++++++++++++++++PAGE NAME++++++++++++++++++++++++++++++++++++++++++++++++
+- Each major section inside the page starts with
+-------------------------------------SECTION NAME-------------------------------------
+- Each small part of the section starts with:
+smaller section name/description-------------------------------------
+- There are some parts of the CSS where it's used on the home page AND on a dedicated page.
+  E.g. the css for the gallery's lightbox is used on the home page and on the gallery page.
+  In this case, the css for the lightbox will be under the Gallery page's css and any css unique to the homepage
+  will be under the home page's css.
+*/
 @font-face {
     font-family: 'EBGaramond';
     src: url('fonts/EBGaramond-Regular.ttf') format('truetype');
@@ -69,6 +85,8 @@
 
     --cards-border-radius: 16px;
 
+    --card-gallery-width: calc((var(--container-width)*0.9)/6);
+    --card-gallery-gap: calc((var(--container-width)*0.1)/5);
     --card-food-width: calc((var(--container-width)*0.9)/6);
     --card-food-gap: calc((var(--container-width)*0.1)/5);
     --card-reviews-width: calc((var(--container-width)*0.95)/4);
@@ -410,7 +428,6 @@ header {
     justify-content: center;
     align-items: center;
     gap: 28px;
-
 }
 
 .columns-footer-top-row {
@@ -471,8 +488,6 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-
-
 }
 
 .column-footer-bottom-row {
@@ -483,7 +498,6 @@ header {
     align-items: center;
     text-align: center;
     width: 100%;
-
 }
 
 .column-footer-bottom-row p {
@@ -667,7 +681,6 @@ header {
     line-height: 0.9;
 }
 
-
 .container-about p {
     width: 100%;
     max-width: 600px;
@@ -818,7 +831,6 @@ header {
 
     position: relative;
     overflow: hidden;
-
 }
 
 .menu-pdf-btn span {
@@ -849,7 +861,6 @@ header {
 }
 
 .menu-pdf-btn:hover:before {
-
     background-color: rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 
@@ -930,7 +941,6 @@ header {
     scroll-snap-align: start;
     scroll-margin-left: var(--container-spacing-horizontal);
     transition: all 0.2s ease;
-
 }
 
 .card-review:hover {
@@ -994,7 +1004,7 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--card-food-gap);
+    gap: var(--card-gallery-gap);
     align-items: center;
     justify-content: center;
     width: var(--container-width);
@@ -1007,7 +1017,7 @@ header {
 }
 
 .gallery img {
-    width: var(--card-food-width);
+    width: var(--card-gallery-width);
     aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
@@ -1019,8 +1029,6 @@ header {
 .gallery img:hover {
     transform: scale(1.03);
 }
-
-
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++GALLERY PAGE++++++++++++++++++++++++++++++++++++++++++++++++*/
 .section-gallery {
@@ -1068,7 +1076,6 @@ header {
     justify-content: space-between;
     flex-direction: column;
     z-index: 11;
-
 }
 
 .lightbox-image-and-btns {
@@ -1164,7 +1171,6 @@ header {
     opacity: 0.6;
     transition: transform 0.3s ease, opacity 0.3s ease;
     border: 2px solid rgba(255, 255, 255, 0);
-
 }
 
 .thumbnail-bar img.active {
@@ -1218,7 +1224,6 @@ header {
 
 .brick:hover {
     transform: scale(1.05);
-
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++MENU PAGE++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -1350,7 +1355,6 @@ header {
     transition: transform 0.2s ease;
 }
 
-
 .card-food:hover {
     transform: scale(1.02);
 }
@@ -1361,7 +1365,6 @@ header {
     aspect-ratio: 4/3;
     border-radius: var(--cards-border-radius);
 }
-
 
 .text-food {
     display: flex;
@@ -1394,7 +1397,6 @@ header {
     font-family: var(--font-1), var(--font-1-backup);
     font-weight: 700;
 }
-
 
 .card-food-out-of-stock {
     position: absolute;
@@ -1447,7 +1449,6 @@ header {
     gap: 8px;
 }
 
-
 .columns-contact {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -1466,7 +1467,6 @@ header {
     height: 100%;
     gap: 20px;
     margin-right: 10%;
-
 }
 
 .column-contact-right {
@@ -1477,7 +1477,6 @@ header {
     border-radius: 20px;
     background-size: 200% 100%;
 }
-
 
 .column-contact-right img {
     height: 100%;
@@ -1490,7 +1489,6 @@ header {
     clip-path: inset(0 100% 0 0);
 }
 
-/* Form Styling */
 .form-contact {
     display: flex;
     flex-direction: column;
@@ -1528,7 +1526,6 @@ header {
     outline: none;
 }
 
-
 /*++++++++++++++++++++++++++++++++++++++++++++++++MODALS++++++++++++++++++++++++++++++++++++++++++++++++*/
 #modal-mobile {
     height: auto;
@@ -1552,8 +1549,6 @@ header {
     box-sizing: border-box;
     border-radius: var(--cards-border-radius);
 }
-
-
 
 .modal-text-mobile {
     display: flex;
@@ -1631,7 +1626,6 @@ header {
     text-align: center;
 }
 
-
 .modal-button-CTA-mobile {
     font-size: var(--p1);
     padding: 12px 32px;
@@ -1644,7 +1638,6 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 
 .modal-button-CTA-mobile:active {
     transform: scale(0.98);
@@ -1673,7 +1666,6 @@ header {
     width: 100%;
 }
 
-
 .overlay {
     display: none;
     position: fixed;
@@ -1686,7 +1678,6 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
-
 
 .modal {
     height: 60vh;
@@ -1726,7 +1717,6 @@ header {
     gap: 24px;
     color: var(--secondary-accent-colour);
     margin: 0 36px 0 36px;
-
 }
 
 #modal-close-button {
@@ -1746,7 +1736,6 @@ header {
     font-style: italic;
     font-size: var(--h3);
     width: 100%;
-
 }
 
 .modal-p {
@@ -1798,7 +1787,6 @@ header {
     text-align: center;
 }
 
-
 .modal-button-CTA {
     font-size: var(--p1);
     padding: 16px 32px;
@@ -1811,7 +1799,6 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 
 .modal-button-CTA:active {
     transform: scale(0.98);
@@ -1827,6 +1814,8 @@ header {
 
 @media (min-width: 1600px) {
     :root {
+        --card-gallery-width: calc((var(--container-max-width)*0.9)/6);
+        --card-gallery-gap: calc((var(--container-max-width)*0.1)/5);
         --card-food-width: calc((var(--container-max-width)*0.9)/6);
         --card-food-gap: calc((var(--container-max-width)*0.1)/5);
         --card-reviews-width: calc((var(--container-max-width)*0.95)/4);
@@ -1852,9 +1841,6 @@ header {
     .card-review {
         scroll-margin-left: calc(50vw - var(--container-max-width)/2);
     }
-
-
-
 }
 
 
@@ -1870,6 +1856,8 @@ header {
         --p2: 16px;
         --p3: 13px;
 
+        --card-gallery-width: calc((var(--container-width)*0.9)/4);
+        --card-gallery-gap: calc((var(--container-width)*0.1)/3);
         --card-food-width: calc((var(--container-width)*0.9)/4);
         --card-food-gap: calc((var(--container-width)*0.1)/3);
         --card-reviews-width: calc((var(--container-width)*0.95)/3);
@@ -1941,6 +1929,8 @@ header {
         --p2: 16px;
         --p3: 13px;
 
+        --card-gallery-width: calc((var(--container-width)*0.9)/3);
+        --card-gallery-gap: calc((var(--container-width)*0.1)/2);
         --card-food-width: calc((var(--container-width)*0.9)/3);
         --card-food-gap: calc((var(--container-width)*0.1)/2);
         --card-reviews-width: calc((var(--container-width)*0.95)/2);
@@ -2110,6 +2100,8 @@ header {
 
         --nav-bar-height: 48px;
 
+        --card-gallery-width: calc((var(--container-width)*0.95)/2);
+        --card-gallery-gap: calc((var(--container-width)*0.05)/1);
         --card-food-width: calc((var(--container-width)*0.95)/2);
         --card-food-gap: calc((var(--container-width)*0.05)/1);
         --card-reviews-width: calc((var(--container-width)*0.95)/1);
