@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
     gsap.to(".container-menu-page", { duration: 0, visibility: "visible" });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
-    //-------------------------------------NAVBAR-------------------------------------
+    //-------------------------------------NAV MOBILE-------------------------------------
     const hamburger = document.getElementById('hamburger');
     const mobile_menu = document.getElementById('mobile-menu');
 
@@ -65,10 +65,10 @@ window.addEventListener("load", function () {
                                 <div class="container-menu-page-time-cards hidden" id="container-${time}-cards">
                                 <p class="description-menu animation-section-p"> ${menu_time[time]}</p>`;
             const time_filtered_records = display_filtered_records.filter(item => item.fields.MenuTime === time);
-            const sortedRecords = time_filtered_records.sort((a, b) => a.fields.Order - b.fields.Order);
+            const sorted_records = time_filtered_records.sort((a, b) => a.fields.Order - b.fields.Order);
             ordered_categories.forEach(category => {
                 //<div class="category-${category.replace(/[^a-zA-Z/s]/g, '')}">
-                const filteredRecords = sortedRecords.filter(item => item.fields.Category === category);
+                const filteredRecords = sorted_records.filter(item => item.fields.Category === category);
                 if (filteredRecords.length != 0) {
                     htmlinjection += `
                 <div class="container-category">

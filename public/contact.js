@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
     document.querySelector('.column-contact-right').classList.add('background-animation');
-    //-------------------------------------NAVBAR-------------------------------------
+    //-------------------------------------NAV MOBILE-------------------------------------
     const hamburger = document.getElementById('hamburger');
     const mobile_menu = document.getElementById('mobile-menu');
 

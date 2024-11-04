@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
     gsap.to(".container-gallery-page", { duration: 0, visibility: "visible" });
     gsap.to(".brick", { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut", onComplete: () => { lightbox.style.opacity = "1"; } });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
-    //-------------------------------------NAVBAR-------------------------------------
+    //-------------------------------------NAV MOBILE-------------------------------------
     const hamburger = document.getElementById('hamburger');
     const mobile_menu = document.getElementById('mobile-menu');
 
@@ -58,8 +58,6 @@ window.addEventListener("load", function () {
                 { duration: 0.6, scale: 1, opacity: 1, ease: "back.out(1.7)" }
             );
             gsap.to(lightbox_overlay, { duration: 0.5, opacity: 1, visibility: "visible" });
-
-
         }
         lightbox.style.display = 'flex';
         lightbox_overlay.style.display = 'block';
@@ -97,8 +95,6 @@ window.addEventListener("load", function () {
         window.removeEventListener('touchmove', preventScrollOutsideThumbnailBar);
         gsap.to(lightbox, { duration: 0.3, opacity: 0, scale: 0.7, onComplete: () => { lightbox.style.display = "none"; } });
         gsap.to(lightbox_overlay, { duration: 0.3, opacity: 0, onComplete: () => { lightbox_overlay.style.display = "none"; } });
-
-
     }
 
     function nextImage() {
@@ -125,8 +121,6 @@ window.addEventListener("load", function () {
         thumbnail_bar.appendChild(thumbnail);
     });
 
-
-
     // Swipe functionality on the lightboxImage only
     let start_x;
 
@@ -144,7 +138,6 @@ window.addEventListener("load", function () {
     lightbox_right_btn.addEventListener('click', nextImage);
     lightbox_left_btn.addEventListener('click', prevImage);
     lightbox_close_btn.addEventListener('click', closeLightbox);
-
 
     gsap.fromTo('.gallery-image', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
     gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
