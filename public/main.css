@@ -1679,7 +1679,7 @@ header {
     -webkit-backdrop-filter: blur(10px);
 }
 
-.modal {
+.modal-desktop {
     height: 60vh;
     min-height: 488px;
     width: 60vw;
@@ -1719,7 +1719,7 @@ header {
     margin: 0 36px 0 36px;
 }
 
-#modal-close-button {
+#modal-close-button-desktop {
     position: absolute;
     top: 4px;
     right: 12px;
@@ -1748,14 +1748,14 @@ header {
     max-width: 248px;
 }
 
-.form-modal {
+.form-modal-desktop {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
 }
 
-.form-modal input {
+.form-modal-desktop input {
     width: 100%;
     max-width: 336px;
     height: 64px;
@@ -1769,7 +1769,7 @@ header {
     box-sizing: border-box;
 }
 
-.form-modal input:focus {
+.form-modal-desktop input:focus {
     outline: none;
 }
 
