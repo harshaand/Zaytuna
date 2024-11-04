@@ -1588,6 +1588,10 @@ header {
     width: 100%;
 }
 
+#form-modal-footer {
+    padding-bottom: 8px;
+}
+
 .form-modal-mobile {
     display: flex;
     flex-direction: column;
