@@ -244,7 +244,6 @@ p {
     z-index: 8;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
-
 }
 
 .button-phone svg {
@@ -270,11 +269,11 @@ header {
     width: 100%;
     z-index: 8;
     height: fit-content;
-    /* Ensure the header stays above other elements */
-
 }
 
 .navbar {
+    visibility: hidden;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -285,8 +284,6 @@ header {
     color: var(--nav-bar-type-colour);
     height: fit-content;
     box-sizing: border-box;
-
-    visibility: hidden;
 }
 
 .logo a {
@@ -298,13 +295,10 @@ header {
 }
 
 .nav-links {
-
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: var(--p2);
-
-
 }
 
 .nav-link {
@@ -338,7 +332,6 @@ header {
     color: white;
 }
 
-/* Hide the mobile menu by default */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -358,8 +351,6 @@ header {
     align-items: center;
 }
 
-
-
 .mobile-menu.active {
     right: 0;
 }
@@ -371,7 +362,6 @@ header {
 
 .mobile-menu ul li {
     margin: 20px 0;
-
 }
 
 .mobile-menu ul li a {
@@ -389,9 +379,7 @@ header {
     z-index: 10;
     height: 24px;
     top: calc((var(--nav-bar-height)-24px)/2);
-    /* Adjust the top value as needed */
     right: 20px;
-    /* Adjust the right value as needed */
 }
 
 .hamburger span {
@@ -414,6 +402,7 @@ header {
 
 .container-footer {
     visibility: hidden;
+
     display: flex;
     max-width: var(--container-max-width);
     padding: var(--container-spacing-vertical) 0;
@@ -560,6 +549,7 @@ header {
 
 .container-hero {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -659,6 +649,7 @@ header {
 
 .container-about {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -709,6 +700,7 @@ header {
 
 .container-cards {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     overflow: visible;
@@ -1042,6 +1034,7 @@ header {
 
 .container-gallery-page {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -1240,6 +1233,7 @@ header {
 
 .container-menu-page {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -1442,6 +1436,7 @@ header {
 
 .container-contact-form {
     visibility: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
