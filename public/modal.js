@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
     //------------------------------------------------------MODALS----------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------
-    const serverApiSubscribeUrl = `https://zaytunacuisine.com/api/subscribe`;;
+    const serverApiSubscribeUrl = 'https://zaytunacuisine.com/api/subscribe';
 
     const modal = document.getElementById('myModal');
     const overlay = document.getElementById('overlay');
