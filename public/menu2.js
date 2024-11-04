@@ -25,6 +25,49 @@ window.addEventListener("load", function () {
         hamburger.classList.toggle('active');
     });
 
-    //-------------------------------------NAV MOBILE-------------------------------------
+    //-------------------------------------iFrame PDF-------------------------------------
+    const pdfUrl = '/public/menus/zaytuna-breakfast-menu.pdf';
 
+    // Initialize PDF.js
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+    // Render the PDF
+    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+        const viewer = document.getElementById('pdf-viewer');
+        viewer.innerHTML = '';  // Clear loading message
+
+        // Get the viewer's width to calculate the scale
+        const viewerWidth = viewer.clientWidth;
+
+        // Loop through all pages and render each one
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            pdf.getPage(pageNum).then(page => {
+                // Calculate scale based on viewer width and page original width
+                const viewport = page.getViewport({ scale: 1 });
+                const scale = viewerWidth / viewport.width;
+                const scaledViewport = page.getViewport({ scale });
+
+                // Create a canvas element for each PDF page
+                const canvas = document.createElement('canvas');
+                canvas.classList.add('pdf-page');
+                const context = canvas.getContext('2d');
+                canvas.height = scaledViewport.height;
+                canvas.width = scaledViewport.width;
+
+                // Render PDF page onto the canvas
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: scaledViewport
+                };
+                page.render(renderContext);
+
+                // Add the canvas to the viewer container
+                viewer.appendChild(canvas);
+            });
+        }
+    }).catch(error => {
+        console.error('Error loading PDF:', error);
+        document.getElementById('pdf-viewer').innerHTML = 'Failed to load menu.';
+    });
 });
