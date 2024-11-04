@@ -25,49 +25,145 @@ window.addEventListener("load", function () {
         hamburger.classList.toggle('active');
     });
 
-    //-------------------------------------iFrame PDF-------------------------------------
-    const pdfUrl = '/menus/zaytuna-breakfast-menu.pdf';
+    //-------------------------------------MENU API CALL-------------------------------------
+    const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
 
-    // Initialize PDF.js
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+    fetchMenuItems();
 
-    // Render the PDF
-    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
-        const viewer = document.getElementById('pdf-viewer');
-        viewer.innerHTML = '';  // Clear loading message
-
-        // Get the viewer's width to calculate the scale
-        const viewerWidth = viewer.clientWidth;
-
-        // Loop through all pages and render each one
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-            pdf.getPage(pageNum).then(page => {
-                // Calculate scale based on viewer width and page original width
-                const viewport = page.getViewport({ scale: 1 });
-                const scale = viewerWidth / viewport.width;
-                const scaledViewport = page.getViewport({ scale });
-
-                // Create a canvas element for each PDF page
-                const canvas = document.createElement('canvas');
-                canvas.classList.add('pdf-page');
-                const context = canvas.getContext('2d');
-                canvas.height = scaledViewport.height;
-                canvas.width = scaledViewport.width;
-
-                // Render PDF page onto the canvas
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: scaledViewport
-                };
-                page.render(renderContext);
-
-                // Add the canvas to the viewer container
-                viewer.appendChild(canvas);
-            });
+    async function fetchMenuItems() {
+        try {
+            const response = await fetch(serverApiMenuUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data from server');
+            }
+            const data = await response.json();
+            displayMenuItems(data.records);
+        } catch (error) {
+            console.error(error);
+            alert('Error fetching menu items. Please check the console for more details.');
         }
-    }).catch(error => {
-        console.error('Error loading PDF:', error);
-        document.getElementById('pdf-viewer').innerHTML = 'Failed to load menu.';
+    }
+
+    //-------------------------------------MENU DISPLAY-------------------------------------
+    const container_menu = document.querySelector(".container-menu");
+
+    function displayMenuItems(items) {
+        const menu_time = {
+            Breakfast: "Served 9 AM - 11 AM",
+            Lunch: "Served 11 AM - 4 PM",
+            Dinner: "Served 4 PM - 10 PM "
+        };
+        const unique_categories = [...new Set(items.map(item => item.fields.Category))];
+        const ordered_categories = unique_categories.sort((a, b) => parseFloat(a) - parseFloat(b));
+
+        const display_filtered_records = items.filter(item => item.fields.Display);
+
+        let htmlinjection = '';
+
+        for (const time in menu_time) {
+            htmlinjection += `
+                                <div class="container-menu-page-time-cards hidden" id="container-${time}-cards">
+                                <p class="description-menu animation-section-p"> ${menu_time[time]}</p>`;
+            const time_filtered_records = display_filtered_records.filter(item => item.fields.MenuTime === time);
+            const sorted_records = time_filtered_records.sort((a, b) => a.fields.Order - b.fields.Order);
+            ordered_categories.forEach(category => {
+                //<div class="category-${category.replace(/[^a-zA-Z/s]/g, '')}">
+                const filteredRecords = sorted_records.filter(item => item.fields.Category === category);
+                if (filteredRecords.length != 0) {
+                    htmlinjection += `
+                <div class="container-category">
+                <h3 class="heading-menu-category animation-section-p">${category.replace(/[^a-zA-Z/s]/g, '')}</h3>
+                <div class="container-category-cards">`;
+
+                    filteredRecords.forEach(item => {
+                        const { Name, Image, OutOfStock } = item.fields;
+                        const Description = item.fields.Description != null ? item.fields.Description : ""
+                        if (item.fields.Image != null) {
+                            htmlinjection += `
+                    <div class="card-food" id="cards-menu-page">
+                        <img class="image-food" src="${Image[0].url}" alt="">
+                        <div class="text-food">
+                        <div class="food-name-description">
+                            <p class="text-food-name">${Name}</p>
+                            <p>${Description}</p>
+                        </div>
+                `;
+                        } else {
+                            htmlinjection += `
+                    <div class="card-food" id="cards-menu-page">
+                    
+                        <div class="text-food">
+                            <div class="food-name-description">
+                                <p class="text-food-name">${Name}</p>
+                                <p>${Description}</p>
+                            </div>
+                `;
+                        }
+                        container_menu.innerHTML = htmlinjection;
+                        if (OutOfStock === true) {
+                            htmlinjection += `
+                        </div>
+                    <p class="card-food-out-of-stock">Fresh out, sorry!<p>
+                    </div>
+                    `}
+                        else {
+                            htmlinjection += `
+                        </div>
+                    </div>
+                `;
+                        }
+                    });
+                    htmlinjection += `
+            </div> 
+            </div>`;
+                }
+                else {
+                    htmlinjection += ``
+                }
+            });
+
+
+            htmlinjection += `
+
+            </div>`;
+        }
+        document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+        gsap.from(".animation-section-p", { duration: 1, delay: .9, opacity: 0, y: 30, ease: "power1.inOut" });
+        gsap.fromTo('.card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.05, ease: "power1.inOut" });
+
+    }
+
+    const buttons = document.querySelectorAll('.menu-btn');
+    document.getElementById('breakfast-btn').classList.add('active');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+
+            // Hide all menu cards
+            document.getElementById('container-Breakfast-cards').classList.add('hidden');
+            document.getElementById('container-Breakfast-cards').classList.remove('visible');
+            document.getElementById('container-Lunch-cards').classList.add('hidden');
+            document.getElementById('container-Lunch-cards').classList.remove('visible');
+            document.getElementById('container-Dinner-cards').classList.add('hidden');
+            document.getElementById('container-Dinner-cards').classList.remove('visible');
+
+            // Show the corresponding menu cards based on the button clicked
+            if (this.id === 'breakfast-btn') {
+                document.getElementById('container-Breakfast-cards').classList.remove('hidden');
+                document.getElementById('container-Breakfast-cards').classList.add('visible');
+                gsap.fromTo('#container-Breakfast-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+            } else if (this.id === 'lunch-btn') {
+                document.getElementById('container-Lunch-cards').classList.remove('hidden');
+                document.getElementById('container-Lunch-cards').classList.add('visible');
+                gsap.fromTo('#container-Lunch-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+            } else if (this.id === 'dinner-btn') {
+                document.getElementById('container-Dinner-cards').classList.remove('hidden');
+                document.getElementById('container-Dinner-cards').classList.add('visible');
+                gsap.fromTo('#container-Dinner-cards .card-food', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+            }
+        });
     });
 });
