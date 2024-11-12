@@ -16,6 +16,7 @@ window.addEventListener("load", function () {
     gsap.to(".container-menu-page", { duration: 0, visibility: "visible" });
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
+    gsap.from(".menu-images img", { duration: 1, delay: .6, y: 30, opacity: 0, ease: "power2.inOut" });
     //-------------------------------------NAV MOBILE-------------------------------------
     const hamburger = document.getElementById('hamburger');
     const mobile_menu = document.getElementById('mobile-menu');
@@ -25,15 +26,28 @@ window.addEventListener("load", function () {
         hamburger.classList.toggle('active');
     });
     //-------------------------------------NAV MOBILE-------------------------------------
-
     const buttons = document.querySelectorAll('.menu-btn');
-    document.getElementById('breakfast-lunch-btn').classList.add('active');
 
-    document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
-    document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
+    let menu_category = localStorage.getItem('menuCategory');
 
-    document.getElementById('dinner-menu-images').classList.add('hidden');
-    document.getElementById('dinner-menu-images').classList.remove('visible');
+    if (menu_category === 'breakfast-and-lunch') {
+        document.getElementById('breakfast-lunch-btn').classList.add('active');
+
+        document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
+        document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
+
+        document.getElementById('dinner-menu-images').classList.add('hidden');
+        document.getElementById('dinner-menu-images').classList.remove('visible');
+    }
+    else if (menu_category === 'dinner') {
+        document.getElementById('dinner-btn').classList.add('active');
+
+        document.getElementById('dinner-menu-images').classList.add('visible');
+        document.getElementById('dinner-menu-images').classList.remove('hidden');
+
+        document.getElementById('breakfast-lunch-menu-images').classList.add('hidden');
+        document.getElementById('breakfast-lunch-menu-images').classList.remove('visible');
+    }
 
     buttons.forEach(button => {
         button.addEventListener('click', function () {
@@ -51,13 +65,15 @@ window.addEventListener("load", function () {
 
             // Show the corresponding menu cards based on the button clicked
             if (this.id === 'breakfast-lunch-btn') {
+                document.getElementById('breakfast-lunch-btn').disabled = true;
                 document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
                 document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
-                gsap.fromTo('#breakfast-lunch-menu-images', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                gsap.from("#breakfast-lunch-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('breakfast-lunch-btn').disabled = false; } });
             } else if (this.id === 'dinner-btn') {
+                document.getElementById('dinner-btn').disabled = true;
                 document.getElementById('dinner-menu-images').classList.remove('hidden');
                 document.getElementById('dinner-menu-images').classList.add('visible');
-                gsap.fromTo('#dinner-menu-images', { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power1.inOut" });
+                gsap.from("#dinner-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('dinner-btn').disabled = false; } });
             }
         });
     });

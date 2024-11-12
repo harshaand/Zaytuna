@@ -118,7 +118,13 @@ window.addEventListener("load", function () {
     gsap.fromTo('.card-review', { opacity: 0 }, { opacity: 1, duration: 0.3, delay: 1, stagger: 0.1, ease: "power1.inOut" });
 
 
+    //-------------------------------------MENU SECTION-------------------------------------
 
+    const menu_breakfast_lunch_btn = document.querySelector(".menu-pdf-btn.breakfast");
+    menu_breakfast_lunch_btn.onclick = () => { localStorage.setItem('menuCategory', 'breakfast-and-lunch'); };
+
+    const menu_dinner_btn = document.querySelector(".menu-pdf-btn.dinner");
+    menu_dinner_btn.onclick = () => { localStorage.setItem('menuCategory', 'dinner'); };
 
     //-------------------------------------REVIEWS SECTION-------------------------------------
     const reviews_slider = document.querySelector(".slider");
