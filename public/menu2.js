@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
     });
 
     //-------------------------------------MENU API CALL-------------------------------------
-    const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
+    const serverApiMenuUrl = 'http://localhost:3002/api/menu';
 
     fetchMenuItems();
 

@@ -176,8 +176,8 @@ window.addEventListener("load", function () {
     }
     //-------------------------------------API CARDS (menu and reviews)-------------------------------------
     /*
-    const serverApiMenuUrl = 'https://zaytunacuisine.com/api/menu';
-    const serverApiReviewsUrl = 'https://zaytunacuisine.com/api/reviews';
+    const serverApiMenuUrl = 'http://localhost:3002/api/menu';
+    const serverApiReviewsUrl = 'http://localhost:3002/api/reviews';
     // Fetch menu items on page load
 
     fetchMenuItems();
