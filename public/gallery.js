@@ -29,13 +29,13 @@ window.addEventListener("load", function () {
     const images = Array.from(document.querySelectorAll('.masonry img'));
     const lightbox_overlay = document.querySelector('.lightbox-overlay');
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
+    const lightbox_image = document.getElementById('lightbox-image');
     const lightbox_click_swipe_area = document.querySelector('.lightbox-image-and-btns');
     //const caption = document.getElementById('caption');
     const thumbnail_bar = document.getElementById('thumbnail-bar');
     const lightbox_left_btn = document.getElementById('lightbox-left-btn');
     const lightbox_right_btn = document.getElementById('lightbox-right-btn');
-    const lightbox_close_btn = document.getElementById('lightbox_close_btn');
+    const lightbox_close_btn = document.getElementById('lightbox-close-btn');
 
     let current_index = 0;
 
@@ -46,9 +46,9 @@ window.addEventListener("load", function () {
     }
 
     function showLightbox() {
-        const selectedImage = images[current_index];
-        lightboxImage.src = selectedImage.src;
-        //caption.innerText = selectedImage.alt;
+        const selected_image = images[current_index];
+        lightbox_image.src = selected_image.src;
+        //caption.innerText = selected_image.alt;
         highlightThumbnail();
         window.addEventListener('wheel', preventScrollOutsideThumbnailBar, { passive: false });
         window.addEventListener('touchmove', preventScrollOutsideThumbnailBar, { passive: false });

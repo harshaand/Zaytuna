@@ -30,7 +30,7 @@ window.addEventListener("load", function () {
 
     let menu_category = localStorage.getItem('menuCategory');
 
-    if (menu_category === 'breakfast-and-lunch') {
+    if (menu_category === 'breakfast-and-lunch' || !localStorage.getItem('menu_category')) {
         document.getElementById('breakfast-lunch-btn').classList.add('active');
 
         document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
