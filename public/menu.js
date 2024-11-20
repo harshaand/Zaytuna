@@ -69,11 +69,13 @@ window.addEventListener("load", function () {
                 document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
                 document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
                 gsap.from("#breakfast-lunch-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('breakfast-lunch-btn').disabled = false; } });
+                localStorage.setItem('menuCategory', 'breakfast-and-lunch');
             } else if (this.id === 'dinner-btn') {
                 document.getElementById('dinner-btn').disabled = true;
                 document.getElementById('dinner-menu-images').classList.remove('hidden');
                 document.getElementById('dinner-menu-images').classList.add('visible');
                 gsap.from("#dinner-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('dinner-btn').disabled = false; } });
+                localStorage.setItem('menuCategory', 'dinner');
             }
         });
     });
