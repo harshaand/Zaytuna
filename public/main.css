@@ -1569,6 +1569,8 @@ header {
 
 /*FAQ section-------------------------------------*/
 .section-faq {
+    visibility: hidden;
+
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -1577,35 +1579,9 @@ header {
     gap: 0px;
 }
 
-.faq-futher-questions {
-    background-color: var(--primary-colour);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    width: var(--container-width);
-    max-width: var(--container-max-width);
-    padding: 16px 16px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
-.faq-futher-questions .text {
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.faq-futher-questions button {
-    white-space: nowrap;
-}
-
 .container-faq {
+    visibility: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1625,6 +1601,8 @@ header {
 }
 
 .faq-list {
+    visibility: hidden;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -1665,7 +1643,7 @@ header {
 }
 
 .faq-item.active .faq-question::after {
-    content: '−';
+    content: '-';
     transform: rotate(180deg);
 }
 
@@ -1689,6 +1667,35 @@ header {
     border-left: var(--secondary-accent-colour) 4px solid;
 }
 
+.faq-futher-questions {
+    visibility: hidden;
+
+    background-color: var(--primary-colour);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: var(--container-width);
+    max-width: var(--container-max-width);
+    padding: 16px 16px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.faq-futher-questions .text {
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.faq-futher-questions button {
+    white-space: nowrap;
+}
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++MODALS++++++++++++++++++++++++++++++++++++++++++++++++*/
 #modal-mobile {

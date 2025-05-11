@@ -12,6 +12,11 @@ window.addEventListener("load", function () {
 
     gsap.to(".navbar", { duration: 0, visibility: "visible" });
     gsap.to(".container-contact-form", { duration: 0, visibility: "visible" });
+    gsap.to(".container-faq", { duration: 0, visibility: "visible" });
+    gsap.to(".section-faq", { duration: 0, visibility: "visible" });
+    gsap.to(".faq-list", { duration: 0, visibility: "visible" });
+    gsap.to(".faq-futher-questions", { duration: 0, visibility: "visible" });
+
     gsap.to(".container-footer", { duration: 0, visibility: "visible" });
 
     document.querySelector('.column-contact-right').classList.add('background-animation');
