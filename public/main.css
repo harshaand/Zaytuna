@@ -1632,10 +1632,6 @@ header {
     transition: var(--faq-transition);
 }
 
-.faq-question:hover {
-    background-color: #e3a50a1c;
-}
-
 .faq-question::after {
     content: '+';
     color: var(--secondary-accent-colour);
@@ -1643,7 +1639,7 @@ header {
 }
 
 .faq-item.active .faq-question::after {
-    content: '-';
+    content: '–';
     transform: rotate(180deg);
 }
 
