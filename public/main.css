@@ -1685,7 +1685,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 8px;
+    gap: 0px;
     margin-bottom: 12px;
 }
 
