@@ -1596,7 +1596,7 @@ header {
 .faq-title {
     text-align: center;
     margin-bottom: 24px;
-    color: var(--secondary-accent-colour);
+    /* color: var(--secondary-accent-colour); */
     font-family: var(--font-1), var(--font-1-backup);
 }
 
