@@ -733,7 +733,7 @@ header {
     text-align: center;
 }
 
-.about-image {
+.about-video {
     aspect-ratio: 21 / 9;
     width: 100%;
     max-width: 600px;
@@ -2168,6 +2168,11 @@ header {
 
     }
 
+    .about-video {
+        aspect-ratio: 16 / 9;
+    }
+
+
     .gallery img:nth-child(n+7) {
         display: none;
     }
@@ -2350,7 +2355,7 @@ header {
 
     }
 
-    .about-image {
+    .about-video {
         margin-bottom: 8px;
     }
 
