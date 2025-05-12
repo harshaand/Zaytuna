@@ -10,10 +10,6 @@ const airtableApiUrlMenuTable = `https://api.airtable.com/v0/${process.env.AIRTA
 const airtableApiUrlReviewsTable = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_REVIEWS_NAME}`;
 const airtableToken = process.env.AIRTABLE_API_KEY;
 
-express.static.mime.define({
-    'video/mp4': ['mp4', 'MP4'],
-});
-
 // Enable CORS (for testing)
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
