@@ -2103,8 +2103,8 @@ header {
         --h5: 25px;
         --h4: 20px;
         --h6: 20px;
-        --p1: 20px;
-        --p2: 16px;
+        --p1: 16px;
+        --p2: 14px;
         --p3: 13px;
 
         --card-gallery-width: calc((var(--container-width)*0.9)/3);
