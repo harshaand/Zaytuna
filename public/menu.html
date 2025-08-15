@@ -182,11 +182,14 @@
                     <h1 class="animation-section-heading">Menu</h1>
                 </div>
                 <div class="menu-btns animation-general-element">
-                    <button id="breakfast-lunch-btn" class="menu-btn">
-                        <h2 class="heading-menu-time">Breakfast/Lunch</h2>
+                    <button id="breakfast-btn" class="menu-btn">
+                        <h2 class="heading-menu-time">Breakfast</h2>
                     </button>
                     <button id="dinner-btn" class="menu-btn">
                         <h2 class="heading-menu-time">Dinner</h2>
+                    </button>
+                    <button id="kids-btn" class="menu-btn">
+                        <h2 class="heading-menu-time">Kids</h2>
                     </button>
                 </div>
 
@@ -194,24 +197,57 @@
                 <!--
             <div id="pdf-viewer">Loading menu...</div>
             -->
-                <div id="breakfast-lunch-menu-images" class="menu-images">
-                    <img src="menus/zaytuna-breakfast-menu-1.webp" alt="">
-                    <img src="menus/zaytuna-breakfast-menu-2.webp" alt="">
+                <div id="breakfast-menu-container" class="container-menu-images-and-link">
+                    <div class="menu-images">
+                        <img src="menus/zaytuna-breakfast-menu-1.webp" alt="">
+                        <img src="menus/zaytuna-breakfast-menu-2.webp" alt="">
+                        <img src="menus/zaytuna-breakfast-menu-3.webp" alt="">
+                        <img src="menus/zaytuna-breakfast-menu-4.webp" alt="">
+                    </div>
+                    <a class="menu-download-btn" href="menus/zaytuna-breakfast-menu.pdf" target="_blank">
+                        <?xml version="1.0" encoding="iso-8859-1"?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" viewBox="0 0 24 24"
+                            id="Download">
+                            <path
+                                d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"
+                                fill="#3c818d" class="color000000 svgShape"></path>
+                        </svg>
+                        <p>Download PDF</p>
+                    </a>
                 </div>
-                <div id="dinner-menu-images" class="menu-images">
-                    <img src="menus/zaytuna-breakfast-menu-1.webp" alt="">
-                    <img src="menus/zaytuna-breakfast-menu-2.webp" alt="">
+                <div id="dinner-menu-container" class="container-menu-images-and-link">
+                    <div class="menu-images">
+                        <img src="menus/zaytuna-dinner-menu-1.webp" alt="">
+                        <img src="menus/zaytuna-dinner-menu-2.webp" alt="">
+                        <img src="menus/zaytuna-dinner-menu-3.webp" alt="">
+                        <img src="menus/zaytuna-dinner-menu-4.webp" alt="">
+                    </div>
+                    <a class="menu-download-btn" href="menus/zaytuna-dinner-menu.pdf" target="_blank">
+                        <?xml version="1.0" encoding="iso-8859-1"?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" viewBox="0 0 24 24"
+                            id="Download">
+                            <path
+                                d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"
+                                fill="#3c818d" class="color000000 svgShape"></path>
+                        </svg>
+                        <p>Download PDF</p>
+                    </a>
                 </div>
-                <a class="menu-download-btn" href="menus/zaytuna-breakfast-menu.pdf" target="_blank">
-                    <?xml version="1.0" encoding="iso-8859-1"?>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" viewBox="0 0 24 24"
-                        id="Download">
-                        <path
-                            d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"
-                            fill="#3c818d" class="color000000 svgShape"></path>
-                    </svg>
-                    <p>Download PDF</p>
-                </a>
+                <div id="kids-menu-container" class="container-menu-images-and-link">
+                    <div class="menu-images">
+                        <img src="menus/zaytuna-kids-menu.webp" alt="">
+                    </div>
+                    <a class="menu-download-btn" href="menus/zaytuna-kids-menu.pdf" target="_blank">
+                        <?xml version="1.0" encoding="iso-8859-1"?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36px" height="36px" viewBox="0 0 24 24"
+                            id="Download">
+                            <path
+                                d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"
+                                fill="#3c818d" class="color000000 svgShape"></path>
+                        </svg>
+                        <p>Download PDF</p>
+                    </a>
+                </div>
             </div>
         </div>
 

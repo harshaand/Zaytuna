@@ -30,23 +30,42 @@ window.addEventListener("load", function () {
 
     let menu_category = localStorage.getItem('menuCategory');
 
-    if (menu_category === 'breakfast-and-lunch' || menu_category === null) {
-        document.getElementById('breakfast-lunch-btn').classList.add('active');
+    if (menu_category === 'breakfast' || menu_category === null || menu_category === undefined) {
+        document.getElementById('breakfast-btn').classList.add('active');
 
-        document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
-        document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
+        document.getElementById('breakfast-menu-container').classList.add('visible');
+        document.getElementById('breakfast-menu-container').classList.remove('hidden');
 
-        document.getElementById('dinner-menu-images').classList.add('hidden');
-        document.getElementById('dinner-menu-images').classList.remove('visible');
+        document.getElementById('dinner-menu-container').classList.add('hidden');
+        document.getElementById('dinner-menu-container').classList.remove('visible');
+
+        document.getElementById('kids-menu-container').classList.add('hidden');
+        document.getElementById('kids-menu-container').classList.remove('visible');
     }
     else if (menu_category === 'dinner') {
         document.getElementById('dinner-btn').classList.add('active');
 
-        document.getElementById('dinner-menu-images').classList.add('visible');
-        document.getElementById('dinner-menu-images').classList.remove('hidden');
+        document.getElementById('dinner-menu-container').classList.add('visible');
+        document.getElementById('dinner-menu-container').classList.remove('hidden');
 
-        document.getElementById('breakfast-lunch-menu-images').classList.add('hidden');
-        document.getElementById('breakfast-lunch-menu-images').classList.remove('visible');
+        document.getElementById('breakfast-menu-container').classList.add('hidden');
+        document.getElementById('breakfast-menu-container').classList.remove('visible');
+
+        document.getElementById('kids-menu-container').classList.add('hidden');
+        document.getElementById('kids-menu-container').classList.remove('visible');
+    }
+
+    else if (menu_category === 'kids') {
+        document.getElementById('kids-btn').classList.add('active');
+
+        document.getElementById('kids-menu-container').classList.add('visible');
+        document.getElementById('kids-menu-container').classList.remove('hidden');
+
+        document.getElementById('breakfast-menu-container').classList.add('hidden');
+        document.getElementById('breakfast-menu-container').classList.remove('visible');
+
+        document.getElementById('dinner-menu-container').classList.add('hidden');
+        document.getElementById('dinner-menu-container').classList.remove('visible');
     }
 
     buttons.forEach(button => {
@@ -57,26 +76,35 @@ window.addEventListener("load", function () {
 
 
             // Hide all menu cards
-            document.getElementById('breakfast-lunch-menu-images').classList.add('hidden');
-            document.getElementById('breakfast-lunch-menu-images').classList.remove('visible');
-            document.getElementById('dinner-menu-images').classList.add('hidden');
-            document.getElementById('dinner-menu-images').classList.remove('visible');
+            document.getElementById('breakfast-menu-container').classList.add('hidden');
+            document.getElementById('breakfast-menu-container').classList.remove('visible');
+            document.getElementById('dinner-menu-container').classList.add('hidden');
+            document.getElementById('dinner-menu-container').classList.remove('visible');
+            document.getElementById('kids-menu-container').classList.add('hidden');
+            document.getElementById('kids-menu-container').classList.remove('visible');
 
 
             // Show the corresponding menu cards based on the button clicked
-            if (this.id === 'breakfast-lunch-btn') {
-                document.getElementById('breakfast-lunch-btn').disabled = true;
-                document.getElementById('breakfast-lunch-menu-images').classList.remove('hidden');
-                document.getElementById('breakfast-lunch-menu-images').classList.add('visible');
-                gsap.from("#breakfast-lunch-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('breakfast-lunch-btn').disabled = false; } });
-                localStorage.setItem('menuCategory', 'breakfast-and-lunch');
+            if (this.id === 'breakfast-btn') {
+                document.getElementById('breakfast-btn').disabled = true;
+                document.getElementById('breakfast-menu-container').classList.remove('hidden');
+                document.getElementById('breakfast-menu-container').classList.add('visible');
+                gsap.from("#breakfast-menu-container", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('breakfast-btn').disabled = false; } });
+                localStorage.setItem('menuCategory', 'breakfast');
             } else if (this.id === 'dinner-btn') {
                 document.getElementById('dinner-btn').disabled = true;
-                document.getElementById('dinner-menu-images').classList.remove('hidden');
-                document.getElementById('dinner-menu-images').classList.add('visible');
-                gsap.from("#dinner-menu-images", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('dinner-btn').disabled = false; } });
+                document.getElementById('dinner-menu-container').classList.remove('hidden');
+                document.getElementById('dinner-menu-container').classList.add('visible');
+                gsap.from("#dinner-menu-container", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('dinner-btn').disabled = false; } });
                 localStorage.setItem('menuCategory', 'dinner');
+            } else if (this.id === 'kids-btn') {
+                document.getElementById('kids-btn').disabled = true;
+                document.getElementById('kids-menu-container').classList.remove('hidden');
+                document.getElementById('kids-menu-container').classList.add('visible');
+                gsap.from("#kids-menu-container", { duration: 1, y: 30, opacity: 0, ease: "power2.inOut", onComplete: () => { document.getElementById('kids-btn').disabled = false; } });
+                localStorage.setItem('menuCategory', 'kids');
             }
+
         });
     });
 });

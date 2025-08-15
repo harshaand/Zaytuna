@@ -229,11 +229,20 @@ p {
     color: var(--font-black);
 }
 
+.container-menu-images-and-link {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+    width: 100%;
+}
+
 .menu-images {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
     width: 100%;
     box-sizing: border-box;
