@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-    const serverApiSubscribeUrl = 'https://zaytunacuisine.com/api/subscribe';
 
     const overlay = document.getElementById('overlay');
 
@@ -23,7 +22,7 @@ window.addEventListener("load", function () {
 
     async function subscribeUser(email, discount_code) {
         try {
-            const response = await fetch(serverApiSubscribeUrl, {
+            const response = await fetch('https://www.zaytunarestaurant-bawtry.com/api/subscribe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
