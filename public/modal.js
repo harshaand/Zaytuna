@@ -18,8 +18,11 @@ window.addEventListener("load", function () {
     const modal_title_footer = document.getElementById('modal-title-footer');
     const modal_description_footer = document.getElementById('modal-description-footer');
     modalFooter();
-    //-------------------------------MODAL FUNCTIONALITY (POST REQUEST, DISCOUNT CODE, LOCAL STORAGE)-------------------------------
 
+    const modalHeading = "Shukran & Welcome! 🌿"
+    const modalBodyText = "You're part of our family now. Expect delicious updates on events, tastings, and special gatherings.💙<br><br>We've just sent a little welcome note to your inbox. If it doesn't appear within a minute, it may be playing hide-and-seek in the spam folder! 🫣"
+
+    //-------------------------------MODAL FUNCTIONALITY (POST REQUEST, DISCOUNT CODE, LOCAL STORAGE)-------------------------------
     async function subscribeUser(email, discount_code) {
         try {
             const response = await fetch('https://www.zaytunarestaurant-bawtry.com/api/subscribe', {
@@ -109,7 +112,7 @@ window.addEventListener("load", function () {
                 modal_title_desktop.innerHTML = "You're in!🎉";
                 modal_description_desktop.style.lineHeight = '140%';
                 modal_description_desktop.style.fontFamily = 'var(--font-1)'
-                modal_description_desktop.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_description_desktop.innerHTML = modalBodyText;
             }
         });
 
@@ -162,10 +165,10 @@ window.addEventListener("load", function () {
             if (email) {
                 localStorage.setItem('userEmail', email);
                 form_mobile.style.display = 'none';
-                modal_title_mobile.innerHTML = "You're in!🎉";
+                modal_title_mobile.innerHTML = modalHeading;
                 modal_description_mobile.style.lineHeight = '140%';
                 modal_description_mobile.style.fontFamily = 'var(--font-1)';
-                modal_description_mobile.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_description_mobile.innerHTML = modalBodyText;
                 modal_mobile.style.minHeight = '30vh';
                 modal_mobile.style.padding = '36px var(--container-spacing-horizontal) calc(36px + calc(var(--cards-border-radius))) var(--container-spacing-horizontal)';
             }
@@ -190,8 +193,8 @@ window.addEventListener("load", function () {
 
             if (email) {
                 form_footer.style.display = 'none';
-                modal_title_footer.innerHTML = "You're in!🎉";
-                modal_description_footer.innerHTML = "Your discount code is on the way to your inbox! We can't wait to serve you something delicious.💙<br><br>If you don't see it in your inbox within 1 minute, please check your spam folder.";
+                modal_title_footer.innerHTML = modalHeading;
+                modal_description_footer.innerHTML = modalBodyText;
             }
         });
     }
